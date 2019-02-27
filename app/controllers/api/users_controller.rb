@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     
     if @user.save
       login(@user)
-      render `/api/users/show`
+      render `api/users/show`
     else
       render json: ["We're sorry, that email is taken."], status: 401
     end
