@@ -1,0 +1,136 @@
+
+.pre-login {
+  // background-color: lightcoral;
+  min-height: 765px;
+  width: 100%;
+  position: relative;
+  // top: -47px;
+  margin: 0; 
+  height: 100%; 
+
+  // CODE WORKS BUT BAD PICTURE
+  background-image: image-url("pink_sunset.jpeg");
+  background-size: cover;
+
+  // WITHOUT FOOTER
+  overflow: hidden;
+}
+
+
+.pre-nav {
+  background: #222326c2; // added opacity with color
+  height: 80px;
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  position: fixed;
+  top: -16px;
+  left: -5px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.pre-nav > li {
+  margin: 12px 17px;
+}
+
+.pre-nav > li > a {
+  position: relative;
+  top: 20px;
+}
+
+// LOGO BUTTON
+.pre-white-modify {
+  position: relative;
+  top: -30px;
+  margin-left: 5px;
+}
+
+.pre-white-logo {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: -16px;
+}
+
+.pre-logo-button {
+  color: white;
+  left: -850px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+// NAV BAR SIGN UP
+.pre-signup {
+  color: white;
+  font-weight: 700;
+}
+
+
+.login-back { // fixed login background
+  // background-color: transparent;
+  // position: relative;
+  color: white;
+  font-weight: 700;
+  margin-right: 170px;
+  margin-top: 0;
+}
+
+.pre-home-msg {
+  color: white;
+  text-align: center;
+}
+
+.welcome-msg {
+  padding-top: 290px;
+  font-size: 72px;
+  margin-bottom: 0;
+}
+
+.welcome-ad {
+  font-size: 18px;
+  top: -100px;
+}
+
+
+.welcome-signup {
+  border: 1px solid transparent;
+  background-color: #1db954;
+  color: white;
+  width: 250px;
+  display: block;
+  margin-left: 595px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 30px;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  
+}
+.welcome-signup:hover {
+  background: #1ed760;
+  transition-duration: 0.3s;
+}
+
+.welcome-signup-words {
+  color: white;
+  margin-top: 13px;
+}
+
+
+// FOOTER
+// .footer {   // NO FOOTER: add (overflow:hidden) in .pre-login 
+//   background: black;
+//   position: absolute;
+//   height: 538px;
+//   width: 100%;
+//   bottom: -538px;
+// }
+
+// .ft-logo { // YES FOOTER: comment footer tag in greeting.jsx
+//   position: relative;
+//   top: 95px;
+//   left: 140px;
+// }

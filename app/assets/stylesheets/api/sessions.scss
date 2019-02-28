@@ -1,3 +1,256 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+// @@@@@@@@@@ REMOVE "REMEMBER ME" @@@@@@@@@@@@
+
+
+
+.login {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;;
+}
+.login-form {
+  border-top: 1px solid #dfe0e6
+}
+.logo-button {
+  border: white;
+  display: inline-block;
+  margin: 10px;
+}
+
+.login-logo {
+  font-size: 35px;
+  font-weight: 700;
+  text-decoration: none;
+  // background-image: url(image-url("black_logo.png"));
+}
+
+.login-black-logo {
+  height: 70px;
+  width: 70px;
+}
+
+.login-modify {
+  position: relative;
+  top: -20px;
+  margin-left: 5px;
+}
+
+.login-message {
+  font-weight: 700;
+  margin-top: 17px;
+  font-size: 16px;
+}
+
+.demo-button {
+  height: 48px;
+  width: 450px;
+  background: #3b5998;
+  color: white;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: -7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.demo-button:hover {
+  background: #3B59BF;
+  transition-duration: 0.3s;
+}
+
+.or-border {
+  border-bottom: 1px solid #dfe0e6;
+  width: 450px;
+  display: inline-block;
+  line-height: 0;
+  position: relative;
+  top: -8px;
+}
+
+.or {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 20px;
+  background: white;
+  position: absolute;
+  top: -15px;
+  left: 195px;
+}
+
+// ERROR
+.login-error {
+  list-style: none;
+  color: red;
+  position: relative;
+  left: -20px;
+}
+
+// LOGIN FORM
+.login-info {
+  top: -20px;
+  position: relative;
+}
+
+// EMAIL INPUT
+.email-input {
+  border: 1px solid #dfe0e6;
+  height: 38px;
+  width: 436px;
+  outline: none;
+  text-align: left;
+  padding-left: 12px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.email-input:focus {
+  border: 1px solid #222326;
+  opacity: 0.5;
+  transition-duration: 0.3s;
+}
+
+.email-input::placeholder {
+  position: relative;
+  font-size: 16px;
+  color: lightgray;
+  font-weight: 500;
+}
+
+// PASSWORD INPUT
+.password-input {
+  border: 1px solid #dfe0e6;
+  height: 38px;
+  width: 436px;
+  outline: none;
+  text-align: left;
+  padding-left: 12px;
+  font-size: 20px;
+  margin: 10px;
+  font-weight: 700;
+}
+
+.password-input:focus {
+  border: 1px solid #222326;
+  opacity: 0.5;
+  transition-duration: 0.3s;
+}
+.password-input::placeholder {
+  position: relative;
+  font-size: 16px;
+  color: lightgray;
+  font-weight: 500;
+}
+
+// LOGIN SUBMIT
+.login-submit{
+  display: flex;
+  justify-content: center;
+}
+
+.remember-submit {
+  display: flex;
+  position: relative;
+  left: -45px;
+  margin-top: 15px;
+}
+
+.remember-checkbox {
+  margin: 10px;
+  font-size: 100%;
+  // text-align: left;
+  // position: relative;
+}
+.remember-submit:hover{
+  cursor: pointer;
+}
+.remember-checkbox:hover {
+  cursor: inherit;
+}
+
+
+.remember-me {
+  position: relative;
+  top: 10px;
+  color: gray;
+}
+
+.login-space-between {
+  width: 30px;
+}
+
+.login-button {
+  border: 1px solid transparent;
+  background: #1db954;
+  color: white;
+  width: 210px;
+  cursor: pointer;
+  border-radius: 50px;
+  position: relative;
+  top: 10px;
+  left: 35px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.login-button:hover {
+  background: #1ed760;
+  transition-duration: 0.3s;
+}
+
+// SIGNUP REDIRECT
+.signup-redirect {
+  border-top: 1px solid #dfe0e6;
+  width: 450px;
+  display: inline-block;
+  margin-top: 56px;
+}
+
+.no-account {
+  margin-top: 38px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.signup-link-wrapper {
+  margin-top: 33px;
+  margin-bottom: 16px;
+}
+.signup-link {
+  margin-top: 20px;
+  border: 2px solid #616467;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #616467;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 14.5px 133px;;
+  
+}
+.signup-link:hover {
+  background: #616467;
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.login-footer {
+  border-top: 1px solid #dfe0e6;
+  margin-top: 25px;
+  width: 450px;
+  display: inline-block;
+}
+
+.ending-words {
+  margin-top: 25px;
+  color: lightgray;
+  font-size: 11px;
+  font-weight: 500;
+}

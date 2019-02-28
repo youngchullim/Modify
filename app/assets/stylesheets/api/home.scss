@@ -1,0 +1,125 @@
+// music player COLOR #b3b3b3
+// profile background COLOR #222326
+
+// TEST ( to logout )
+.logout {
+  position: relative;
+  left: 500px;
+}
+
+// ALL
+.logged-in {
+  //TEST
+  // background-color: rgb(78, 3, 3);
+
+  // with opacity
+  background-color: #000000f5;
+  min-height: 680px;
+}
+
+// NAV BAR
+.side-nav-bar {
+  position: fixed;
+  height: 100%;
+  width: 190px;
+  list-style: none;
+
+  // with opacity
+  background-color: #000000b6;
+  margin-top: 0;
+
+  // WHERE TO PUT OVERFLOW???
+  overflow: hidden;
+}
+
+// HOME SEARCH LIBRARY
+.button {
+  opacity: 0.6;
+}
+
+.button:hover {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.logo {
+  height: 45px;
+  width: 45px;
+  position: relative;
+  left: -30px;
+  top: 13px;
+}
+
+.tabs {
+  color: white;
+  position: relative;
+  font-size: 14px;
+  left: -25px;
+  top: -5px;
+}
+
+// logo
+.white-logo {
+  height: 45px;
+  width: 45px;
+  position: relative;
+  left: -30px;
+  top: 13px;
+}
+
+.white-modify {
+  color: white;
+  position: relative;
+  font-size: 28px;
+  left: -25px;
+}
+
+// home
+.white-home-logo {
+
+}
+
+.white-home {
+
+}
+
+// search
+.white-search-logo {
+
+}
+
+.white-seach {
+
+}
+
+// library
+.white-library-logo {
+
+}
+
+.white-library {
+
+}
+
+// profile 
+.white-profile-logo {
+
+}
+
+.white-profile {
+  color: #1db954;
+  position: relative;
+  font-size: 14px;
+  left: -25px;
+  bottom: -425px;
+
+}
+
+// MUSIC PLAYER
+.music-player {
+  background-color: #222326;
+  width: 100%;
+  height: 88px;
+  position: fixed;
+  bottom:0;
+}
