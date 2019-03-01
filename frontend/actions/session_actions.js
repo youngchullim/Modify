@@ -19,7 +19,6 @@ const logoutCurrentUser = () => {
 };
 
 const receiveErrors = (errors) => {
-  // debugger
   return({
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
@@ -27,7 +26,6 @@ const receiveErrors = (errors) => {
 };
 
 export const clearErrors = () => {
-  // debugger
   return({
     type: CLEAR_ERRORS,
   });

@@ -20,6 +20,26 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_many :playlists_users,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :PlaylistsUser
+  
+  has_many :songs_users,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :SongsUser
+
+  has_many :albums_users,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :AlbumsUser
+  
+  has_many :artists_users,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :ArtistsUser
+
   def password=(pw)
     @password = pw
     self.password_digest = BCrypt::Password.create(pw)
