@@ -31,4 +31,12 @@ class Song < ApplicationRecord
     foreign_key: :song_id,
     class_name: :SongsUser
 
+  has_one :album_artist,
+    through: :album,
+    source: :artist
+
+  has_many :playlists,
+    through: :playlist_songs,
+    source: :playlist
+  
 end

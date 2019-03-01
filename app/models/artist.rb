@@ -22,4 +22,9 @@ class Artist < ApplicationRecord
     primary_key: :id,
     foreign_key: :artist_id,
     class_name: :ArtistsUser
+
+  has_many :album_songs,
+    through: :albums,
+    source: :songs
+    
 end
