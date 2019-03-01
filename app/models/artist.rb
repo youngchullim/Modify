@@ -15,7 +15,7 @@ class Artist < ApplicationRecord
 
   has_many :albums,
     primary_key: :id,
-    foreign_key: :album_id,
+    foreign_key: :artist_id,
     class_name: :Album
 
   has_many :artists_users,

@@ -36,7 +36,7 @@ class Song < ApplicationRecord
     source: :artist
 
   has_many :playlists,
-    through: :playlist_songs,
+    through: :playlists_songs,
     source: :playlist
   
 end
