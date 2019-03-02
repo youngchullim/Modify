@@ -56,6 +56,7 @@
   font-size: 14px;
   left: -25px;
   top: -5px;
+  margin: 8px;
 }
 
 // logo
@@ -74,9 +75,35 @@
   left: -25px;
 }
 
+//tab icons
+.tab-icons {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  left: -30px;
+  // top: 13px;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.nav-tab {
+  position: relative;
+  top: 10px;
+  left: 5px;
+}
+
 // home
 .white-home-logo {
+}
 
+
+// doesn't work
+.white-home-logo:active {
+  background-image: image-url("home_selected.png");
+}
+// doesn't work
+.white-home-logo:focus {
+  background-image: image-url("home_selected.png");
 }
 
 .white-home {

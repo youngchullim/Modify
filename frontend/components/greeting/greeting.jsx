@@ -57,21 +57,21 @@ const Greeting = ({ user, logout }) => {
           </li>
           {/* MIGHT HAVE TO CHANGE TO BUTTONS */}
           {/* NEED IT TO HAVE A GREEN MARKER IF ON CURRENT TAB */}
-          <li className="nav-home">
+          <li className="nav-home nav-tab">
             <a className="home-button button" role="button" href="/"> {/* href to where?? */}
-              <img className="white-home-logo logo"/>       {/* add image */}
+              <img className="white-home-logo tab-icons" src={window.home}/>       {/* add image */}
               <span className="white-home tabs">Home</span>
             </a>
           </li>
-          <li className="nav-search">
+          <li className="nav-search nav-tab">
             <a className="search-button button" role="button" href="/"> {/* href to where?? */}
-              <img className="white-search-logo logo"/>       {/* add image */}
+              <img className="white-search-logo tab-icons" src={window.search}/>       {/* add image */}
               <span className="white-search tabs">Search</span>
             </a>
           </li>
-          <li className="nav-library">
+          <li className="nav-library nav-tab">
             <a className="library-button button" role="button" href="/"> {/* href to where?? */}
-              <img className="white-library-logo logo"/>      {/* add image */}
+              <img className="white-library-logo tab-icons" src={window.library}/>      {/* add image */}
               <span className="white-library tabs">Your Library</span>
             </a>
           </li>
