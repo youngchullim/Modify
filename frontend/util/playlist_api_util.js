@@ -1,3 +1,4 @@
+
 export const fetchPlaylists = () => {
   return({
     method: "GET",
@@ -12,9 +13,25 @@ export const fetchPlaylist = (id) => {
   });
 };
 
-export const fetchPlaylist = (id) => {
+export const createPlaylist = (playlist) => {
   return({
-    method: "GET",
+    method: "POST",
+    url: `api/playlists/`,
+    data: { playlist }
+  });
+};
+
+export const updatePlaylist = (playlist) => {
+  return({
+    method: "PATCH",
+    url: `api/playlists/`,
+    data: { playlist }
+  });
+};
+
+export const deletePlaylist = (id) => {
+  return({
+    method: "PATCH",
     url: `api/playlists/${id}`
   });
 };
