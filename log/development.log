@@ -29949,3 +29949,13 @@ Completed 200 OK in 48ms (Views: 45.4ms | ActiveRecord: 0.4ms)
   [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "albums" ON "songs"."album_id" = "albums"."id" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
   [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
   [1m[36mSong Load (0.6ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlists_songs" ON "songs"."id" = "playlists_songs"."song_id" WHERE "playlists_songs"."playlist_id" = $1[0m  [["playlist_id", 1]]
+Started GET "/" for 127.0.0.1 at 2019-03-01 16:14:02 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "heflOSGkuymOeFxQ-JarZw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (36.2ms)
+Completed 200 OK in 97ms (Views: 82.8ms | ActiveRecord: 11.2ms)
+
+
