@@ -82,6 +82,11 @@ const Greeting = ({ user, logout }) => {
               <span className="white-profile">{user.email}</span>
             </a>
           </li>
+          <li className="nav-logout">
+            <a className="logout-button" role="button" onClick={logout}>
+              <div className="logout-msg tabs">Log Out</div>
+            </a>
+          </li>
         </ul>
         
         {/* MUSIC PLAYER */}
@@ -91,7 +96,7 @@ const Greeting = ({ user, logout }) => {
 
         {/* <p>Welcome, {user.email}</p> */}
         {/* TEST JUST TO LOGOUT */}
-        <button className="logout" onClick={logout}>Log Out</button>
+        {/* <button className="logout" onClick={logout}>Log Out</button> */}
       </div>
     )
   };
