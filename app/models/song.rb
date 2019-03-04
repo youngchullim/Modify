@@ -39,4 +39,6 @@ class Song < ApplicationRecord
     through: :playlists_songs,
     source: :playlist
   
+  # ACTIVE STOARGE
+  has_one_attached :song
 end

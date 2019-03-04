@@ -60,60 +60,62 @@ class LoginForm extends React.Component {
             <span className="login-modify">Modify</span>
           </a>
         </button>
-        <form onSubmit={this.handleSubmit} className="login-form"><br/>
+        <div className="login-form"><br/>
           <div className="login-message">To continue, log in to Modify.</div><br/>
-          {/* DEMO BUTTON */}
+            {/* DEMO BUTTON */}
           <button className="demo-button" onClick={this.demoLogin}>LOG IN WITH DEMO</button><br/> 
-          <div className="or-border">
-            <div className="or">OR</div>
-          </div>
-          <br/>
-          <div className="login-error-message">{this.renderErrors()}</div>
-          <div className="login-info">
+          <form onSubmit={this.handleSubmit} >
+            <div className="or-border">
+              <div className="or">OR</div>
+            </div>
             <br/>
-            <label>
-              <input type="text"
-                className="email-input"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email address"
-                />
-            </label>
-            <br/>
-            <label>
-              <input type="password"
-                className="password-input"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-                />
-            </label>
-            <br/>
-            <div className="login-submit">
-              <label className="remember-submit">
-                <input className="remember-checkbox" type="checkbox"/>
-                <div className="remember-me">Remember me</div>
+            <div className="login-error-message">{this.renderErrors()}</div>
+            <div className="login-info">
+              <br/>
+              <label>
+                <input type="text"
+                  className="email-input"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  placeholder="Email address"
+                  />
               </label>
-              <div className="login-space-between"></div>
-              <input className="login-button" type="submit" value={this.props.formType} />
-            </div>
-            <br/>
-            <div className="forgot-password"></div>
-            <br/>
-            <div className="signup-redirect">
-              <div className="no-account">Don't have an account?</div> 
-              <div className="signup-link-wrapper">
-                <a className="signup-link" role="button" onClick={this.props.clear} href="#/signup">SIGN UP FOR MODIFY</a>
+              <br/>
+              <label>
+                <input type="password"
+                  className="password-input"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  placeholder="Password"
+                  />
+              </label>
+              <br/>
+              <div className="login-submit">
+                <label className="remember-submit">
+                  <input className="remember-checkbox" type="checkbox"/>
+                  <div className="remember-me">Remember me</div>
+                </label>
+                <div className="login-space-between"></div>
+                <input className="login-button" type="submit" value={this.props.formType} />
+              </div>
+              <br/>
+              <div className="forgot-password"></div>
+              <br/>
+              <div className="signup-redirect">
+                <div className="no-account">Don't have an account?</div> 
+                <div className="signup-link-wrapper">
+                  <a className="signup-link" role="button" onClick={this.props.clear} href="#/signup">SIGN UP FOR MODIFY</a>
+                </div>
+              </div>
+              <br/>
+              <div className="login-footer">
+                <div className="ending-words">
+                  If you click "Log in with Demo" and not a Spotify user, you should sign up and make an account afterwards.
+                </div>
               </div>
             </div>
-            <br/>
-            <div className="login-footer">
-              <div className="ending-words">
-                If you click "Log in with Demo" and not a Spotify user, you should sign up and make an account afterwards.
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

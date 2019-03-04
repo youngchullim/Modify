@@ -5,7 +5,9 @@ import { AuthRoute, ProtectedRoute }from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
-import NavbarContainer from './navbar/navbar_container';
+
+import UnauthComponent from './unauth';
+import AuthComponent from './auth';
 
 const App = () => {
   return (
@@ -14,8 +16,14 @@ const App = () => {
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/" component={GreetingContainer}/>
-        <ProtectedRoute exact path="/home" component={NavbarContainer} />
       </Switch>
+      
+      
+      {/* <Switch>
+        <Route component={UnauthComponent} />
+        greeting component renders auth component when logged in
+        <ProtectedRoute component={AuthComponent} />
+      </Switch> */}
     </div>
   )
 };
