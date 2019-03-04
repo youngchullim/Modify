@@ -23,7 +23,14 @@ class Search extends React.Component {
     }
     return(
       <div className="navbar-search">
-        <div className="search-bar"></div>
+        <label className="search-bar">
+          <input type="text"
+            className="search-input"
+            // value={}
+            // onClick={}
+            placeholder="Start typing..."
+            />
+        </label>
         <div className="search-content">
           <h2 className="search-title">Search Modify</h2>
           <div className="search-msg">Find your favorite songs, albums, artists, and playlists</div>
