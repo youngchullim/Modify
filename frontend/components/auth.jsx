@@ -9,6 +9,7 @@ import NavbarContainer from './navbar/navbar_container';
 import HomeContainer from './home/home_container';
 import LibraryContainer from './library/library_container';
 import SearchContainer from './search/search_container';
+import ProfileContainer from './profile/profile_container';
 
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute }from '../util/route_util';
@@ -25,6 +26,7 @@ const AuthComponent = ({ user, logout }) => {
           <ProtectedRoute path="/home" component={HomeContainer} />
           <ProtectedRoute path="/search" component={SearchContainer} />
           <ProtectedRoute path="/library" component={LibraryContainer} />
+          <ProtectedRoute path="/profile" component={ProfileContainer} />
         </Switch>
       </div>
     </div>

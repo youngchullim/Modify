@@ -6,6 +6,8 @@
   position: relative; 
   top: -660px; 
   overflow: hidden;
+  padding-right: 350px;
+  // background-color:#000000f5
 }
 
 .library-tabs {
@@ -31,7 +33,39 @@
 }
 
 .selected-library-tab {
-  border-bottom: 3px solid #1db954;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #1db954;
   opacity: 1 !important;
   // @@@@@  USED !IMPORTANT @@@@@
+}
+
+// PLAYLIST BUTTON
+.library-new-playlist {
+  position: relative;
+  top: -45px;
+  left: 690px;
+  cursor: pointer;
+}
+
+.new-playlist {
+  font-size: 12px;
+  letter-spacing: 2px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  background-color: #1db954c4;
+  height: 30px;
+  width: 140px;
+  text-align: center;
+}
+
+.playlist-center {
+  color: white;
+  position: relative;
+  top: 9px;
+}
+
+.new-playlist:hover {
+  transform: scale(1.1);
+  background-color: #1db954;
+  transition-duration: 0.3s;
 }

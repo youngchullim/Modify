@@ -24,6 +24,7 @@ class Library extends React.Component {
     return(
       <div className="navbar-library">
         <div>
+            {/* @@@@@@@@   NEW PLAYLIST BUTTON   @@@@@@@@ */}
           <ul className="library-tabs">
             <li className="library-playlists">
                   {/* USED !IMPORTANT CSS RULE */}
@@ -53,6 +54,13 @@ class Library extends React.Component {
 
           {/* <div >Made for {user}</div> */}
         </div>
+          <span className="library-new-playlist">
+            <a className="playlist-button" role="button" onClick={this.props.playlist}>
+              <div className="new-playlist">
+                <div className="playlist-center">NEW PLAYLIST</div>
+              </div>
+            </a>
+          </span>
       </div>
     )
   }

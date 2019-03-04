@@ -10,7 +10,7 @@ class Navbar extends React.Component {
   }
   render() {
     let userArr = this.props.user.email.split("");
-    let user = ""
+    let user = "";
     for(let i = 0; i < userArr.length; i++) {
       if (userArr[i] === "@") {
         break;
@@ -25,7 +25,7 @@ class Navbar extends React.Component {
         <ul className="side-nav-bar">
           <li className="nav-logo">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="logo-button" to="/home"> {/* logo button goes to HOME */}
+            <NavLink className="logo-button" to="/home/featured"> {/* logo button goes to HOME */}
               <img className="white-logo" src={window.whiteLogo} />
               <span className="white-modify">Modify</span>
             </NavLink>
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
           {/* NEED IT TO HAVE A GREEN MARKER IF ON CURRENT TAB */}
           <li className="nav-home nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="home-button button" activeClassName="selected-tab green-selected" to="/home"> 
+            <NavLink className="home-button button" activeClassName="selected-tab green-selected" to="/home/featured"> 
               <img className="white-home-logo tab-icons" src={window.home}/>     
               <span className="white-home tabs">Home</span>
             </NavLink>
@@ -47,7 +47,7 @@ class Navbar extends React.Component {
           </li>
           <li className="nav-library nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library"> 
+            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library/playlists"> 
               <img className="white-library-logo tab-icons" src={window.library}/>     
               <span className="white-library tabs">Your Library</span>
             </NavLink>
@@ -57,14 +57,14 @@ class Navbar extends React.Component {
                 {/* USED !IMPORTANT CSS RULE */}
             <NavLink className="profile-button"  activeClassName="selected-profile" to="/profile">
               <img className="white-profile-logo"/>      {/* add image */}
-              <span className="white-profile">{user}</span>
+              {user}
             </NavLink>
           </li>
-          <li className="nav-logout">
+          {/* <li className="nav-logout">
             <a className="logout-button" role="button" onClick={this.props.logout}>
               <div className="logout-msg tabs">Log Out</div>
             </a>
-          </li>
+          </li> */}
         </ul>
         
         {/* MUSIC PLAYER */}
