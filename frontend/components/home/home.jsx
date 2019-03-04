@@ -1,6 +1,5 @@
 import React from 'react';
 import { butoon, Link, NavLink } from 'react-router-dom';
-import NavbarContainer from '../navbar/navbar_container';
 
 
 class Home extends React.Component {
@@ -10,20 +9,43 @@ class Home extends React.Component {
     this.state = this.props.state;
   }
 
+  
+
   render() {
+    let userArr = this.props.user.email.split("");
+    let user = "";
+    for(let i = 0; i < userArr.length; i++) {
+      if (userArr[i] === "@") {
+        break;
+      } else {
+        user += userArr[i];
+      }
+    }
     return(
-      <div>
-        <div className="navbar-home">
-          {/* <ProtectedRoute path="/" component={NavbarContainer} /> */}
-          {/* <NavbarContainer /> */}
-          <ul>
+      <div className="navbar-home">
+        <div>
+          <ul className="home-tabs">
             <li className="home-featured">
                   {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="logo-button" activeStyle={{}} activeClassName="selected-home-tab" to="/home/featured"> {/* logo button goes to HOME */}
-                <span className="featured">Featured</span>
+              <NavLink className="featured-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/featured"> {/* logo button goes to HOME */}
+                <span className="featured h-tabs">Featured</span>
+              </NavLink>
+            </li>
+            <li className="home-genre">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="genre-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/genre"> {/* logo button goes to HOME */}
+                <span className="genre h-tabs">Genre</span>
+              </NavLink>
+            </li>
+            <li className="home-discover">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="discover-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/discover"> {/* logo button goes to HOME */}
+                <span className="discover h-tabs">Discover</span>
               </NavLink>
             </li>
           </ul>
+
+          {/* <div >Made for {user}</div> */}
         </div>
       </div>
     )

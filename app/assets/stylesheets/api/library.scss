@@ -1,5 +1,5 @@
 // @@@@@@@  TEST  @@@@@@@@@
-.navbar-home {
+.navbar-library {
   left: 565px;
   height: 500px;
   width: 500px;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.home-tabs {
+.library-tabs {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -16,21 +16,21 @@
 }
 
 // ALL TABS
-.h-link {
+.l-link {
   opacity: 0.6;
 }
 
-.h-tabs {
+.l-tabs {
   color: white;
   letter-spacing: 2px;
 }
 
-.h-link:hover {
+.l-link:hover {
   opacity: 1;
   transition-duration: 0.3s;
 }
 
-.selected-home-tab {
+.selected-library-tab {
   border-bottom: 3px solid #1db954;
   opacity: 1 !important;
   // @@@@@  USED !IMPORTANT @@@@@

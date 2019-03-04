@@ -12,11 +12,13 @@
   opacity: 1 !important
   // @@@@@@@ USED !IMPORTANT @@@@@@@@
 }
-.green-selected:visited {
-  background-color: green;
-  font-size: 50px;
-  height: 10px;
-  width: 5px;
+.green-selected {
+  border-left: 4px solid #1db954;
+  position: relative;
+  // height: 30px;
+  left: -45px;
+  padding-left: 41px;
+  padding-top: 10px;
 }
 
 // ALL
@@ -25,8 +27,9 @@
   // background-color: rgb(78, 3, 3);
 
   // with opacity
-  // background-color: #000000f5;
+  background-color: #000000f5;
   min-height: 680px;
+  overflow: hidden;
 }
 
 // NAV BAR
@@ -106,6 +109,7 @@
 }
 
 // home
+
 .white-home-logo {
 }
 
@@ -144,19 +148,19 @@
 // logout
 .logout-button {
   position: relative;
-  bottom: -380px;
+  bottom: -390px;
 }
 
 .logout-msg {
   // opacity: 0.6;
   border: 1px solid transparent;
   border-radius: 50px;
-  height: 30px;
+  height: 25px;
   width: 150px;
   margin-left: 24px;
   text-align: center;
   font-size: 16px;
-  padding-top: 11px;
+  padding-top: 8px;
   background-color: #1db954c4;
 }
 .logout-msg:hover {
@@ -178,7 +182,7 @@
   position: relative;
   font-size: 14px;
   left: 9px;
-  bottom: -340px;
+  bottom: -360px;
 }
 
 .white-profile:hover {
