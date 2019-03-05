@@ -7,6 +7,7 @@ import React from 'react';
 const mapStateToProps = state => {
   return({
     user: state.entities.users[state.session.id]
+    // playlist: state.entities.playlists[playlist.id]
   });
 };
 

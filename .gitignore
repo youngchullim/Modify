@@ -37,3 +37,4 @@
 node_modules/
 bundle.js*
 .DS_Store
+config/master.key
