@@ -1,6 +1,14 @@
 import React from 'react';
 import { butoon, Link, NavLink } from 'react-router-dom';
 
+import PlaylistContainer from '../playlist/playlist_container';
+import SongContainer from '../song/song_container';
+import AlbumContainer from '../album/album_container';
+import ArtistContainer from '../artist/artist_container';
+
+import { Route, Switch } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+
 
 class Library extends React.Component {
   constructor(props) {
@@ -28,7 +36,7 @@ class Library extends React.Component {
           <ul className="library-tabs">
             <li className="library-playlists">
                   {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/playlists"> {/* logo button goes to HOME */}
+              <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to="/library"> {/* logo button goes to HOME */}
                 <span className="playlists l-tabs">Playlists</span>
               </NavLink>
             </li>
@@ -52,15 +60,22 @@ class Library extends React.Component {
             </li>
           </ul>
 
-          {/* <div >Made for {user}</div> */}
         </div>
-          <span className="library-new-playlist">
-            <a className="playlist-button" role="button" onClick={this.props.playlist}>
-              <div className="new-playlist">
-                <div className="playlist-center">NEW PLAYLIST</div>
-              </div>
-            </a>
-          </span>
+        <span className="library-new-playlist">
+          <a className="playlist-button" role="button" onClick={this.props.playlist}>
+            <div className="new-playlist">
+              <div className="playlist-center">NEW PLAYLIST</div>
+            </div>
+          </a>
+        </span>
+
+
+        <Switch>
+          <ProtectedRoute exact path="/library" component={PlaylistContainer}/>
+          <ProtectedRoute path="/library/songs" component={SongContainer}/>
+          <ProtectedRoute path="/library/albums" component={AlbumContainer}/>
+          <ProtectedRoute path="/library/artists" component={ArtistContainer}/>
+        </Switch>
       </div>
     )
   }

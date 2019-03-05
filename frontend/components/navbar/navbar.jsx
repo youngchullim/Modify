@@ -25,7 +25,7 @@ class Navbar extends React.Component {
         <ul className="side-nav-bar">
           <li className="nav-logo">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="logo-button" to="/home/featured"> {/* logo button goes to HOME */}
+            <NavLink className="logo-button" to="/home"> {/* logo button goes to HOME */}
               <img className="white-logo" src={window.whiteLogo} />
               <span className="white-modify">Modify</span>
             </NavLink>
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
           {/* NEED IT TO HAVE A GREEN MARKER IF ON CURRENT TAB */}
           <li className="nav-home nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="home-button button" activeClassName="selected-tab green-selected" to="/home/featured"> 
+            <NavLink className="home-button button" activeClassName="selected-tab green-selected" to="/home"> 
               <img className="white-home-logo tab-icons" src={window.home}/>     
               <span className="white-home tabs">Home</span>
             </NavLink>
@@ -47,7 +47,7 @@ class Navbar extends React.Component {
           </li>
           <li className="nav-library nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library/playlists"> 
+            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library"> 
               <img className="white-library-logo tab-icons" src={window.library}/>     
               <span className="white-library tabs">Your Library</span>
             </NavLink>

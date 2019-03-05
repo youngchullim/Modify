@@ -1,6 +1,13 @@
 import React from 'react';
 import { butoon, Link, NavLink } from 'react-router-dom';
 
+import FeaturedContainer from '../featured/featured_container';
+import GenreContainer from '../genre/genre_container';
+import DiscoverContainer from '../discover/discover_container';
+
+import { Route, Switch } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,7 +34,7 @@ class Home extends React.Component {
           <ul className="home-tabs">
             <li className="home-featured">
                   {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="featured-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/featured"> {/* logo button goes to HOME */}
+              <NavLink className="featured-link h-link" activeStyle={{}} activeClassName="selected-home-tab" exact to="/home"> {/* logo button goes to HOME */}
                 <span className="featured h-tabs">Featured</span>
               </NavLink>
             </li>
@@ -47,6 +54,12 @@ class Home extends React.Component {
 
           {/* <div >Made for {user}</div> */}
         </div>
+
+        <Switch>
+          <ProtectedRoute exact path="/home" component={FeaturedContainer} />
+          <ProtectedRoute path="/home/genre" component={GenreContainer} />
+          <ProtectedRoute path="/home/discover" component={DiscoverContainer} />
+        </Switch>
       </div>
     )
   }
