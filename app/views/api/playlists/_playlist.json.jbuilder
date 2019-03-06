@@ -1,2 +1,4 @@
 json.extract! playlist, :id, :name
-json.extract! playlist.playlists_users, :id
+
+# why :ids? and not :id?
+# json.extract! playlist.playlists_users, :ids
