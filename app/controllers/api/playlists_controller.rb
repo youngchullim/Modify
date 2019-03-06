@@ -6,14 +6,16 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.joins(:playlists_users).where(playlists_users: {user_id: current_user.id})
     render :index
   end
 
   def create
     @playlist = Playlist.new(playlist_params)
-
-    render :show if @playlist.save
+    if @playlist.save
+      @playlist.playlists_users.create(user_id: current_user.id)
+      render :show 
+    end
   end
 
   def show
