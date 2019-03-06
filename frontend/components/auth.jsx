@@ -5,6 +5,7 @@ import Home from './home/home';
 import Library from './library/library';
 import Search from './search/search';
 
+import Modal from './modal/modal';
 import NavbarContainer from './navbar/navbar_container';
 import HomeContainer from './home/home_container';
 import LibraryContainer from './library/library_container';
@@ -15,10 +16,11 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute }from '../util/route_util';
 
 
-const AuthComponent = ({ user, logout }) => {
+const AuthComponent = () => {
   return (
     <div>
       {/* <Navbar user={user} logout={logout}/> */}
+      {/* <Modal show={this.state.show}/> */}
       <ProtectedRoute path="/" component={NavbarContainer} />
       {/* ADD MUSIC PLAYER CONTAINER AS WELL */}
       <div>
