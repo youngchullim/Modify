@@ -28,4 +28,7 @@ class Album < ApplicationRecord
     primary_key: :id,
     foreign_key: :album_id,
     class_name: :AlbumsUser
+
+  # ACTIVE STORAGE PHOTO
+  has_one_attached :photo
 end
