@@ -1,5 +1,5 @@
 import React from 'react';
-import { butoon, Link, NavLink } from 'react-router-dom';
+import { button, Link, NavLink } from 'react-router-dom';
 
 import FeaturedContainer from '../featured/featured_container';
 import GenreContainer from '../genre/genre_container';
