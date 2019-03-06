@@ -5,10 +5,10 @@ import DeletePlaylist from './delete_playlist';
 import { logout } from '../../actions/session_actions';
 // import { Link } from 'react-router-dom';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state,ownProps) => {
   return({
-    user: state.entities.users[state.session.id]
-    // playlist: state.entities.playlists[playlist.id]
+    user: state.entities.users[state.session.id],
+    playlist: state.entities.playlists[ownProps.match.params.id]
   });
 };
 
