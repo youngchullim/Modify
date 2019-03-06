@@ -9,7 +9,8 @@ import Song from './song';
 
 const mapStateToProps = state => {
   return({
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    songs: Object.values(state.entities.songs)
   });
 };
 
