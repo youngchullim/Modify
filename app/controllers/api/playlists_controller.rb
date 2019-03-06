@@ -19,7 +19,7 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist.find_by(id: params[:id])
+    @playlist = Playlist.find_by(id: params[:id])
   end
 
   def update
