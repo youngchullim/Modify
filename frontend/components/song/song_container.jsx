@@ -1,8 +1,11 @@
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import Song from './song';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetchSongs, fetchSong } from '../../actions/song_actions';
+import Song from './song';
+
+// import { logout } from '../../actions/session_actions';
+// import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return({
@@ -12,7 +15,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return({
-    logout: () => dispatch(logout())
+    fetchSongs: () => dispatch(fetchSongs()),
+    fetchSong: (id) => dispatch(fetchSong(id))
   });
 };
 
