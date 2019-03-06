@@ -1,5 +1,5 @@
 import React from 'react';
-import { butoon, Link, NavLink } from 'react-router-dom';
+import { button, Link, NavLink } from 'react-router-dom';
 
 import Modal from '../modal/modal';
 import PlaylistContainer from '../playlist/playlist_container';
@@ -62,7 +62,6 @@ class Library extends React.Component {
 
         </div>
             {/* @@@@@@@@   NEW PLAYLIST BUTTON   @@@@@@@@ */}
-            {/* MODAL ONCLICK NOT WORKING */}
         <span className="library-new-playlist">
         <a>{this.props.openModal}</a>
 
