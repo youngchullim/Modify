@@ -20,7 +20,6 @@ const AuthComponent = () => {
   return (
     <div>
       {/* <Navbar user={user} logout={logout}/> */}
-      {/* <Modal show={this.state.show}/> */}
       <ProtectedRoute path="/" component={NavbarContainer} />
       {/* ADD MUSIC PLAYER CONTAINER AS WELL */}
       <div>

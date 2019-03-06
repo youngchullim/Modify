@@ -19,13 +19,6 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <Route path="/" component={GreetingContainer}/>
       </Switch>
-      
-      
-      {/* <Switch>
-        <Route component={UnauthComponent} />
-        greeting component renders auth component when logged in
-        <ProtectedRoute component={AuthComponent} />
-      </Switch> */}
     </div>
   )
 };
