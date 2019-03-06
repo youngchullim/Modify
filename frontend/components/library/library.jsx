@@ -1,6 +1,7 @@
 import React from 'react';
 import { butoon, Link, NavLink } from 'react-router-dom';
 
+import Modal from '../modal/modal';
 import PlaylistContainer from '../playlist/playlist_container';
 import SongContainer from '../song/song_container';
 import AlbumContainer from '../album/album_container';
@@ -17,22 +18,21 @@ class Library extends React.Component {
     this.state = this.props.state;
   }
 
-  
 
   render() {
-    let userArr = this.props.user.email.split("");
-    let user = "";
-    for(let i = 0; i < userArr.length; i++) {
-      if (userArr[i] === "@") {
-        break;
-      } else {
-        user += userArr[i];
-      }
-    }
+    // let userArr = this.props.user.email.split("");
+    // let user = "";
+    // for(let i = 0; i < userArr.length; i++) {
+    //   if (userArr[i] === "@") {
+    //     break;
+    //   } else {
+    //     user += userArr[i];
+    //   }
+    // }
+    
     return(
       <div className="navbar-library">
         <div>
-            {/* @@@@@@@@   NEW PLAYLIST BUTTON   @@@@@@@@ */}
           <ul className="library-tabs">
             <li className="library-playlists">
                   {/* USED !IMPORTANT CSS RULE */}
@@ -61,15 +61,21 @@ class Library extends React.Component {
           </ul>
 
         </div>
+            {/* @@@@@@@@   NEW PLAYLIST BUTTON   @@@@@@@@ */}
+            {/* MODAL ONCLICK NOT WORKING */}
         <span className="library-new-playlist">
-          <a className="playlist-button" role="button" onClick={this.props.playlist}>
+        <a>{this.props.openModal}</a>
+
+            {/* MOVED TO LIBRARY CONTAINER */}
+          {/* <a className="playlist-button" role="button" onClick={this.props.openModal()}>
             <div className="new-playlist">
               <div className="playlist-center">NEW PLAYLIST</div>
             </div>
-          </a>
+          </a> */}
         </span>
-
-
+        
+            {/* MOVED TO APP */}
+        {/* <Modal /> */}
         <Switch>
           <ProtectedRoute exact path="/library" component={PlaylistContainer}/>
           <ProtectedRoute path="/library/songs" component={SongContainer}/>
