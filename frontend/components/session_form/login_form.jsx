@@ -110,7 +110,7 @@ class LoginForm extends React.Component {
               <br/>
               <div className="login-footer">
                 <div className="ending-words">
-                  If you click "Log in with Demo" and not a Spotify user, you should sign up and make an account afterwards.
+                  If you clicked "Log in with Demo" and not a Modify user, you should sign up and make an account afterwards.
                 </div>
               </div>
             </div>
