@@ -1,5 +1,5 @@
 import React from 'react';
-import { butoon, Link, NavLink } from 'react-router-dom';
+import { button, Link, NavLink } from 'react-router-dom';
 
 
 class Navbar extends React.Component {
@@ -30,7 +30,6 @@ class Navbar extends React.Component {
               <span className="white-modify">Modify</span>
             </NavLink>
           </li>
-          {/* NEED IT TO HAVE A GREEN MARKER IF ON CURRENT TAB */}
           <li className="nav-home nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
             <NavLink className="home-button button" activeClassName="selected-tab green-selected" to="/home"> 
@@ -52,7 +51,6 @@ class Navbar extends React.Component {
               <span className="white-library tabs">Your Library</span>
             </NavLink>
           </li>
-          {/* @@@@@@@@@@@@@@@@@@@@ */}
           <li className="nav-profile">
                 {/* USED !IMPORTANT CSS RULE */}
             <NavLink className="profile-button"  activeClassName="selected-profile" to="/profile">
