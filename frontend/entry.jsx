@@ -5,7 +5,9 @@ import configureStore from './store/store';
 
 // TEST
 // import {login, logout, signup} from './util/session_api_util';
-import {login, logout, signup} from './actions/session_actions';
+import { login, logout, signup } from './actions/session_actions';
+import { fetchSong } from './util/song_api_util';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchSong = fetchSong;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
