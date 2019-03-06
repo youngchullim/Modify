@@ -1,37 +1,37 @@
 
 export const fetchPlaylists = () => {
-  return({
+  return $.ajax({
     method: "GET",
-    url: `api/playlists`
+    url: `/api/playlists`
   });
 };
 
 export const fetchPlaylist = (id) => {
-  return({
+  return $.ajax({
     method: "GET",
-    url: `api/playlists/${id}`
+    url: `/api/playlists/${id}`
   });
 };
 
 export const createPlaylist = (playlist) => {
-  return({
+  return $.ajax({
     method: "POST",
-    url: `api/playlists/`,
+    url: `/api/playlists`,
     data: { playlist }
   });
 };
 
 export const updatePlaylist = (playlist) => {
-  return({
+  return $.ajax({
     method: "PATCH",
-    url: `api/playlists/`,
+    url: `/api/playlists/${playlist.id}`,
     data: { playlist }
   });
 };
 
 export const deletePlaylist = (id) => {
-  return({
+  return $.ajax({
     method: "PATCH",
-    url: `api/playlists/${id}`
+    url: `/api/playlists/${id}`
   });
 };
