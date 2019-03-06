@@ -1,0 +1,115 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 100%;
+  text-align: center;
+  // TEST
+  // background: gray;
+}
+
+// X
+.x-new-playlist {
+  border: none;
+  font-size: 50px;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-weight: 300;
+}
+
+// header
+.create-playlist-header {
+  position: relative;
+  top: -10px;
+  font-size: 50px;
+  color: white;
+}
+
+// INPUT + MSG (Playlist Name)
+
+.new-playlist-stripe {
+  position: relative;
+  top: -24px;
+  background-color: #282828;
+  height: 147px;
+}
+
+.playlist-name-msg {
+  position: relative;
+  left: -360px;
+  top: 36px;
+  color: white;
+  font-size: 14px;
+}
+
+.playlist-name-input {
+  outline: none;
+  color: white;
+  height: 70px;
+  width: 790px;
+  font-size: 50px;
+  font-weight: 500;
+  position: relative;
+  top: 35px;
+  left: -10px;
+  text-align: left;
+}
+
+.playlist-name-input::placeholder {
+  text-align: left;
+}
+
+// BUTTONS
+.playlist-cancel {
+  position: relative;
+  top: 20px;
+  left: -10px;
+  height: 40px;
+  width: 144px;
+  border: 2px solid rgba(255, 255, 255, 0.685);
+  border-radius: 50px;
+  // with opacity
+  background-color: rgba(20, 20, 20, 0.541);
+  color: white;
+  letter-spacing: 2px;
+  font-size: 12px;
+  // opacity: 0.7;
+}
+.playlist-cancel:hover {
+  border: 2px solid white;
+  transform: scale(1.05);
+  transition-duration: 0.1s;
+}
+
+.playlist-create{
+  position: relative;
+  top: 20px;
+  left: 10px;
+  height: 40px;
+  width: 144px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  background-color: rgba(30, 215, 98, 0.842);
+  color: white;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.playlist-create:hover {
+  transform: scale(1.05);
+  background-color: #1ED761;
+  transition-duration: 0.1s;
+}
