@@ -23,8 +23,8 @@ class Song extends React.Component {
             <li className="li-songs" key={idx}>
             <button></button>
             <span className="song-title">{song.title}</span>
-            <span className="song-artist">{song.artist}</span>
-            <span className="song-album">{song.album}</span>
+            <span className="song-artist">{song.artist.name}</span>
+            <span className="song-album">{song.album.title}</span>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
                 <source src={song.songUrl} />
               </audio> */}
