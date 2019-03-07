@@ -1,3 +1,48 @@
 // Place all the styles related to the api/songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.songs-component {
+  position: relative;
+  left: -50px;
+}
+
+.ul-songs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.li-songs {
+  margin: 15px 0;
+  height: 40px;
+  width: 850px;
+  padding: 15px 10px;
+}
+
+.li-songs:hover {
+  background-color: rgba(0, 0, 255, 0.288);
+  transition-duration: 0.3s;
+}
+
+.song-title {
+  margin-left: 15px;
+  color: white;
+  font-weight: 300;
+}
+
+.song-artist, .song-album{
+  color: rgba(255, 255, 255, 0.514);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.split-dot {
+  color: rgba(255, 255, 255, 0.514);
+  font-size: 25px;
+  position: relative;
+  top: -4px;
+  margin: 0 6px;
+}
