@@ -8,12 +8,10 @@ class Song extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchSongs();
   }
 
   render() {
-    // debugger
     return(
       <div>
         <h1>Songs</h1>
