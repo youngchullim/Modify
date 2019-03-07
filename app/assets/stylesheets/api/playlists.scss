@@ -1,3 +1,24 @@
 // Place all the styles related to the api/playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ul-playlist {
+  position: relative;
+  left: -100px;
+  list-style: none;
+  display: inline-grid;
+  grid-template-columns: 177px 177px 177px 177px 177px 177px;
+  grid-template-rows: 150px 150px; 
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+}
+
+.li-playlist {
+  // margin: 50px;
+  text-align: center;
+  align-self: end;
+}
+
+.playlist-name {
+  color: green;
+}
