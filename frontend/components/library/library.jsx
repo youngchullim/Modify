@@ -36,8 +36,8 @@ class Library extends React.Component {
     // }
     
     return(
-      <div className="navbar-library">
-        <div>
+      <div className="navbar-library-component">
+        <div className="navbar-library">
           <ul className="library-tabs">
             <li className="library-playlists">
                   {/* USED !IMPORTANT CSS RULE */}
