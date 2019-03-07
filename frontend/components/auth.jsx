@@ -7,6 +7,8 @@ import Search from './search/search';
 
 import Modal from './modal/modal';
 import NavbarContainer from './navbar/navbar_container';
+import MusicContainer from './music/music_container';
+
 import HomeContainer from './home/home_container';
 import LibraryContainer from './library/library_container';
 import SearchContainer from './search/search_container';
@@ -24,6 +26,7 @@ const AuthComponent = () => {
       {/* <Navbar user={user} logout={logout}/> */}
       <ProtectedRoute path="/" component={NavbarContainer} />
       {/* ADD MUSIC PLAYER CONTAINER AS WELL */}
+      <ProtectedRoute path="/" component={MusicContainer} />
       <div>
         <Switch>
           <ProtectedRoute path="/home" component={HomeContainer} />
