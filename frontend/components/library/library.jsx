@@ -6,6 +6,7 @@ import PlaylistContainer from '../playlist/playlist_container';
 import SongContainer from '../song/song_container';
 import AlbumContainer from '../album/album_container';
 import ArtistContainer from '../artist/artist_container';
+import ShowPlaylistContainer from '../playlist/show_playlist_container';
 
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
@@ -18,6 +19,10 @@ class Library extends React.Component {
     this.state = this.props.state;
   }
 
+  componentDidMount() {
+    this.props.fetchPlaylists();
+    // this.props.fetchSongs();
+  }
 
   render() {
     // let userArr = this.props.user.email.split("");
@@ -76,10 +81,11 @@ class Library extends React.Component {
             {/* MOVED TO APP */}
         {/* <Modal /> */}
         <Switch>
-          <ProtectedRoute exact path="/library" component={PlaylistContainer}/>
           <ProtectedRoute path="/library/songs" component={SongContainer}/>
           <ProtectedRoute path="/library/albums" component={AlbumContainer}/>
           <ProtectedRoute path="/library/artists" component={ArtistContainer}/>
+          <ProtectedRoute path="/library/:id" component={ShowPlaylistContainer} />
+          <ProtectedRoute path="/library" component={PlaylistContainer}/>
         </Switch>
       </div>
     )
