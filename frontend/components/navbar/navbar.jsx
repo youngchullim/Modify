@@ -66,9 +66,9 @@ class Navbar extends React.Component {
         </ul>
         
         {/* MUSIC PLAYER */}
-        <footer className="music">
+        {/* <footer className="music">
           <div className="music-player"></div>
-        </footer>
+        </footer> */}
       </div>
     )
   }
