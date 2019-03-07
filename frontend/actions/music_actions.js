@@ -7,28 +7,28 @@ export const RECEIVE_PREV_SONG = "RECEIVE_PREV_SONG";
 export const RECEIVE_CURRENT_PLAYLIST = "RECEIVE_CURRENT_PLAYLIST";
 export const RECEIVE_PLAY = "RECEIVE_PLAY";
 
-const receiveCurrentSong = (song) => {
+export const receiveCurrentSong = (song) => {
   return({
     type: RECEIVE_CURRENT_SONG,
     song: song
   });
 };
 
-const receiveNextSong = (song) => {
+export const receiveNextSong = (song) => {
   return({
     type: RECEIVE_NEXT_SONG,
     song: song
   });
 };
 
-const receivePrevSong = (song) => {
+export const receivePrevSong = (song) => {
   return({
     type: RECEIVE_PREV_SONG,
     song: song
   });
 };
 
-const receiveCurrentPlaylist = (playlist) => {
+export const receiveCurrentPlaylist = (playlist) => {
   return({
     type: RECEIVE_CURRENT_PLAYLIST,
     playlist: playlist

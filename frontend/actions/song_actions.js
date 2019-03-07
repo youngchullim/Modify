@@ -3,14 +3,14 @@ import * as SongApiUtil from '../util/song_api_util';
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 
-const receiveSongs = (songs) => {
+export const receiveSongs = (songs) => {
   return({
     type: RECEIVE_SONGS,
     songs: songs
   });
 };
 
-const receiveSong = (song) => {
+export const receiveSong = (song) => {
   return({
     type: RECEIVE_SONG,
     song: song
