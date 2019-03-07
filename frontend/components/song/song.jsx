@@ -22,9 +22,9 @@ class Song extends React.Component {
           {this.props.songs.map( (song,idx) => (
             <li className="li-songs" key={idx}>
             <button></button>
-            <span>{song.title}</span>
-            <span>{song.artist}</span>
-            {/* <span>{song.album.title}</span> */}
+            <span className="song-title">{song.title}</span>
+            <span className="song-artist">{song.artist}</span>
+            <span className="song-album">{song.album}</span>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
                 <source src={song.songUrl} />
               </audio> */}
