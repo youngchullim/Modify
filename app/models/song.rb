@@ -39,8 +39,5 @@ class Song < ApplicationRecord
   has_many :playlists,
     through: :playlists_songs,
     source: :playlist
-  
-  # ACTIVE STOARGE
-  # instead just add song column to Songs table
-  # has_one_attached :song
+
 end
