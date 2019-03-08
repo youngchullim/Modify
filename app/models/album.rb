@@ -30,5 +30,6 @@ class Album < ApplicationRecord
     class_name: :AlbumsUser
 
   # ACTIVE STORAGE PHOTO
-  has_one_attached :photo
+  # instead just add photo column to Albums table
+  # has_one_attached :photo
 end
