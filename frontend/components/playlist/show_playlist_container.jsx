@@ -12,7 +12,6 @@ import {
 // import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return({
     user: state.entities.users[state.session.id],
     playlist: state.entities.playlists[ownProps.match.params.id]
