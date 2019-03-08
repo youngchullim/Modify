@@ -1,24 +1,25 @@
-# README
+# Modify
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Live Demo](https://spotify-modify.herokuapp.com/#/)
 
-Things you may want to cover:
+Modify is a Spotify clone and its a platform where users are able to listen to their favorite music.
+You are able to save songs to your own library where it is categorized by Playlists, Songs, Albums, and Artists.
+New users are able to check out the app by either signing up or checking out the demo accounts.
 
-* Ruby version
 
-* System dependencies
+### Features
+  * User authentication: Sign up, Log in, Log out
+  * Songs: Logged in Users are able to see existing songs
+  * Playlist: Able to create a playlist.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Technologies
+ * Backend: Rails/PostgreSQL
+ * Frontend: React/Redux
+ * Heroku
+ * Active Storage/AWS S3
+  
+#### Future Goals
+  * Playlist: Users are able to save/edit their playlists
+  * Songs: Users are able to save/remove songs to their library
+  * Continuous Play: Play music while navigating around the app
+  * Search: Be able to search for Songs, Albums, Artists, Playlists
