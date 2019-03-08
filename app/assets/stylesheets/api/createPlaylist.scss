@@ -30,6 +30,11 @@
   font-weight: 300;
 }
 
+.x-new-playlist:hover {
+  transform: scale(1.15);
+  transition-duration: 0.2s;
+}
+
 // header
 .create-playlist-header {
   position: relative;
