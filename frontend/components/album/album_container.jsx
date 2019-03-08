@@ -1,20 +1,22 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+
 import Album from './album';
-import { Link } from 'react-router-dom';
-import React from 'react';
+import { fetchAlbums, fetchAlbum } from '../../actions/album_actions';
 
 const mapStateToProps = state => {
   return({
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    albums: Object.values(state.entities.albums)
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    logout: () => dispatch(logout())
+    fetchAlbums: () => dispatch(fetchAlbums()),
+    fetchAlbum: (id) => dispatch(fetchAlbum(id))
   });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Album);
-

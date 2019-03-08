@@ -7,6 +7,7 @@ import SongContainer from '../song/song_container';
 import AlbumContainer from '../album/album_container';
 import ArtistContainer from '../artist/artist_container';
 import ShowPlaylistContainer from '../playlist/show_playlist_container';
+import ShowAlbumContainer from '../album/show_album_container';
 
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
@@ -82,7 +83,8 @@ class Library extends React.Component {
         {/* <Modal /> */}
         <Switch>
           <ProtectedRoute path="/library/songs" component={SongContainer}/>
-          <ProtectedRoute path="/library/albums" component={AlbumContainer}/>
+          <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/>
+          <ProtectedRoute path="/library/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute path="/library/artists" component={ArtistContainer}/>
           <ProtectedRoute path="/library/:id" component={ShowPlaylistContainer} />
           <ProtectedRoute path="/library" component={PlaylistContainer}/>
