@@ -25,20 +25,26 @@
 .album-name {
   color: #F5F5F5;
   padding-bottom: 20px;
-  // position: relative;
-  // bottom: 20px;
+  height: 20px;
+}
+
+.album-artist {
+  color: rgba(255, 255, 255, 0.514);
 }
 
 .album-photo {
   border: 1px solid transparent;
-  // border-radius: 100px;
+      // albums should be square / made it circle for presentation
+  border-radius: 100px;
   height: 180px;
-  // padding: 40px;
+  width: 180px;
   margin-bottom: 20px;
   background-color: #282828;
+      // if they dont have an album cover
   // background-image: image-url('white-music.png');
 }
 .album-photo:hover {
+      // if they dont have an album cover
   // background-image: image-url('white-play.png');
   transition-duration: 0.1s;
 }

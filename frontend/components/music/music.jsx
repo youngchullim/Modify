@@ -14,7 +14,7 @@ class Music extends React.Component {
     // }
     return(
       <div className="music-player-container">
-        <audio className="audio-music-player" src={this.props.currentSong} controls="controls" preload="auto">
+        <audio className="audio-music-player" src={this.props.currentSong} preload="auto">
           
         </audio>
       </div>
