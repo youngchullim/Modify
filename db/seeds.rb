@@ -82,15 +82,15 @@ ActiveRecord::Base.transaction do
   aHa_a1 = Album.create!(title: "Hunting High and Low", year: 1984, artist_id: aHa.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/huntingHighAndLow.jpg"), filename: "huntingHighAndLow"})
   backStreetBoys_a1 = Album.create!(title: "Millennium", year: 1998, artist_id: backStreetBoys.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/millennium.jpg"), filename: "millennium"})
   justinBieber_a1 = Album.create!(title: "Purpose", year: 2015, artist_id: justinBieber.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/purpose.jpg"), filename: "purpose"})
-  elvisPresley_a1 = Album.create!(title: "Night Mare", year: 1952, artist_id: elvisPresley.id)
-  boyz2Men_a1 = Album.create!(title: "II", year: 1994, artist_id: boyz2Men.id)
-  theKillers_a1 = Album.create!(title: "Smile Like You Mean It", year: 2003, artist_id: theKillers.id)
-  louisArmstrong_a1 = Album.create!(title: "Cabaret", year: 1967, artist_id: louisArmstrong.id)
-  daftPunk_a1 = Album.create!(title: "Random Access Memories", year: 2012, artist_id: daftPunk.id)
-  rihanna_a1 = Album.create!(title: "Good Girl Gone Bad", year: 2007, artist_id: rihanna.id)
-  beyonce_a1 = Album.create!(title: "I Am... Sash Fierce", year: 2008, artist_id: beyonce.id)
-  theEagles_a1 = Album.create!(title: "Hotel California", year: 1976, artist_id: theEagles.id)
-  ledZeppelin_a1 = Album.create!(title: "Led Zeppelin IV", year: 1971, artist_id: ledZeppelin.id)
+  elvisPresley_a1 = Album.create!(title: "Night Mare", year: 1952, artist_id: elvisPresley.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/nightMare.jpg"), filename: "nightMare"})
+  boyz2Men_a1 = Album.create!(title: "II", year: 1994, artist_id: boyz2Men.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/II.jpg"), filename: "II"})
+  theKillers_a1 = Album.create!(title: "Smile Like You Mean It", year: 2003, artist_id: theKillers.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/smileLikeYouMeanIt.jpg"), filename: "smileLikeYouMeanIt"})
+  louisArmstrong_a1 = Album.create!(title: "Cabaret", year: 1967, artist_id: louisArmstrong.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/cabaret.jpg"), filename: "cabaret"})
+  daftPunk_a1 = Album.create!(title: "Random Access Memories", year: 2012, artist_id: daftPunk.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/randomAccessMemories.jpg"), filename: "randomAccessMemories"})
+  rihanna_a1 = Album.create!(title: "Good Girl Gone Bad", year: 2007, artist_id: rihanna.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/goodGirlGoneBad.jpg"), filename: "goodGirlGoneBad"})
+  beyonce_a1 = Album.create!(title: "I Am... Sash Fierce", year: 2008, artist_id: beyonce.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/iAmSashFierce.jpg"), filename: "iAmSashFierce"})
+  theEagles_a1 = Album.create!(title: "Hotel California", year: 1976, artist_id: theEagles.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/hotelCalifornia.jpg"), filename: "hotelCalifornia"})
+  ledZeppelin_a1 = Album.create!(title: "Led Zeppelin IV", year: 1971, artist_id: ledZeppelin.id, photo: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/ledZeppelinIV.jpg"), filename: "ledZeppelinIV"})
   whitneyHouston_a1 = Album.create!(title: "Whitney", year: 1987, artist_id: whitneyHouston.id)
   tupac_a1 = Album.create!(title: "All Eyez on Me", year: 1995, artist_id: tupac.id)
   bobMarley_a1 = Album.create!(title: "Exodus", year: 1977, artist_id: bobMarley.id)
@@ -188,6 +188,4 @@ ActiveRecord::Base.transaction do
   queen_s1 = Song.create!(title: "We Will Rock You", year: 1977, genre: "Rock", album_id: queen_a1.id, song: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/queen-1"), filename: "queen-s3"})
   biggieSmalls_s1 = Song.create!(title: "Juicy", year: 1994, genre: "Rap", album_id: biggieSmalls_a1.id, song: {io: open("https://s3-us-west-1.amazonaws.com/modify-dev/biggieSmalls-1"), filename: "biggieSmalls-s3"})
 
-  # Playlist.destroy_all
-  # rock = Playlist.create!
 end
