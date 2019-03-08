@@ -11,12 +11,13 @@
 .navbar-search {
   left: 230px;
   height: 672px;
-  width: 860px;
+  // width: 860px;
   position: relative; 
-  top: -679px; 
+  // top: -679px; 
   overflow: hidden;
-  padding-right: 350px;
-  // background-color:#000000f5
+  padding-right: 565px;
+  padding-bottom: 10px;
+  background-color:#000000f5
 }
 
 // .search-bar {
@@ -32,7 +33,7 @@
   font-weight: 700;
   color: white;
   padding-left: 50px;
-  background-color: rgba(31, 31, 31, 0.87);
+  background-color: #282828;
   outline: none;
 }
 
@@ -47,18 +48,18 @@
   text-align: center;
   position: relative;
   left: 170px;
-  top: 60px;
+  top: 50px;
 }
 
 .search-title {
   font-size: 30px;
-  color: white;
+  color: #FFFFFF;
 }
 
 .search-msg {
   position: relative;
   top: -10px;
-  color: white;
+  color: #B3B3B3;
   font-size: 14px;
   letter-spacing: 1px;
   opacity: 0.8;

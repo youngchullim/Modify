@@ -7,18 +7,37 @@
   left: -100px;
   list-style: none;
   display: inline-grid;
-  grid-template-columns: 177px 177px 177px 177px 177px 177px;
-  grid-template-rows: 150px 150px; 
+  grid-template-columns: 180px 180px 180px 180px 180px 180px;
+  // grid-template-rows: 150px 150px 150px 150px 150px; 
   grid-column-gap: 10px;
-  grid-row-gap: 15px;
+  grid-row-gap: 50px;
 }
 
 .li-playlist {
-  // margin: 50px;
   text-align: center;
   align-self: end;
+  // padding-bottom: 100px;
 }
+// .li-playlist:hover {
+//   background-image: image-url('white-play.png');  
+// }
 
 .playlist-name {
-  color: green;
+  color: #F5F5F5;
+  padding-bottom: 20px;
+  // position: relative;
+  // bottom: 20px;
+}
+
+.playlist-photo {
+  border: 1px solid transparent;
+  height: 98px;
+  padding: 40px;
+  margin-bottom: 20px;
+  background-color: #282828;
+  background-image: image-url('white-music.png');
+}
+.playlist-photo:hover {
+  background-image: image-url('white-play.png');
+  transition-duration: 0.1s;
 }

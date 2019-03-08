@@ -30,7 +30,7 @@ class Home extends React.Component {
     }
     return(
       <div className="navbar-home">
-        <div>
+        <div className="nav">
           <ul className="home-tabs">
             <li className="home-featured">
                   {/* USED !IMPORTANT CSS RULE */}

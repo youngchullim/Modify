@@ -8,8 +8,11 @@ import {
 import merge from 'lodash/merge';
 
 const nullState = {
-
-}
+  currentSong: null,
+  currentPlaylist: null,
+  nextSong: null,
+  prevSong: null
+};
 
 const musicReducer = (oldState=nullState, action) => {
   Object.freeze(oldState);
@@ -17,7 +20,8 @@ const musicReducer = (oldState=nullState, action) => {
 
   switch(action.type) {
     case RECEIVE_CURRENT_SONG:
-
+      state.currentSong = action.song;
+      return state;
     case RECEIVE_NEXT_SONG:
  
     case RECEIVE_PREV_SONG:

@@ -12,7 +12,7 @@ import AuthComponent from './auth';
 
 const App = () => {
   return (
-    <div>
+    <div className="app-comp">
       <Modal />
       
       <Switch>

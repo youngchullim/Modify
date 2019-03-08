@@ -7,15 +7,7 @@ class Music extends React.Component {
 
   }
 
-  nextSong() {
 
-  }
-
-  prevSong() {
-
-  }
-
-  
   render() {
     // if (!this.props.song) {
     //   return null;

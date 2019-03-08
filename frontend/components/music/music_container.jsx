@@ -13,10 +13,7 @@ import {
 
 const mapStateToProps = state => {
   return({
-    songs: Object.values(state.entities.songs),
-    currentSong: state.ui.music.currentSong,
-    currentPos: state.ui.music.currentPos,
-    songsArr: state.ui.music.songsArr
+    
   });
 };
 

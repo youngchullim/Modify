@@ -22,12 +22,12 @@ import { AuthRoute, ProtectedRoute }from '../util/route_util';
 
 const AuthComponent = () => {
   return (
-    <div>
+    <div className="auth-comp">
       {/* <Navbar user={user} logout={logout}/> */}
       <ProtectedRoute path="/" component={NavbarContainer} />
       {/* ADD MUSIC PLAYER CONTAINER AS WELL */}
       <ProtectedRoute path="/" component={MusicContainer} />
-      <div>
+      <div className="auth-switch">
         <Switch>
           <ProtectedRoute path="/home" component={HomeContainer} />
           <ProtectedRoute path="/search" component={SearchContainer} />

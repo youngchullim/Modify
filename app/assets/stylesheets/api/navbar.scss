@@ -1,21 +1,14 @@
 // music player COLOR #b3b3b3
 // profile background COLOR #222326
 
-// TEST ( to logout )
-// .logout {
-//   position: relative;
-//   left: 500px;
-// }
 
 .selected-tab {
-  // font-size: 100px;
   opacity: 1 !important;
   // @@@@@@@ USED !IMPORTANT @@@@@@@@
 }
 .green-selected {
   border-left: 4px solid #1db954;
   position: relative;
-  // height: 30px;
   left: -45px;
   padding-left: 41px;
   padding-top: 10px;
@@ -27,8 +20,8 @@
   // background-color: rgb(78, 3, 3);
 
   // with opacity
-  background-color: #000000f5;
-  min-height: 680px;
+  // background-color: #000000f5;
+  // min-height: 680px;
   overflow: hidden;
 }
 
@@ -38,10 +31,11 @@
   height: 100%;
   width: 190px;
   list-style: none;
+  background-color: black;
+  margin-top: 0;
 
   // with opacity
-  background-color: #000000b6;
-  margin-top: 0;
+  // background-color: #000000b6;
 
   // WHERE TO PUT OVERFLOW???
   overflow: hidden;

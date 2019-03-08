@@ -2,11 +2,13 @@
   left: 230px;
   width: 700px;
   position: relative; 
-  top: -660px; 
+  // top: -660px; 
   overflow: hidden;
-  padding-right: 350px;
+  padding-right: 410px;
   padding-left: 100px;
-  // background-color:#000000f5
+  background-color: #000000f5;
+  padding-bottom: 500px;
+  // padding-right: 30px;
 }
 
 .library-tabs {
@@ -14,6 +16,8 @@
   display: flex;
   justify-content: space-between;
   text-align: center;
+  padding-top: 20px;
+  padding-left: 200px;
 }
 
 // ALL TABS

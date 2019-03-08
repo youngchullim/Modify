@@ -1,18 +1,23 @@
 // @@@@@@@  TEST  @@@@@@@@@
 .navbar-home {
-  left: 565px;
-  // height: 500px;
+  left: 230px;
   width: 500px;
-  position: relative; 
-  top: -660px; 
+  height: 100vh;
+  position: relative;
+  padding-left: 300px;
+  padding-right: 410px;
+  padding-top: 10px;
+  background-color: #000000f5;
   overflow: hidden;
 }
+
 
 .home-tabs {
   list-style: none;
   display: flex;
   justify-content: space-between;
   text-align: center;
+  padding-top: 10px;
 }
 
 // ALL TABS

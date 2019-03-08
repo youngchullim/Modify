@@ -15,7 +15,7 @@ class Playlist extends React.Component {
           {this.props.playlists.map ( (playlist, idx) => 
           <li key={idx} className="li-playlist">
             <NavLink to={`/library/${playlist.id}`}>
-              <div className="playlist-photo">{playlist.photo}</div>
+              <div className="playlist-photo"></div>
               <div className="playlist-name">{playlist.name}</div>
             </NavLink>
           </li>)}

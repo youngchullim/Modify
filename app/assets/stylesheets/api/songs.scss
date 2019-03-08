@@ -16,14 +16,16 @@
 }
 
 .li-songs {
-  margin: 15px 0;
+  // margin: 15px 0;
   height: 40px;
   width: 850px;
-  padding: 15px 10px;
+  padding: 20px 0;
+  padding-left: 20px;
+  padding-right: 200px;
 }
 
 .li-songs:hover {
-  background-color: rgba(0, 0, 255, 0.288);
+  background-color: rgba(4, 0, 255, 0.178);
   transition-duration: 0.3s;
 }
 

@@ -1,6 +1,6 @@
 json.extract! playlist, :id, :name
-json.song playlist.songs
-json.photo playlist.songs.album.photo
+json.songs playlist.songs
+# json.photo playlist.songs[0].album.photo
 
 # why :ids? and not :id?
 # json.extract! playlist.playlists_users, :ids
