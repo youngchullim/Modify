@@ -1,24 +1,31 @@
 .navbar-library-component {
-  left: 230px;
-  width: 700px;
-  position: relative; 
-  // top: -660px; 
-  overflow: hidden;
-  padding-right: 410px;
-  padding-left: 100px;
+  padding-left: 230px;
+  height: 100vh;
+  overflow: scroll;
   background-color: #000000f5;
-  padding-bottom: 550px;
-  // padding-right: 30px;
+}
+
+.library-top-navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-library {
+  display: flex;
+  justify-content: center;
+  // align-self: center;
 }
 
 .library-tabs {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-self: center;
+  width: 800px;
   text-align: center;
   padding-top: 20px;
-  padding-left: 200px;
 }
+
 
 // ALL TABS
 .l-link {
@@ -45,8 +52,7 @@
 // PLAYLIST BUTTON
 .library-new-playlist {
   position: relative;
-  top: -42px;
-  left: 900px;
+  top: 25px;
   cursor: pointer;
 }
 

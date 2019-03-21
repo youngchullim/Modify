@@ -38,38 +38,39 @@ class Library extends React.Component {
     
     return(
       <div className="navbar-library-component">
-        <div className="navbar-library">
-          <ul className="library-tabs">
-            <li className="library-playlists">
-                  {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to="/library"> {/* logo button goes to HOME */}
-                <span className="playlists l-tabs">Playlists</span>
-              </NavLink>
-            </li>
-            <li className="library-songs">
-                  {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/songs"> {/* logo button goes to HOME */}
-                <span className="songs l-tabs">Songs</span>
-              </NavLink>
-            </li>
-            <li className="library-albums">
-                  {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="albums-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/albums"> {/* logo button goes to HOME */}
-                <span className="albums l-tabs">Albums</span>
-              </NavLink>
-            </li>
-            <li className="library-artists">
-                  {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="artists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/artists"> {/* logo button goes to HOME */}
-                <span className="artists l-tabs">Artists</span>
-              </NavLink>
-            </li>
-          </ul>
-
-        </div>
+      
+        <div className="library-top-navbar">
+          <div className="navbar-library">
+            <ul className="library-tabs">
+              <li className="library-playlists">
+                    {/* USED !IMPORTANT CSS RULE */}
+                <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to="/library"> {/* logo button goes to HOME */}
+                  <span className="playlists l-tabs">Playlists</span>
+                </NavLink>
+              </li>
+              <li className="library-songs">
+                    {/* USED !IMPORTANT CSS RULE */}
+                <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/songs"> {/* logo button goes to HOME */}
+                  <span className="songs l-tabs">Songs</span>
+                </NavLink>
+              </li>
+              <li className="library-albums">
+                    {/* USED !IMPORTANT CSS RULE */}
+                <NavLink className="albums-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/albums"> {/* logo button goes to HOME */}
+                  <span className="albums l-tabs">Albums</span>
+                </NavLink>
+              </li>
+              <li className="library-artists">
+                    {/* USED !IMPORTANT CSS RULE */}
+                <NavLink className="artists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/artists"> {/* logo button goes to HOME */}
+                  <span className="artists l-tabs">Artists</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
             {/* @@@@@@@@   NEW PLAYLIST BUTTON   @@@@@@@@ */}
-        <span className="library-new-playlist">
-        <a>{this.props.openModal}</a>
+          <span className="library-new-playlist">
+            <a>{this.props.openModal}</a>
 
             {/* MOVED TO LIBRARY CONTAINER */}
           {/* <a className="playlist-button" role="button" onClick={this.props.openModal()}>
@@ -77,7 +78,8 @@ class Library extends React.Component {
               <div className="playlist-center">NEW PLAYLIST</div>
             </div>
           </a> */}
-        </span>
+          </span>
+        </div>
         
             {/* MOVED TO APP */}
         {/* <Modal /> */}
