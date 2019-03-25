@@ -2,21 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.album-component {
+  display: flex;
+  justify-content: center;
+}
+
 .ul-albums {
   position: relative;
-  left: -100px;
+  // left: -100px;
   list-style: none;
   display: inline-grid;
-  grid-template-columns: 180px 180px 180px 180px 180px 180px;
-  // grid-template-rows: 150px 150px 150px 150px 150px; 
-  grid-column-gap: 10px;
+  grid-template-columns: 180px 180px 180px 180px 180px;
+  grid-column-gap: 15px;
   grid-row-gap: 50px;
 }
 
 .li-albums {
   text-align: center;
   align-self: end;
-  // padding-bottom: 100px;
 }
 // .li-playlist:hover {
 //   background-image: image-url('white-play.png');  
@@ -35,7 +38,7 @@
 .album-photo {
   border: 1px solid transparent;
       // albums should be square / made it circle for presentation
-  border-radius: 100px;
+  // border-radius: 100px;
   height: 180px;
   width: 180px;
   margin-bottom: 20px;
