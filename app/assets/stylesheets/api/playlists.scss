@@ -2,12 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.all-playlists {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  padding-bottom: 100px;
+}
+
+// GRID
 .ul-playlist {
   position: relative;
-  left: -100px;
+  // left: -100px;
   list-style: none;
+  padding-left: 0;
   display: inline-grid;
-  grid-template-columns: 180px 180px 180px 180px 180px 180px;
+  grid-template-columns: 180px 180px 180px 180px 180px;
   // grid-template-rows: 150px 150px 150px 150px 150px; 
   grid-column-gap: 10px;
   grid-row-gap: 50px;
@@ -18,9 +27,35 @@
   align-self: end;
   // padding-bottom: 100px;
 }
-// .li-playlist:hover {
-//   background-image: image-url('white-play.png');  
+
+
+.li-playlist:hover {
+  background-image: image-url('white-play.png');  
+}
+
+
+// FLEX
+// .ul-playlist {
+//   position: relative;
+//   // left: -100px;
+//   list-style: none;
+//   padding-left: 0;
+//   display: flex;
+//   flex-wrap: wrap;
+//   // width: 1000px;
+
 // }
+
+// .li-playlist {
+//   // height: 50px;
+//   // width: 50px;
+//   text-align: center;
+//   padding: 10px 50px;
+//   // align-self: flex-end;
+//   // padding-bottom: 100px;
+// }
+
+
 
 .playlist-name {
   color: #F5F5F5;

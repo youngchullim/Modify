@@ -3,11 +3,15 @@
   height: 100vh;
   overflow: scroll;
   background-color: #000000f5;
+  // display: flex; 
+  // flex-wrap: wrap;
+  // flex-direction: column;
 }
 
 .library-top-navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .navbar-library {
