@@ -6,21 +6,17 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = this.props.state;
+    this.state = { searchBar: ""};
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange(e) {
+    this.setState({searchBar: e.target.value});
+  }
   
 
   render() {
-    let userArr = this.props.user.email.split("");
-    let user = "";
-    for(let i = 0; i < userArr.length; i++) {
-      if (userArr[i] === "@") {
-        break;
-      } else {
-        user += userArr[i];
-      }
-    }
+
     return(
       <div className="navbar-search">
         <label className="search-bar">
