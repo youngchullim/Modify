@@ -22,8 +22,8 @@ class Search extends React.Component {
         <label className="search-bar">
           <input type="text"
             className="search-input"
-            // value={}
-            // onClick={}
+            value={this.state.searchBar}
+            onChange={this.handleChange}
             placeholder="Start typing..."
             />
         </label>
