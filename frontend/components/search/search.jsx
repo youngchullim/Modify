@@ -1,5 +1,6 @@
 import React from 'react';
 import { button, Link, NavLink } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 
 class Search extends React.Component {
@@ -16,6 +17,23 @@ class Search extends React.Component {
   
 
   render() {
+    let result;
+
+    if (this.state.searchBar) {
+      result = (
+        <div className="search-results-container">
+          <Route exact path="/search" render={ () => <Redirect to="/search/top"/> }/>
+          <Route path="/search/:tab" render={ () => <SearchResult searchBar={this.state.searchBar}/> }/>
+        </div>
+      );
+    } else {
+      result = (
+        <div className="search-content">
+          <h2 className="search-title">Search Modify</h2>
+          <div className="search-msg">Find your favorite songs, albums, artists, and playlists</div>
+        </div>
+      );
+    }
 
     return(
       <div className="navbar-search">
@@ -27,10 +45,7 @@ class Search extends React.Component {
             placeholder="Start typing..."
             />
         </label>
-        <div className="search-content">
-          <h2 className="search-title">Search Modify</h2>
-          <div className="search-msg">Find your favorite songs, albums, artists, and playlists</div>
-        </div>
+        {result}
       </div>
     )
   }
