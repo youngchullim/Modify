@@ -7,6 +7,7 @@
 #  biography  :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  photo      :string
 #
 
 require 'rails_helper'
