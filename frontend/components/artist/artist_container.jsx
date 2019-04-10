@@ -1,18 +1,20 @@
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import Artist from './artist';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { connect } from 'react-redux';
+
+import Artist from './artist';
+import { fetchArtists, fetchArtist } from '../../actions/artist_actions';
 
 const mapStateToProps = state => {
   return({
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    artists: Object.values(state.entities.artists)
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    logout: () => dispatch(logout())
+    fetchArtists: () => dispatch(fetchArtists()),
+    fetchArtist: (id) => dispatch(fetchArtist(id))
   });
 };
 

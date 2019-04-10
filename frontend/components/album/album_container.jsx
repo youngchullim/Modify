@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
 
 import Album from './album';
 import { fetchAlbums, fetchAlbum } from '../../actions/album_actions';
