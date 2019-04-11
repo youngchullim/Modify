@@ -1,7 +1,13 @@
 import React from 'react';
 import { button, Link, NavLink } from 'react-router-dom';
 import { Route, Redirect } from 'react-router-dom';
+import { ProtectedRoute } from '../../util/route_util';
 
+import SearchResultContainer from './search_result_container';
+
+import ShowArtistContainer from '../artist/show_artist_container';
+import ShowAlbumContainer from '../album/show_album_container';
+import ShowPlaylistContainer from '../playlist/show_playlist_container';
 
 class Search extends React.Component {
   constructor(props) {
@@ -23,7 +29,7 @@ class Search extends React.Component {
       result = (
         <div className="search-results-container">
           <Route exact path="/search" render={ () => <Redirect to="/search/top"/> }/>
-          <Route path="/search/:tab" render={ () => <SearchResult searchBar={this.state.searchBar}/> }/>
+          <Route path="/search/:tab" render={ () => <SearchResultContainer searchBar={this.state.searchBar}/> }/>
         </div>
       );
     } else {
@@ -45,7 +51,13 @@ class Search extends React.Component {
             placeholder="Start typing..."
             />
         </label>
-        {result}
+        <section className='content-spacing'>
+          {result}
+
+          <ProtectedRoute exact path='/search/artists/:artistId' component={ShowArtistContainer} />
+          <ProtectedRoute exact path='/search/playlists/:playlistId' component={ShowPlaylistContainer} />
+          <ProtectedRoute exact path='/search/albums/:albumId' component={ShowAlbumContainer} />
+        </section>
       </div>
     )
   }
