@@ -46,25 +46,25 @@ class Library extends React.Component {
             <ul className="library-tabs">
               <li className="library-playlists">
                     {/* USED !IMPORTANT CSS RULE */}
-                <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to="/library"> {/* logo button goes to HOME */}
+                <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/playlist">
                   <span className="playlists l-tabs">Playlists</span>
                 </NavLink>
               </li>
               <li className="library-songs">
                     {/* USED !IMPORTANT CSS RULE */}
-                <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/songs"> {/* logo button goes to HOME */}
+                <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/songs">
                   <span className="songs l-tabs">Songs</span>
                 </NavLink>
               </li>
               <li className="library-albums">
                     {/* USED !IMPORTANT CSS RULE */}
-                <NavLink className="albums-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/albums"> {/* logo button goes to HOME */}
+                <NavLink className="albums-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/albums">
                   <span className="albums l-tabs">Albums</span>
                 </NavLink>
               </li>
               <li className="library-artists">
                     {/* USED !IMPORTANT CSS RULE */}
-                <NavLink className="artists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/artists"> {/* logo button goes to HOME */}
+                <NavLink className="artists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to="/library/artists">
                   <span className="artists l-tabs">Artists</span>
                 </NavLink>
               </li>
@@ -91,8 +91,8 @@ class Library extends React.Component {
           <ProtectedRoute path="/library/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/>
           <ProtectedRoute path="/library/artists/:id" component={ShowArtistContainer}/>
-          <ProtectedRoute path="/library/:id" component={ShowPlaylistContainer} />
-          <ProtectedRoute path="/library" component={PlaylistContainer}/>
+          <ProtectedRoute exact path="/library/playlist" component={PlaylistContainer}/>
+          <ProtectedRoute path="/library/playlist/:id" component={ShowPlaylistContainer} />
         </Switch>
       </div>
     )
