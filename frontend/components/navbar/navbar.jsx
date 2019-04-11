@@ -46,7 +46,7 @@ class Navbar extends React.Component {
           </li>
           <li className="nav-library nav-tab">
                 {/* USED !IMPORTANT CSS RULE */}
-            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library"> 
+            <NavLink className="library-button button"  activeClassName="selected-tab green-selected" to="/library/playlist"> 
               <img className="white-library-logo tab-icons" src={window.library}/>     
               <span className="white-library tabs">Your Library</span>
             </NavLink>
