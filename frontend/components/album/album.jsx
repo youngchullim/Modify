@@ -19,7 +19,7 @@ class Album extends React.Component {
         <ul className="ul-albums">
           {this.props.albums.map( (album, idx) => (
             <li className="li-albums" key={idx}>
-            <NavLink to={`/library/albums/${album.id}`}>
+            <NavLink to={`/albums/${album.id}`}>
               <img className="album-photo" src={album.photo} />
               <div className="album-name">{album.title}</div>
               <div className="album-artist">{album.artist.name}</div>
