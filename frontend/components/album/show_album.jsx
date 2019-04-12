@@ -25,7 +25,7 @@ class ShowAlbum extends React.Component {
           </div>
           <NavLink className="albumshow-artistname-link" to={`/artists/${this.props.album.artist.id}`}>
             <span className="albumshow-artistname">{this.props.album.artist.name}</span>
-          </NavLink>
+          </NavLink> 
           <button className="album-play">Play</button>
           <div className="albumshow-info">
             <span className="album-year">{this.props.album.year}</span>
