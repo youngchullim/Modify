@@ -27,6 +27,7 @@
 .albumshow-photo {
   height: 250px;
   width: 250px;
+  padding-bottom: 5px;
 }
 
 .albumshow-title {
@@ -34,4 +35,22 @@
   color: white;
   // opacity: 1.0 !important;
   font-weight: bold;
+  padding-bottom: 5px;
 }
+
+// ARTIST NAME
+.albumshow-artistname-link {
+  margin-bottom: 30px;
+}
+.albumshow-artistname {
+  color: rgb(173, 171, 163);
+  font-size: 14px;
+}
+.albumshow-artistname:hover {
+  color: white;
+  text-underline-position: below;
+  // text-decoration: underline;
+  border-bottom: 1px solid white;
+  padding-bottom: 1px;
+}
+
