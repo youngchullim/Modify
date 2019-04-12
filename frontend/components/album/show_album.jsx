@@ -1,4 +1,5 @@
 import React from 'react';
+import { button, Link, NavLink } from 'react-router-dom';
 
 
 class ShowAlbum extends React.Component {
@@ -18,9 +19,13 @@ class ShowAlbum extends React.Component {
     return(
       <div className="albumshow-page">
         <div className="album-info">
-          <img className="albumshow-photo" src={this.props.album.photo} />
-          <div className="albumshow-title">{this.props.album.title}</div>
-          <div className="albumshow-artistname">{this.props.album.artist.name}</div>
+          <div className="albumshow-photo-title">
+            <img className="albumshow-photo" src={this.props.album.photo} />
+            <div className="albumshow-title">{this.props.album.title}</div>
+          </div>
+          <NavLink className="albumshow-artistname-link" to={`/artists/${this.props.album.artist.id}`}>
+            <span className="albumshow-artistname">{this.props.album.artist.name}</span>
+          </NavLink>
           <button className="album-play">Play</button>
           <div className="albumshow-info">
             <span className="album-year">{this.props.album.year}</span>
