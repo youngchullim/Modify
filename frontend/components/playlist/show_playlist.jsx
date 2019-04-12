@@ -9,6 +9,7 @@ class ShowPlaylist extends React.Component {
 
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
+    this.props.fetchSongs();
   }
 
   render() {
@@ -16,12 +17,18 @@ class ShowPlaylist extends React.Component {
       return null;
     }
     return(
-      <div>
-        <h1>{this.props.playlist.name}</h1>
-        <div>PLAYLIST PLAYLIST PLAYLIST PLAYLIST PLAYLIST 
-          PLAYLIST PLAYLIST PLAYLIST PLAYLIST PLAYLIST 
-          PLAYLIST PLAYLIST PLAYLIST PLAYLIST PLAYLIST
-          PLAYLIST PLAYLIST PLAYLIST PLAYLIST PLAYLIST</div>
+      <div className="playlistShow-component">
+        <div className="playlistShow-info">
+          <div className="playlistShow-photo"></div>
+          <div>{this.props.playlist.name}</div>
+          <button className="album-play">PLAY</button>
+          <div className="playlistShow-songLength">{this.props.songs.length} SONGS</div>
+          <div className="playlistShow-options">...</div>
+        </div>
+        
+        <div className="playlistShow-songs">
+        
+        </div>
       </div>
     )
   }
