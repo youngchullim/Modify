@@ -147,6 +147,17 @@
 // SONG
 .li-album-song {
   width: 790px;
-  background-color: blue;
   padding: 10px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.li-album-song:hover {
+  background-color: rgba(0, 0, 255, 0.192);
+}
+
+.albumshow-songtitle {
+  color: white;
 }
