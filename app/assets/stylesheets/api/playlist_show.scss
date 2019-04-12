@@ -2,8 +2,8 @@
   margin-left: 230px;
   height: 100vh;
   overflow: scroll;
-  // background-color: #000000f5;
-  background-color: gray;
+  background-color: #000000f5;
+  // background-color: gray;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,10 +63,39 @@
 }
 
 // PLAYLIST OPTIONS
+.playlist-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.playlist-library {
+  cursor: pointer;
+  color: #1DB051;
+  font-size: 12px;
+  letter-spacing: 2px;
+  width: 180px;
+}
+
+.playlist-library:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.playlist-library-add {
+  color: white
+}
+
 .playlistShow-options {
   color: white;
   font-size: 35px;
   letter-spacing: 1px;
   position: relative;
-  // top: -15px;
+  top: -15px;
+}
+
+.playlistShow-options:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+  cursor: default;
 }
