@@ -13,7 +13,7 @@ class ShowPlaylist extends React.Component {
     this.props.fetchSongs();
   }
 
-  // When clicked on Add/Remove 'album-library-add' class
+  // When clicked on Add/Remove 'playlist-library-add' class
   toggleLibrary() {
     document.getElementById("playlist-library").classList.toggle('playlist-library-add');
   }
@@ -45,7 +45,20 @@ class ShowPlaylist extends React.Component {
         </div>
         
         <div className="playlistShow-songs">
-        
+          <ul className="ul-album-songs">
+            {this.props.songs.map( (song, idx) => (
+              <li className="li-album-song" key={idx}>
+                <div>
+                  {/* <button className="song-play-button"></button> */}
+                  <span className="song-title">{song.title}</span>
+                  <br />
+                  <span className="song-artist">{song.artist.name}</span>
+                  <span className="split-dot">.</span>
+                  <span className="song-album">{song.album.title}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     )
