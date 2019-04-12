@@ -14,6 +14,10 @@ import LibraryContainer from './library/library_container';
 import SearchContainer from './search/search_container';
 import ProfileContainer from './profile/profile_container';
 
+import ShowAlbumContainer from './album/show_album_container';
+import ShowArtistContainer from './artist/show_artist_container';
+import ShowPlaylistContainer from './playlist/show_playlist_container';
+
 // import ShowPlaylistContainer from './playlist/show_playlist_container';
 
 import { Route, Switch } from 'react-router-dom';
@@ -33,6 +37,9 @@ const AuthComponent = () => {
           <ProtectedRoute path="/search" component={SearchContainer} />
           <ProtectedRoute path="/library" component={LibraryContainer} />
           <ProtectedRoute path="/profile" component={ProfileContainer} />
+          <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
+          <ProtectedRoute path="/artists/:id" component={ShowArtistContainer} />
+          <ProtectedRoute path="/playlists/:id" component={ShowPlaylistContainer} />
         </Switch>
       </div>
     </div>
