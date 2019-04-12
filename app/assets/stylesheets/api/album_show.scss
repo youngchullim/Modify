@@ -8,7 +8,30 @@
   justify-content: center;
 }
 
+// ALBUM INFO LEFT SIDE
+.album-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+// ALBUM PHOTO + TITLE
+.albumshow-photo-title:hover {
+  // change pointer for now but want to change opacity and add play icon
+  // but only to photo
+  cursor: pointer;
+  // background-image: 
+  opacity: 0.5;
+}
+
 .albumshow-photo {
   height: 250px;
   width: 250px;
+}
+
+.albumshow-title {
+  font-size: 30px;
+  color: white;
+  // opacity: 1.0 !important;
+  font-weight: bold;
 }
