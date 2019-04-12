@@ -18,7 +18,7 @@ class Artist extends React.Component {
         <ul className="ul-albums">
           {this.props.artists.map( (artist, idx) => (
             <li className="li-albums" key={idx}>
-            <NavLink to={`/library/artists/${artist.id}`}>
+            <NavLink to={`/artists/${artist.id}`}>
               <img className="artist-photo" src={artist.photo} />
               <div className="album-name">{artist.name}</div>
             </NavLink>
