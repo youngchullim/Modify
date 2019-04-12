@@ -19,7 +19,7 @@ class Song extends React.Component {
           {this.props.songs.map( (song,idx) => (
             <li className="li-songs" key={idx}>
             <div>
-              <button className="song-play-button"></button>
+              {/* <button className="song-play-button"></button> */}
               <span className="song-title">{song.title}</span>
               <br />
               <span className="song-artist">{song.artist.name}</span>
