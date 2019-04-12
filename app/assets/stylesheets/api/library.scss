@@ -10,14 +10,18 @@
 
 .library-top-navbar {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  // justify-content: space-evenly;
+  justify-content: center;
+  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .navbar-library {
   display: flex;
   justify-content: center;
   // align-self: center;
+  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .library-tabs {
