@@ -47,7 +47,6 @@ class ShowAlbum extends React.Component {
             <div onClick={this.classChange} id="album-library" className="album-library">{albumLibrary}</div>
             <div className="album-playlist">...</div>
           </div>
-
         </div>
 
         <div className="album-songlist">
