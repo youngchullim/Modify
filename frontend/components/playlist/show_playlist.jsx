@@ -5,6 +5,7 @@ class ShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
 
+    this.toggleLibrary = this.toggleLibrary.bind(this);
   }
 
   componentDidMount() {
@@ -12,7 +13,17 @@ class ShowPlaylist extends React.Component {
     this.props.fetchSongs();
   }
 
+  // When clicked on Add/Remove 'album-library-add' class
+  toggleLibrary() {
+    document.getElementById("playlist-library").classList.toggle('playlist-library-add');
+  }
+
   render() {
+    let playlistLibrary = "REMOVE FROM YOUR LIBRARY";
+    // if (!library.includes(playlist.name)) {
+    //   playlistLibrary = "SAVE TO YOUR LIBRARY";
+    // }
+
     if (!this.props.playlist) {
       return null;
     }
@@ -25,7 +36,12 @@ class ShowPlaylist extends React.Component {
           </div>
           <button className="album-play">PLAY</button>
           <div className="playlistShow-songLength">{this.props.songs.length} SONGS</div>
-          <div className="playlistShow-options">...</div>
+
+          <div className="playlist-options">
+            <div onClick={this.toggleLibrary} id="playlist-library" className="playlist-library">{playlistLibrary}</div>
+{/* wont need for playlist */}
+            {/* <div className="playlistShow-options">...</div> */}
+          </div>
         </div>
         
         <div className="playlistShow-songs">
