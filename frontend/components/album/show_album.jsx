@@ -17,13 +17,24 @@ class ShowAlbum extends React.Component {
     }
     return(
       <div className="albumshow-page">
-        {/* <h1>{this.props.album.title}</h1> */}
-        <div>
+        <div className="album-info">
           <img className="albumshow-photo" src={this.props.album.photo} />
+          <div className="albumshow-title">{this.props.album.title}</div>
+          <div className="albumshow-artistname">{this.props.album.artist.name}</div>
+          <button className="album-play">Play</button>
+          <div className="albumshow-info">
+            <span className="album-year">{this.props.album.year}</span>
+            <span className="split-dot">.</span>
+            <span className="album-length">{this.props.album.songs.length}</span>
+          </div>
+
+        </div>
+
+        <div className="album-songlist">
           <ul className="ul-album-songs">
             {this.props.album.songs.map( (song, idx) => (
               <li className="li-album-song" key={idx}>
-                <div>{song.title}</div>
+                <div className="albumshow-songtitle">{song.title}</div>
               </li>
             ))}
           </ul>
