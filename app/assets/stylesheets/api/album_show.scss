@@ -24,11 +24,12 @@
   cursor: pointer;
   // background-image: 
   opacity: 0.5;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
 }
 
 .albumshow-photo {
-  height: 250px;
-  width: 250px;
+  height: 267px;
+  width: 267px;
   padding-bottom: 5px;
 }
 
@@ -68,7 +69,7 @@
   text-align: center;
   color: white;
   align-self: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .album-play:hover {
@@ -82,6 +83,7 @@
   color: rgb(173, 171, 163);
   font-size: 12px;
   letter-spacing: 1px;
+  margin-bottom: 40px;
 }
 
 .album-split-dot {
@@ -90,4 +92,41 @@
   position: relative;
   top: -3px;
   margin: 0 6px;
+}
+
+// ALBUM OPTIONS
+.album-options {
+  display: flex;
+  justify-content: space-around;
+}
+.album-library {
+  cursor: pointer;
+  color: green;
+  font-size: 12px;
+  letter-spacing: 2px;
+  width: 180px;
+}
+
+.album-library-add {
+  color: white
+}
+
+.album-library:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.album-playlist {
+  color: white;
+  font-size: 35px;
+  letter-spacing: 1px;
+  width: 50px;
+  position: relative;
+  top: -15px;
+}
+
+.album-playlist:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+  cursor: pointer;
 }
