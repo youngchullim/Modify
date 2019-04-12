@@ -90,7 +90,7 @@ class Library extends React.Component {
           <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/>
-          <ProtectedRoute path="/library/artists/:id" component={ShowArtistContainer}/>
+          <ProtectedRoute path="/artists/:id" component={ShowArtistContainer}/>
           <ProtectedRoute path="/library/:id" component={ShowPlaylistContainer} />
           <ProtectedRoute path="/library" component={PlaylistContainer}/>
         </Switch>
