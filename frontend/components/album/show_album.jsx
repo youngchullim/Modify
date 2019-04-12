@@ -6,7 +6,7 @@ class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
     
-    this.classChange = this.classChange.bind(this);
+    this.toggleLibrary = this.toggleLibrary.bind(this);
   }
 
   componentDidMount() {
@@ -14,7 +14,7 @@ class ShowAlbum extends React.Component {
   }
 
   // When clicked on Add/Remove 'album-library-add' class
-  classChange() {
+  toggleLibrary() {
     document.getElementById("album-library").classList.toggle('album-library-add');
   }
 
@@ -44,7 +44,7 @@ class ShowAlbum extends React.Component {
             <span className="album-length">{this.props.album.songs.length} SONGS</span>
           </div>
           <div className="album-options">
-            <div onClick={this.classChange} id="album-library" className="album-library">{albumLibrary}</div>
+            <div onClick={this.toggleLibrary} id="album-library" className="album-library">{albumLibrary}</div>
             <div className="album-playlist">...</div>
           </div>
         </div>
@@ -53,7 +53,10 @@ class ShowAlbum extends React.Component {
           <ul className="ul-album-songs">
             {this.props.album.songs.map( (song, idx) => (
               <li className="li-album-song" key={idx}>
+                {/* <img className="white-music2" src={window.whiteMusic2} /> */}
+                {/* <img className="white-play2" src={window.whitePlay2} /> */}
                 <div className="albumshow-songtitle">{song.title}</div>
+                {/* <audio controls src={song.song}>{song.song.duration}</audio> */}
               </li>
             ))}
           </ul>
