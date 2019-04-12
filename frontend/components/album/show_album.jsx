@@ -5,14 +5,25 @@ import { button, Link, NavLink } from 'react-router-dom';
 class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
-
+    
+    this.classChange = this.classChange.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAlbum(this.props.match.params.id);
   }
 
+  // When clicked on Add/Remove 'album-library-add' class
+  classChange() {
+    document.getElementById("album-library").classList.toggle('album-library-add');
+  }
+
   render() {
+    let albumLibrary = "REMOVE FROM YOUR LIBRARY";
+    // if (!library.includes(album.title)) {
+    //   albumLibrary = "SAVE TO YOUR LIBRARY";
+    // }
+
     if (!this.props.album) {
       return null;
     }
@@ -31,6 +42,10 @@ class ShowAlbum extends React.Component {
             <span className="album-year">{this.props.album.year}</span>
             <span className="album-split-dot">.</span>
             <span className="album-length">{this.props.album.songs.length} SONGS</span>
+          </div>
+          <div className="album-options">
+            <div onClick={this.classChange} id="album-library" className="album-library">{albumLibrary}</div>
+            <span className="album-playlist">...</span>
           </div>
 
         </div>
