@@ -19,8 +19,10 @@ class ShowPlaylist extends React.Component {
     return(
       <div className="playlistShow-component">
         <div className="playlistShow-info">
-          <div className="playlistShow-photo"></div>
-          <div>{this.props.playlist.name}</div>
+          <div className="playlistShow-photo-title">
+            <div className="playlistShow-photo"></div>
+            <div className="playlistShow-title">{this.props.playlist.name}</div>
+          </div>
           <button className="album-play">PLAY</button>
           <div className="playlistShow-songLength">{this.props.songs.length} SONGS</div>
           <div className="playlistShow-options">...</div>
