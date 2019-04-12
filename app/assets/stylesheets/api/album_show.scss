@@ -8,11 +8,13 @@
   justify-content: center;
 }
 
+
 // ALBUM INFO LEFT SIDE
 .album-info {
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-top: 30px;
 }
 
 // ALBUM PHOTO + TITLE
@@ -66,10 +68,26 @@
   text-align: center;
   color: white;
   align-self: center;
+  margin-bottom: 15px;
 }
 
 .album-play:hover {
   transform: scale(1.1);
   background-color: #1ED761;
   transition-duration: 0.3s;
+}
+
+// ALBUM INFO
+.albumshow-info {
+  color: rgb(173, 171, 163);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.album-split-dot {
+  color: rgb(173, 171, 163);
+  font-size: 20px;
+  position: relative;
+  top: -3px;
+  margin: 0 6px;
 }
