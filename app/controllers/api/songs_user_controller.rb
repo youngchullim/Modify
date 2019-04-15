@@ -20,7 +20,7 @@ class Api::SongsUserController < ApplicationController
     @user = User.find_by(id: @songs_user.user_id)
 
     @songs_user.destroy
-    render :index
+    render json: ["Removed from Library"], status: 200
   end
 
   private
