@@ -5,6 +5,7 @@
     json.year song.year
     json.genre song.genre
     json.songUrl song.song
+    json.duration song.duration
     json.album song.album
     json.albumId song.album.id
     json.albumPhoto song.album.photo
