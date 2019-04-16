@@ -22,9 +22,9 @@ class Song extends React.Component {
               {/* <button className="song-play-button"></button> */}
               <span className="song-title">{song.title}</span>
               <br />
-              <span><Link className="song-artist" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
+              <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
               <span className="split-dot">.</span>
-              <span><Link className="song-album" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+              <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
               <span className="song-duration">{song.duration}</span>
             </div>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
