@@ -1,4 +1,5 @@
 import React from 'react';
+import { button, Link, NavLink } from 'react-router-dom';
 
 
 class ShowPlaylist extends React.Component {
@@ -52,9 +53,10 @@ class ShowPlaylist extends React.Component {
                   {/* <button className="song-play-button"></button> */}
                   <span className="song-title">{song.title}</span>
                   <br />
-                  <span className="song-artist">{song.artist.name}</span>
+                  <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
                   <span className="split-dot">.</span>
-                  <span className="song-album">{song.album.title}</span>
+                  <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+                  <span className="song-duration">{song.duration}</span>
                 </div>
               </li>
             ))}
