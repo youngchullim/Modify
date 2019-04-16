@@ -56,7 +56,7 @@ class ShowAlbum extends React.Component {
                 {/* <img className="white-music2" src={window.whiteMusic2} /> */}
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
                 <div className="albumshow-songtitle">{song.title}</div>
-                {/* <audio controls src={song.song}>{song.song.duration}</audio> */}
+                <span className="song-duration">{song.duration}</span>
               </li>
             ))}
           </ul>
