@@ -22,8 +22,8 @@ class Album extends React.Component {
             <NavLink to={`/albums/${album.id}`}>
               <img className="album-photo" src={album.photo} />
               <div className="album-name">{album.title}</div>
-              <div><Link className="album-artist albumshow-artistname" to={`/artists/${album.artist.id}`}>{album.artist.name}</Link></div>
             </NavLink>
+              <div><Link className="album-artist albumshow-artistname" to={`/artists/${album.artist.id}`}>{album.artist.name}</Link></div>
             </li>
           ))}
         </ul>
