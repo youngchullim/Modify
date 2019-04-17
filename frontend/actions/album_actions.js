@@ -4,7 +4,7 @@ import * as AlbumsUserApiUtil from '../util/albums_user_api_util';
 export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS";
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 export const RECEIVE_ALBUMS_USER = "RECEIVE_ALBUMS_USER";
-export const REMOVE_ALBUMS = "REMOVE_ALBUMS";
+export const REMOVE_ALBUM = "REMOVE_ALBUM";
 
 export const receiveAlbums = (albums) => {
   return({
@@ -37,9 +37,9 @@ export const receiveAlbumsUser = user => {
   });
 };
 
-export const removeAlbums = () => {
+export const removeAlbum = () => {
   return({
-    type: REMOVE_ALBUMS
+    type: REMOVE_ALBUM
   });
 };
 
