@@ -51,7 +51,7 @@ export const createSongsUser = (user_id, song_id) => (dispatch) => (
     .then( user => dispatch(receiveSongsUser(user)))
 );
 
-export const deleteSongsUser = (id) = (dispatch) => (
+export const deleteSongsUser = (id) => (dispatch) => (
   SongsUserApiUtil.deleteSongsUser(id)
     .then( user => dispatch(receiveSongsUser(user)))
 );
