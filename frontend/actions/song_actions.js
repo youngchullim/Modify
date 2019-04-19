@@ -6,7 +6,7 @@ import { receivePlaylist } from './playlist_actions';
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS_USER = "RECEIVE_SONGS_USER";
-export const REMOVE_SONG = "REMOVE_SONG";
+export const REMOVE_SONGS = "REMOVE_SONGS";
 export const RECEIVE_PLAYLISTS_SONG = "RECEIVE_PLAYLISTS_SONG";
 
 export const receiveSongs = (songs) => {
@@ -40,9 +40,9 @@ export const receiveSongsUser = user => {
   });
 };
 
-export const removeSong = () => {
+export const removeSongs = () => {
   return({
-    type: REMOVE_SONG
+    type: REMOVE_SONGS
   });
 };
 

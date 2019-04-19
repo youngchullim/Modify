@@ -4,7 +4,7 @@ import * as ArtistsUserApiUtil from '../util/artists_user_api_util';
 export const RECEIVE_ARTISTS = "RECEIVE_ARTISTS";
 export const RECEIVE_ARTIST = "RECEIVE_ARTIST";
 export const RECEIVE_ARTISTS_USER = "RECEIVE_ARTISTS_USER";
-export const REMOVE_ARTIST = "REMOVE_ARTIST";
+export const REMOVE_ARTISTS = "REMOVE_ARTISTS";
 
 export const receiveArtists = (artists) => {
   return({
@@ -37,9 +37,9 @@ export const receiveArtistsUser = user => {
   });
 };
 
-export const removeArtist = () => {
+export const removeArtists = () => {
   return({
-    type: REMOVE_ARTIST
+    type: REMOVE_ARTISTS
   });
 };
 
