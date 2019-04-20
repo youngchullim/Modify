@@ -1,6 +1,5 @@
 import React from 'react';
 import { button, Link, NavLink } from 'react-router-dom';
-import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 
 
 class ShowAlbum extends React.Component {
@@ -8,6 +7,9 @@ class ShowAlbum extends React.Component {
     super(props);
     
     this.toggleLibrary = this.toggleLibrary.bind(this);
+    this.songDropdown = this.songDropdown.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
+    this.saveSong = this.saveSong.bind(this);
     // this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
@@ -20,14 +22,29 @@ class ShowAlbum extends React.Component {
     document.getElementById("album-library").classList.toggle('album-library-add');
   }
 
-  // handleMenuClick(e, data) {
-  //   // console.log(data.foo);
-  //   if (data.foo === "Add to Library") {
-  //     // this.props.createSongsUser(this.props.user.id);
-  //     console.log(this.props.user.id);
-  //     console.log(e.currentTarget.data.id);
-  //   }
-  // }
+  songDropdown(e) {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  closeDropdown(e) {
+    if (!e.target.matches('.dropdown-button')) {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  saveSong(e) {
+    let songId = e.target.id;
+    // console.log(songId);
+    // console.log(this.props.user.id);
+    this.props.createSongsUser(this.props.user.id, songId);
+  }
+
   render() {
     let albumLibrary = "REMOVE FROM YOUR LIBRARY";
     // if (!library.includes(album.title)) {
@@ -38,7 +55,7 @@ class ShowAlbum extends React.Component {
       return null;
     }
     return(
-      <div className="albumshow-page">
+      <div className="albumshow-page" onClick={this.closeDropdown}>
         <div className="album-info">
           <div className="albumshow-photo-title">
             <img className="albumshow-photo" src={this.props.album.photo} />
@@ -66,26 +83,20 @@ class ShowAlbum extends React.Component {
                 {/* <img className="white-music2" src={window.whiteMusic2} /> */}
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
                 <div className="albumshow-songtitle">{song.title}</div>
+
+                <div className="song-dropdown">
+                  <button className="dropdown-button" onClick={this.songDropdown}>...</button>
+                  <div id="myDropdown" className="dropdown-content">
+                    <a id={song.id} onClick={this.saveSong}>Save to Your Library</a>
+                    <a>Add to Playlist</a>
+                  </div>
+                </div>
+                
                 <span className="song-duration">{song.duration}</span>
-                {/* <ContextMenuTrigger id="song-menu">
-                  <div className="album-playlist">...</div>
-                </ContextMenuTrigger> */}
               </li>
             ))}
           </ul>
         </div>
-        {/* <ContextMenu id="song-menu">
-          <MenuItem data={{foo: 'Add to Library'}} onClick={this.handleMenuClick}>
-            Add Song to Library
-          </MenuItem>
-          <MenuItem data={{foo: 'Add to Playlist'}} onClick={this.handleMenuClick}>
-            Add Song to Playlist
-          </MenuItem>
-          <MenuItem divider />
-          <MenuItem data={{foo: 'bar'}} onClick={this.handleMenuClick}>
-            ContextMenu Item 3
-          </MenuItem>
-        </ContextMenu> */}
       </div>
     )
   }
