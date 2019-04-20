@@ -4,6 +4,8 @@ import { button, Link, NavLink } from 'react-router-dom';
 import Modal from '../modal/modal';
 import PlaylistContainer from '../playlist/playlist_container';
 import SongContainer from '../song/song_container';
+// @@@@@@@@@@ TEST @@@@@@@@@@@
+import SongsUserContainer from '../song/songs_user_container';
 import AlbumContainer from '../album/album_container';
 import ArtistContainer from '../artist/artist_container';
 
@@ -86,7 +88,9 @@ class Library extends React.Component {
             {/* MOVED TO APP */}
         {/* <Modal /> */}
         <Switch>
-          <ProtectedRoute path="/library/songs" component={SongContainer}/>
+          {/* <ProtectedRoute path="/library/songs" component={SongContainer}/> */}
+  {/* @@@@@@@@@@ TEST @@@@@@@@@@@ */}
+          <ProtectedRoute path="/library/songs" component={SongsUserContainer}/>
           <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/>
