@@ -1,4 +1,4 @@
-class Api::SongsUserController < ApplicationController
+class Api::SongsUsersController < ApplicationController
   def index 
     @user = User.find_by(id: params[:user_id])
     @songs_users = @user.songs_users.map { |song| Song.find_by(id: song.song_id) }

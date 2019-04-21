@@ -1,4 +1,4 @@
-class Api::PlaylistsSongController < ApplicationController
+class Api::PlaylistsSongsController < ApplicationController
   def create
     @playlists_song = PlaylistsSong.new(playlists_song_params)
 

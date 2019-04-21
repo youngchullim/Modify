@@ -1,4 +1,4 @@
-class Api::ArtistsUserController < ApplicationController
+class Api::ArtistsUsersController < ApplicationController
   def index 
     @user = User.find_by(id: params[:user_id])
     @artists_users = @user.artists_users.map { |artist| Artist.find_by(id: artist.artist_id) }

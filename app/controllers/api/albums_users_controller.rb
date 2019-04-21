@@ -1,4 +1,4 @@
-class Api::AlbumsUserController < ApplicationController
+class Api::AlbumsUsersController < ApplicationController
   def index 
     @user = User.find_by(id: params[:user_id])
     @albums_users = @user.albums_users.map { |album| Album.find_by(id: album.album_id) }
