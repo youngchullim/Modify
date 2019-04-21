@@ -22,6 +22,6 @@ class Api::PlaylistsSongsController < ApplicationController
 
   private
   def playlists_song_params
-    params.require(:playlists_song).permit(:playlist_id, :song_id)
+    params.require(:playlistsSong).permit(:playlist_id, :song_id)
   end
 end

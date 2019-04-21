@@ -25,6 +25,6 @@ class Api::ArtistsUsersController < ApplicationController
 
   private
   def artists_user_params 
-    params.require(:artists_user).permit(:artist_id, :user_id)
+    params.require(:artistsUser).permit(:artist_id, :user_id)
   end
 end
