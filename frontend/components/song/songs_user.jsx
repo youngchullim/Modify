@@ -56,6 +56,7 @@ class SongsUser extends React.Component {
           openDropdown.classList.remove('show');
         }
       }
+// @@@@@ FIGURE OUT HOW TO CLOSE PREVIOUS DROPDOWN WHEN CLICKED ON ANOTHER DROPDOWN @@@@@@@
     // } else if (songName !== this.state.currentSong) {
     //   let dropdowns = document.getElementsByClassName("dropdown-content");
     //   for (let i = 0; i < dropdowns.length; i++) {
