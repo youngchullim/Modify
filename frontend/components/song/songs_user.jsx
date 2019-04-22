@@ -5,10 +5,6 @@ class SongsUser extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentSong: ""
-    };
-    
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.removeSong = this.removeSong.bind(this);
@@ -18,14 +14,8 @@ class SongsUser extends React.Component {
     this.props.fetchSongsUsers(this.props.user.id);
   }
   
-  // DROPDOWN ONLY WORKS FOR THE FIRST DROPDOWN
   songDropdown(e) {
-    // console.log(this.state.currentSong);
     let songName = e.target.id + 1;
-    this.setState({
-      currentSong: e.currentTarget.id
-    });
-    // console.log(songName);
     document.getElementById(songName).classList.toggle("show");
   }
 
@@ -36,17 +26,11 @@ class SongsUser extends React.Component {
     let userId = this.props.user.id;
     // let users = song.songsUsers;
     // let currentUser = users.filter(user => user.id === userId)[0];
-    console.log(song);
     // this.props.deleteSongsUser();
   }
 
   closeDropdown(e) {
-    let songName = e.target.id;
-// @@@@@@ TEST @@@@@@@@
-    console.log(songName);
-    console.log("$$$$$$$$");
-    console.log(this.state.currentSong);
-    console.log("@@@@@@@@");
+    let songName = e.target.id + 1;
     
     if (!e.target.matches('.dropdown-button')) {
       let dropdowns = document.getElementsByClassName("dropdown-content");
@@ -56,15 +40,16 @@ class SongsUser extends React.Component {
           openDropdown.classList.remove('show');
         }
       }
-// @@@@@ FIGURE OUT HOW TO CLOSE PREVIOUS DROPDOWN WHEN CLICKED ON ANOTHER DROPDOWN @@@@@@@
-    // } else if (songName !== this.state.currentSong) {
-    //   let dropdowns = document.getElementsByClassName("dropdown-content");
-    //   for (let i = 0; i < dropdowns.length; i++) {
-    //     let openDropdown = dropdowns[i];
-    //     if (openDropdown.classList.contains('show')) {
-    //       openDropdown.classList.remove('show');
-    //     }
-    //   }
+    } else {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.id === songName) {
+          continue;
+        } else if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
     }
   }
 
