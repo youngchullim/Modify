@@ -5,6 +5,10 @@ import { button, Link, NavLink } from 'react-router-dom';
 class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentSong: ""
+    };
     
     this.toggleLibrary = this.toggleLibrary.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
@@ -23,7 +27,14 @@ class ShowAlbum extends React.Component {
   }
 
   songDropdown(e) {
-    document.getElementById("myDropdown").classList.toggle("show");
+    // console.log(this.state.currentSong);
+    let songName = e.target.id + 1;
+    this.setState({
+      currentSong: e.currentTarget.id
+    });
+    // console.log(songName);
+    document.getElementById(songName).classList.toggle("show");
+    // document.getElementById("myDropdown").classList.toggle("show");
   }
 
   closeDropdown(e) {
@@ -86,8 +97,8 @@ class ShowAlbum extends React.Component {
                 <div className="albumshow-songtitle">{song.title}</div>
 
                 <div className="song-dropdown">
-                  <button className="dropdown-button" onClick={this.songDropdown}>...</button>
-                  <div id="myDropdown" className="dropdown-content">
+                  <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
+                  <div id={song.title + 1} className="dropdown-content">
                     <a id={song.id} onClick={this.saveSong}>Save to Your Library</a>
                     <a>Add to Playlist</a>
                   </div>
