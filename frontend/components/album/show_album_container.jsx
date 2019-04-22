@@ -7,7 +7,8 @@ import {
   createSongsUser,
   deleteSongsUser,
   createPlaylistsSong,
-  deletePlaylistsSong
+  deletePlaylistsSong,
+  fetchSongsUsers
 } from '../../actions/song_actions';
 
 // import { logout } from '../../actions/session_actions';
@@ -26,7 +27,8 @@ const mapDispatchToProps = dispatch => {
     createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
     deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
     createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
-    deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id))
+    deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id)),
+    fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id))
   });
 };
 
