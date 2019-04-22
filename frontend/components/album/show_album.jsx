@@ -50,11 +50,8 @@ class ShowAlbum extends React.Component {
     }
   }
 
-  // @@@@@@@@@@@@ NOT WORKING @@@@@@@@@@@@
   saveSong(e) {
     let songId = e.target.id;
-    // console.log(songId);
-    // console.log(this.props.user.id);
     this.props.createSongsUser(this.props.user.id, songId);
   }
 
