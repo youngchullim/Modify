@@ -5,16 +5,11 @@ import { button, Link, NavLink } from 'react-router-dom';
 class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentSong: ""
-    };
     
     this.toggleLibrary = this.toggleLibrary.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveSong = this.saveSong.bind(this);
-    // this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
   componentDidMount() {
@@ -27,22 +22,28 @@ class ShowAlbum extends React.Component {
   }
 
   songDropdown(e) {
-    // console.log(this.state.currentSong);
     let songName = e.target.id + 1;
-    this.setState({
-      currentSong: e.currentTarget.id
-    });
-    // console.log(songName);
     document.getElementById(songName).classList.toggle("show");
-    // document.getElementById("myDropdown").classList.toggle("show");
   }
 
   closeDropdown(e) {
+    let songName = e.target.id + 1;
+    
     if (!e.target.matches('.dropdown-button')) {
       let dropdowns = document.getElementsByClassName("dropdown-content");
       for (let i = 0; i < dropdowns.length; i++) {
         let openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    } else {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.id === songName) {
+          continue;
+        } else if (openDropdown.classList.contains('show')) {
           openDropdown.classList.remove('show');
         }
       }
