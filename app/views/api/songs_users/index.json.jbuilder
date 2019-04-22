@@ -12,5 +12,8 @@
     json.artist song.album_artist
     json.artistId song.album_artist.id
     json.artistPhoto song.album_artist.photo
+
+    json.songsUsersIds song.songs_users.map {|songsUser| songsUser.user.id}
+    json.songsUsers song.songs_users.map {|songsUser| songsUser}
   end
 end
