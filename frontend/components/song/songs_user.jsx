@@ -13,20 +13,26 @@ class SongsUser extends React.Component {
   componentDidMount() {
     this.props.fetchSongsUsers(this.props.user.id);
   }
+
   
   songDropdown(e) {
     let songName = e.target.id + 1;
     document.getElementById(songName).classList.toggle("show");
   }
 
-  // REMOVE NOT WORKING
   removeSong(e) {
-    let songId = e.target.id;
-    let song = this.props.songs.filter(song => song.id === songId)
     let userId = this.props.user.id;
-    // let users = song.songsUsers;
-    // let currentUser = users.filter(user => user.id === userId)[0];
-    // this.props.deleteSongsUser();
+    let currSongId = e.currentTarget.id;
+
+    let currSong = this.props.songs.filter(song => song.id === parseInt(currSongId))[0];
+    let songsUsers = currSong.songsUsers;
+
+    let currSongUser = songsUsers.filter(songsUser => songsUser.user_id === userId);
+    
+    for (let i = 0; i < currSongUser.length; i++) {
+      let user = currSongUser[i];
+      this.props.deleteSongsUser(user.id);
+    }
   }
 
   closeDropdown(e) {
