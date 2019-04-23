@@ -5,6 +5,10 @@ class SongsUser extends React.Component {
   constructor(props) {
     super(props);
 
+    // this.state = {
+    //   songs: this.props.fetchSongsUsers(this.props.user.id)
+    // };
+
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.removeSong = this.removeSong.bind(this);
@@ -14,7 +18,12 @@ class SongsUser extends React.Component {
     this.props.fetchSongsUsers(this.props.user.id);
   }
 
-  
+  componentWillReceiveProps(props) {
+    this.setState({
+      songs: this.props.fetchSongsUsers(this.props.user.id)
+    });
+  }
+   
   songDropdown(e) {
     let songName = e.target.id + 1;
     document.getElementById(songName).classList.toggle("show");
