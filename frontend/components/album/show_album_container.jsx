@@ -11,6 +11,7 @@ import {
   fetchSongsUsers
 } from '../../actions/song_actions';
 
+import { createAlbumsUser } from '../../actions/album_actions';
 // import { logout } from '../../actions/session_actions';
 // import { Link } from 'react-router-dom';
 
@@ -28,7 +29,8 @@ const mapDispatchToProps = dispatch => {
     deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
     createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
     deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id)),
-    fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id))
+    fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
+    createAlbumsUser: (user_id, album_id) => dispatch(createAlbumsUser(user_id, album_id)),
   });
 };
 
