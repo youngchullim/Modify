@@ -3,8 +3,7 @@ import { button, Link, NavLink } from 'react-router-dom';
 
 import Modal from '../modal/modal';
 import PlaylistContainer from '../playlist/playlist_container';
-import SongContainer from '../song/song_container';
-// @@@@@@@@@@ TEST @@@@@@@@@@@
+// import SongContainer from '../song/song_container';
 import SongsUserContainer from '../song/songs_user_container';
 import AlbumContainer from '../album/album_container';
 import ArtistContainer from '../artist/artist_container';
@@ -26,20 +25,25 @@ class Library extends React.Component {
 
   componentDidMount() {
     this.props.fetchPlaylists();
-    // this.props.fetchSongs();
   }
 
   render() {
-    // let userArr = this.props.user.email.split("");
-    // let user = "";
-    // for(let i = 0; i < userArr.length; i++) {
-    //   if (userArr[i] === "@") {
-    //     break;
-    //   } else {
-    //     user += userArr[i];
-    //   }
-    // }
-    
+  let backgroundColors = [
+    "linear-gradient(to bottom right, #1A2C59, black)",
+    "linear-gradient(to bottom right, #534C30, black)",
+    "linear-gradient(to bottom right, #402929, black)",
+    "linear-gradient(to bottom right, #5C4D2A, black)",
+    "linear-gradient(to bottom right, #2B3114, black)",
+    "linear-gradient(to bottom right, #2C555A, black)",
+    "linear-gradient(to bottom right, #101010, black)",
+    "linear-gradient(to bottom right, #780F24, black)",
+    "linear-gradient(to bottom right, #232123, black)",
+    "linear-gradient(to bottom right, #2D3E59, black)",
+    "linear-gradient(to bottom right, #324455, black)"
+  ];
+  let randNum = Math.floor(Math.random() * backgroundColors.length);
+  let randBackground = { backgroundImage: backgroundColors[randNum]};
+  // add 'style={randBackground}' inside a div to give it backgroundImage
     return(
       <div className="navbar-library-component">
       
@@ -89,7 +93,6 @@ class Library extends React.Component {
         {/* <Modal /> */}
         <Switch>
           {/* <ProtectedRoute path="/library/songs" component={SongContainer}/> */}
-  {/* @@@@@@@@@@ TEST @@@@@@@@@@@ */}
           <ProtectedRoute path="/library/songs" component={SongsUserContainer}/>
           <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
