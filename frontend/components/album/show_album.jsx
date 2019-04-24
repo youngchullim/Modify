@@ -5,15 +5,22 @@ import { button, Link, NavLink } from 'react-router-dom';
 class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
+
+    // this.state = {
+    //   album: this.props.fetchAlbum(this.props.match.params.id)
+    // };
     
     this.toggleLibrary = this.toggleLibrary.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveSong = this.saveSong.bind(this);
   }
+  // componentWillMount() {
+  //   this.props.fetchAlbum(this.props.albumId);
+  // }
 
   componentDidMount() {
-    this.props.fetchAlbum(this.props.match.params.id);
+    this.props.fetchAlbum(this.props.albumId);
   }
 
   // When clicked on Add/Remove 'album-library-add' class
