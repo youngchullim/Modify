@@ -5,7 +5,9 @@ import Modal from '../modal/modal';
 import PlaylistContainer from '../playlist/playlist_container';
 // import SongContainer from '../song/song_container';
 import SongsUserContainer from '../song/songs_user_container';
-import AlbumContainer from '../album/album_container';
+
+// import AlbumContainer from '../album/album_container';
+import AlbumsUserContainer from '../album/albums_user_container';
 import ArtistContainer from '../artist/artist_container';
 
 import ShowPlaylistContainer from '../playlist/show_playlist_container';
@@ -94,7 +96,8 @@ class Library extends React.Component {
         <Switch>
           {/* <ProtectedRoute path="/library/songs" component={SongContainer}/> */}
           <ProtectedRoute path="/library/songs" component={SongsUserContainer}/>
-          <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/>
+          {/* <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/> */}
+          <ProtectedRoute exact path="/library/albums" component={AlbumsUserContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/>
           <ProtectedRoute path="/artists/:id" component={ShowArtistContainer}/>
