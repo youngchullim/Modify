@@ -9,6 +9,7 @@ class AlbumsUser extends React.Component {
 
   componentDidMount() {
     this.props.fetchAlbumsUsers(this.props.user.id);
+    // this.props.fetchAlbums();
   }
 
   render() {
