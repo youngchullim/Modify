@@ -98,8 +98,8 @@ class ShowAlbum extends React.Component {
                   <div className="song-dropdown">
                     <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                     <div id={song.title + 1} className="dropdown-content">
-                      <a id={song.id} onClick={this.saveSong}>Save to Your Library</a>
-                      <a>Add to Playlist</a>
+                      <a id={song.id} onClick={this.saveSong} className="save-to-library">Save to Your Library</a>
+                      <a className="add-to-playlist">Add to Playlist</a>
                     </div>
                   </div>
                   <span className="song-duration">{song.duration}</span>
