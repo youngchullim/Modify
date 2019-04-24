@@ -94,15 +94,17 @@ class ShowAlbum extends React.Component {
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
                 <div className="albumshow-songtitle">{song.title}</div>
 
-                <div className="song-dropdown">
-                  <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
-                  <div id={song.title + 1} className="dropdown-content">
-                    <a id={song.id} onClick={this.saveSong}>Save to Your Library</a>
-                    <a>Add to Playlist</a>
+                <div className="song-rightside">
+                  <div className="song-dropdown">
+                    <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
+                    <div id={song.title + 1} className="dropdown-content">
+                      <a id={song.id} onClick={this.saveSong}>Save to Your Library</a>
+                      <a>Add to Playlist</a>
+                    </div>
                   </div>
+                  <span className="song-duration">{song.duration}</span>
                 </div>
                 
-                <span className="song-duration">{song.duration}</span>
               </li>
             ))}
           </ul>
