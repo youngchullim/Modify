@@ -1,8 +1,8 @@
 .albumshow-page {
-  margin-left: 230px;
+  margin-left: 215px;
   height: 100vh;
   overflow: scroll;
-  background-color: #000000f5;
+  background: linear-gradient(to bottom right, #534C30, black);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,19 +20,19 @@
 }
 
 // ALBUM PHOTO + TITLE
-.albumshow-photo-title:hover {
+.albumshow-photo:hover {
   // change pointer for now but want to change opacity and add play icon
   // but only to photo
   cursor: pointer;
   // background-image: 
   opacity: 0.5;
-  box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
 }
 
 .albumshow-photo {
   height: 267px;
   width: 267px;
   padding-bottom: 5px;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
 }
 
 .albumshow-title {
@@ -142,42 +142,59 @@
   flex-direction: column;
   list-style: none;
   margin-top: 30px;
+  padding-left: 0;
 }
 
 // SONG
 .li-album-song {
-  width: 790px;
+  width: 800px;
   padding: 10px;
   min-height: 48px;
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 30px;
+  padding-right: 20px;
+  justify-content: space-between;
 }
 
 .li-album-song:hover {
-  background-color: rgba(0, 0, 255, 0.192);
+  background-color: rgba(0, 0, 0, 0.342);
 }
 
 .albumshow-songtitle {
   color: white;
 }
 
+
+// SONG RIGHT SIDE
+.song-rightside {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 // SONG DROPDOWN
 .dropdown-button {
-  background-color: #4CAF50;
+  background-color: inherit;
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
   cursor: pointer;
+  letter-spacing: 1px;
+  position: relative;
+  top: -5px;
+  outline: none;
 }
 
 .dropdown-button:hover, .dropdown-button:focus {
-  background-color: #3e8e41;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+  cursor: pointer;
 }
 
 .song-dropdown {
-  float: right;
+  // float: right;
   position: relative;
   display: inline-block;
 }
@@ -206,4 +223,12 @@
 
 .show {
   display: block;
+}
+
+// SONG DURATION
+.song-duration {
+  color: rgb(173, 171, 163);
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  padding-left: 20px;
 }
