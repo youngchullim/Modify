@@ -18,7 +18,8 @@ import { createAlbumsUser } from '../../actions/album_actions';
 const mapStateToProps = (state, ownProps) => {
   return({
     user: state.entities.users[state.session.id],
-    album: state.entities.albums[ownProps.match.params.id]
+    album: state.entities.albums[ownProps.match.params.id],
+    albumId: ownProps.match.params.id,
   });
 };
 
