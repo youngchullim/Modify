@@ -5,9 +5,9 @@ class SongsUser extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   songs: this.props.fetchSongsUsers(this.props.user.id)
-    // };
+    this.state = {
+      songs: this.props.songs
+    };
 
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
@@ -18,11 +18,17 @@ class SongsUser extends React.Component {
     this.props.fetchSongsUsers(this.props.user.id);
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      songs: this.props.fetchSongsUsers(this.props.user.id)
-    });
-  }
+  // componentDidUpdate() {
+  //   this.setState({
+  //     songs: this.props.songs
+  //   });
+  // }
+
+  // componentWillReceiveProps(props) {
+  //   this.setState({
+  //     songs: this.props.fetchSongsUsers(this.props.user.id)
+  //   });
+  // }
    
   songDropdown(e) {
     let songName = e.target.id + 1;
@@ -42,6 +48,10 @@ class SongsUser extends React.Component {
       let user = currSongUser[i];
       this.props.deleteSongsUser(user.id);
     }
+
+    this.setState({
+      songs: this.props.fetchSongsUsers(this.props.user.id)
+    });
   }
 
   closeDropdown(e) {
