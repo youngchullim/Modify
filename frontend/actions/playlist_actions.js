@@ -59,6 +59,16 @@ export const deletePlaylist = (id) => (dispatch) => (
 //   });
 // };
 
+export const createPlaylistsUser = (playlistsUser) => (dispatch) => (
+  PlaylistsUserApiUtil.createPlaylistsUser(playlistsUser)
+    .then( playlist => dispatch(receivePlaylist(playlist)))
+);
+
+export const deletePlaylistsUser = (id) => (dispatch) => (
+  PlaylistsUserApiUtil.deletePlaylistsUser(id)
+    .then( playlist => dispatch(receivePlaylist(playlist)))
+);
+
 export const fetchPlaylistsUsers = (id) => (dispatch) => (
   PlaylistsUserApiUtil.fetchPlaylistsUsers(id)
     .then( playlists => dispatch(receivePlaylists(playlists)))
