@@ -1,6 +1,6 @@
 class Api::PlaylistsUsersController < ApplicationController
   def index
-    @user = User.find_by(id: params[:id])
+    @user = current_user
     @playlists_users = @user.playlists_users.map { |playlist| Playlist.find_by(id: playlist.playlist_id) }
     render :index
   end
