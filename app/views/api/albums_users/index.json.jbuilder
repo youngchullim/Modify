@@ -7,5 +7,7 @@
     json.artist album.artist
     json.artistId album.artist.id
     json.songIds album.songs.map { |song| song.id }
+
+    json.songs album.songs
   end
 end
