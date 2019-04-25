@@ -6,21 +6,33 @@ class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
 
+
+// COULDN'T GET INITIAL STATE TO SHOW DEPENING ON IF ALBUM ALREADY SAVED TO LIBRARY
     // this.state = {
-    //   album: this.props.fetchAlbum(this.props.match.params.id)
+    //   albumLibrary: "REMOVE FROM YOUR LIBRARY",
     // };
     
     this.toggleLibrary = this.toggleLibrary.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveSong = this.saveSong.bind(this);
+    // this.removeAlbum = this.removeAlbum.bind(this);
   }
-  // componentWillMount() {
-  //   this.props.fetchAlbum(this.props.albumId);
-  // }
 
   componentDidMount() {
     this.props.fetchAlbum(this.props.albumId);
+
+
+// TRYING TO SHOW EITHER "REMOVE" OR "SAVE" IF CURRENT ALBUM IS ALREADY SAVED TO LIBRARY
+    // if(this.props.album.albumsUsers.length > 0) {
+    //   this.setState({
+    //     albumLibrary: "REMOVE FROM YOUR LIBRARY"
+    //   });
+    // } else {
+    //   this.setState({
+    //     albumLibrary: "SAVE TO YOUR LIBRARY"
+    //   });
+    // }
   }
 
   // When clicked on Add/Remove 'album-library-add' class
@@ -64,11 +76,34 @@ class ShowAlbum extends React.Component {
     this.props.createAlbumsUser(this.props.user.id, albumId);
   }
 
+
+// DECIDED TO JUST GO WITH DROPDOWN MENU WITH BOTH SAVE AND REMOVE 
+//INSTEAD OF ONLY SHOWING ONE DEPENING ON IF ALBUM IS SAVED TO LIBRARY
+  // removeAlbum(e) {
+  //   if(this.props.album.albumsUsers.length > 0) {
+  //     if(this.props.album[this.props.albumId]) {
+  //       let albumsUsers = Object.values(this.props.album.albumsUsers).filter(albumUser => albumUser.user_id === this.props.user.id);
+
+  //       for (let i = 0 ; i < albumsUsers.length; i++) {
+  //         let user = albumsUsers[i];
+  //         this.props.deleteAlbumsUser(user.id);
+  //       }
+  //     }
+  //     this.setState({
+  //       albumLibrary: "SAVE TO YOUR LIBRARY"
+  //     });
+
+  //   } else {
+  //     let albumId = this.props.album.id;
+  //     this.props.createAlbumsUser(this.props.user.id, albumId);
+
+  //     this.setState( {
+  //       albumLibrary: "REMOVE FROM YOUR LIBRARY"
+  //     });
+  //   }
+  // }
+
   render() {
-    let albumLibrary = "REMOVE FROM YOUR LIBRARY";
-    // if (!library.includes(album.title)) {
-    //   albumLibrary = "SAVE TO YOUR LIBRARY";
-    // }
 
     if (!this.props.album) {
       return null;
@@ -90,7 +125,9 @@ class ShowAlbum extends React.Component {
             <span className="album-length">{this.props.album.songs.length} SONGS</span>
           </div>
           <div className="album-options">
-            <div onClick={this.toggleLibrary} id="album-library" className="album-library">{albumLibrary}</div>
+            {/* <div onClick={this.toggleLibrary}>
+              <div onClick={this.removeAlbum} id="album-library" className="album-library">{this.state.albumLibrary}</div>
+            </div> */}
             <div className="album-playlist">...</div>
           </div>
         </div>
