@@ -16,7 +16,8 @@ class ShowAlbum extends React.Component {
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveSong = this.saveSong.bind(this);
-    // this.removeAlbum = this.removeAlbum.bind(this);
+    this.removeAlbum = this.removeAlbum.bind(this);
+    this.saveAlbum = this.saveAlbum.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +77,21 @@ class ShowAlbum extends React.Component {
     this.props.createAlbumsUser(this.props.user.id, albumId);
   }
 
+  saveAlbum(e) {
+    let albumId = this.props.album.id;
+    this.props.createAlbumsUser(this.props.user.id, albumId);
+  }
+
+  removeAlbum(e) {
+    if(this.props.album[this.props.albumId]) {
+      let albumsUsers = Object.values(this.props.album.albumsUsers).filter(albumUser => albumUser.user_id === this.props.user.id);
+
+      for (let i = 0 ; i < albumsUsers.length; i++) {
+        let user = albumsUsers[i];
+        this.props.deleteAlbumsUser(user.id);
+      }
+    }
+  }
 
 // DECIDED TO JUST GO WITH DROPDOWN MENU WITH BOTH SAVE AND REMOVE 
 //INSTEAD OF ONLY SHOWING ONE DEPENING ON IF ALBUM IS SAVED TO LIBRARY
@@ -128,7 +144,14 @@ class ShowAlbum extends React.Component {
             {/* <div onClick={this.toggleLibrary}>
               <div onClick={this.removeAlbum} id="album-library" className="album-library">{this.state.albumLibrary}</div>
             </div> */}
-            <div className="album-playlist">...</div>
+            <div className="song-dropdown">
+              <button id={this.props.album.title} className="album-playlist dropdown-button" onClick={this.songDropdown}>...</button>
+              <div id={this.props.album.title + 1} className="dropdown-content">
+                <a id={this.props.album.id} onClick={this.saveAlbum} className="save-to-library">Save to Your Library</a>
+                <a id={this.props.album.id} onClick={this.removeAlbum} className="save-to-library">Remove from Your Library</a>
+                <a className="add-to-playlist">Add to Playlist</a>
+              </div>
+            </div>
           </div>
         </div>
 
