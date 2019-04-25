@@ -28,6 +28,7 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def destroy
+    @playlists = Playlist.joins(:playlists_users).where(playlists_users: {user_id: current_user.id})
     @playlist = Playlist.find_by(id: params[:id])
     @playlist.destroy
     render :index
