@@ -11,7 +11,7 @@ import {
   fetchSongsUsers
 } from '../../actions/song_actions';
 
-import { createAlbumsUser } from '../../actions/album_actions';
+import { createAlbumsUser, deleteAlbumsUser, fetchAlbumsUsers } from '../../actions/album_actions';
 // import { logout } from '../../actions/session_actions';
 // import { Link } from 'react-router-dom';
 
@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     user: state.entities.users[state.session.id],
     album: state.entities.albums[ownProps.match.params.id],
     albumId: ownProps.match.params.id,
+    albums: Object.values(state.entities.albums),
   });
 };
 
@@ -32,6 +33,8 @@ const mapDispatchToProps = dispatch => {
     deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id)),
     fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
     createAlbumsUser: (user_id, album_id) => dispatch(createAlbumsUser(user_id, album_id)),
+    deleteAlbumsUser: (id) => dispatch(deleteAlbumsUser(id)),
+    fetchAlbumsUsers: (id) => dispatch(fetchAlbumsUsers(id)),
   });
 };
 
