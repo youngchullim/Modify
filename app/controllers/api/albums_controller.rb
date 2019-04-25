@@ -3,6 +3,8 @@ class Api::AlbumsController < ApplicationController
 
   def show
     @album = Album.find_by(id: params[:id])
+    @user = current_user
+    @albums_users = @user.albums_users.map { |album| Album.find_by(id: album.album_id) }
   end
 
   def index
