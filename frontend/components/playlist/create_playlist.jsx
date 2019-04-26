@@ -26,7 +26,7 @@ class CreatePlaylist extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="create-playlist-modal">
         <form onSubmit={this.handleSubmit}>
           <button className="x-new-playlist" onClick={this.props.closeModal}>X</button>
           
