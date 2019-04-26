@@ -97,7 +97,7 @@ class SongsUser extends React.Component {
                 <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                 <div id={song.title + 1} className="dropdown-content">
                   <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
-                  <a>Add to Playlist</a>
+                  <a className="remove-padding">{this.props.openModal}</a>
                 </div>
                 <span className="song-duration">{song.duration}</span>
               </div>
