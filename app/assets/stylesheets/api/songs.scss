@@ -63,3 +63,20 @@
 .left-song {
   align-self: center;
 }
+
+.add-playlist {
+  color: rgb(173, 171, 163);
+  font-size: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.add-playlist:hover {
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+}
+.remove-padding {
+  padding: 0 !important;
+}
