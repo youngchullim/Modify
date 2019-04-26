@@ -85,23 +85,22 @@ class SongsUser extends React.Component {
             {/* USED IMPLICIT RETURN ON MAP */}
           {this.props.songs.map( (song,idx) => (
             <li className="li-songs" key={idx}>
-            <div>
+            <div className="song-index">
               {/* <button className="song-play-button"></button> */}
-              <span className="song-title">{song.title}</span>
-              <br />
-              <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
-              <span className="split-dot">.</span>
-              <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
-              
+              <div className="left-song">
+                <div className="song-title">{song.title}</div>
+                <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
+                <span className="split-dot">.</span>
+                <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+              </div>
               <div className="song-dropdown">
                 <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                 <div id={song.title + 1} className="dropdown-content">
                   <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
                   <a>Add to Playlist</a>
                 </div>
+                <span className="song-duration">{song.duration}</span>
               </div>
-              
-              <span className="song-duration">{song.duration}</span>
             </div>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
                 <source src={song.songUrl} />
