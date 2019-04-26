@@ -12,3 +12,10 @@ export const deletePlaylistsSong = (id) => {
     url: `/api/playlists_songs/${id}`
   });
 };
+
+export const fetchPlaylistsSongs = () => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/playlists_songs`
+  });
+};
