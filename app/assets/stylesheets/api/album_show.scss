@@ -42,6 +42,7 @@
   font-weight: bold;
   padding-bottom: 5px;
   width: 300px;
+  cursor: default;
 }
 
 // ARTIST NAME
@@ -96,6 +97,11 @@
   position: relative;
   top: -3px;
   margin: 0 6px;
+  cursor: default;
+}
+
+.album-year, .album-length {
+  cursor: default;
 }
 
 // ALBUM OPTIONS
@@ -154,6 +160,7 @@
 
 .albumshow-songtitle {
   color: white;
+  cursor: default;
 }
 
 
@@ -226,4 +233,5 @@
   font-size: 15px;
   letter-spacing: 0.7px;
   padding-left: 20px;
+  cursor: default;
 }
