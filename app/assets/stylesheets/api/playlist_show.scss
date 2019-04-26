@@ -2,7 +2,8 @@
   margin-left: 230px;
   height: 100vh;
   overflow: scroll;
-  background-color: #000000f5;
+  // background-color: #000000f5;
+  background: linear-gradient(to bottom right, #2D3E59, black);
   // background-color: gray;
   display: flex;
   flex-direction: row;
@@ -18,13 +19,13 @@
   flex-direction: column;
 }
 
-.playlistShow-photo-title:hover {
+.playlistShow-photo:hover {
   // change pointer for now but want to change opacity and add play icon
   // but only to photo
   cursor: pointer;
   // background-image: 
   opacity: 0.5;
-  box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
+  // box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
 }
 
 .playlistShow-info {
@@ -42,6 +43,8 @@
   margin-bottom: 15px;
   background-color: black;
   align-self: center;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);
+
 }
 
 .playlistShow-title {
@@ -51,6 +54,7 @@
   font-weight: bold;
   width: 300px;
   margin-bottom: 30px;
+  cursor: default;
 }
 
 // SONGS LENGTH
@@ -60,6 +64,7 @@
   letter-spacing: 1px;
   margin-bottom: 40px;
   margin-top: 8px;
+  cursor: default;
 }
 
 // PLAYLIST OPTIONS
