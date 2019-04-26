@@ -1,4 +1,10 @@
 class Api::PlaylistsSongsController < ApplicationController
+  def index
+    @playlist = Playlist.find_by(id: params[:playlist_id])
+    @playlists_songs = @playlist.playlists_songs.map {|song| Song.find_by(id: song.song_id)}
+    render :index
+  end
+  
   def create
     @playlists_song = PlaylistsSong.new(playlists_song_params)
 
