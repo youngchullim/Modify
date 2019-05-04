@@ -18,6 +18,7 @@ class ShowAlbum extends React.Component {
     this.saveSong = this.saveSong.bind(this);
     this.removeAlbum = this.removeAlbum.bind(this);
     this.saveAlbum = this.saveAlbum.bind(this);
+    this.currSong = this.currSong.bind(this);
   }
 
   componentDidMount() {
@@ -91,6 +92,10 @@ class ShowAlbum extends React.Component {
         this.props.deleteAlbumsUser(user.id);
       }
     }
+  }
+
+  currSong(e) {
+    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
   }
 
 // DECIDED TO JUST GO WITH DROPDOWN MENU WITH BOTH SAVE AND REMOVE 
@@ -168,7 +173,12 @@ class ShowAlbum extends React.Component {
                     <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                     <div id={song.title + 1} className="dropdown-content">
                       <a id={song.id} onClick={this.saveSong} className="save-to-library">Save to Your Library</a>
-                      <a className="add-to-playlist">Add to Playlist</a>
+                      {/* <a className="add-to-playlist">Add to Playlist</a> */}
+                      <a id={song.id} className="remove-padding" onClick={this.currSong}>
+                        <div onClick={() => this.props.openModal('add', song.id)}>
+                          <div className="add-playlist">Add to Playlist</div>
+                        </div>
+                      </a>
                     </div>
                   </div>
                   <span className="song-duration">{song.duration}</span>
