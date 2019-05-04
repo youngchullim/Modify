@@ -12,7 +12,10 @@ class ShowPlaylist extends React.Component {
 
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
-    this.props.fetchSongs();
+    // this.props.fetchSongs();
+
+// @@@@@@@@@ TEST @@@@@@@@@
+    this.props.fetchPlaylistsSongs(this.props.match.params.id);
   }
 
   // When clicked on Add/Remove 'playlist-library-add' class
@@ -22,8 +25,8 @@ class ShowPlaylist extends React.Component {
 
   removePlaylist(e) {
     let playlistId = this.props.match.params.id;
-    console.log(playlistId);
-    console.log(this.props.playlist);
+    // console.log(playlistId);
+    // console.log(this.props.playlist);
     this.props.deletePlaylist(playlistId);
   }
 
