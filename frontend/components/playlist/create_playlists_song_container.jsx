@@ -5,6 +5,7 @@ import CreatePlaylistsSong from './create_playlists_song';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { createPlaylist, fetchPlaylists } from '../../actions/playlist_actions';
 import { createPlaylistsSong } from '../../actions/song_actions';
+import { receiveCurrentSong } from '../../actions/music_actions';
 
 const mapStateToProps = state => {
   return({
@@ -12,7 +13,7 @@ const mapStateToProps = state => {
     formType: "Add",
     modal: state.ui.modal,
     playlists: Object.values(state.entities.playlists),
-    // song: state.entities.songs[state.song],
+    songId: state.ui.music.currentSong,
   });
 };
 
@@ -29,6 +30,7 @@ const mapDispatchToProps = dispatch => {
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
   });
 };
 
