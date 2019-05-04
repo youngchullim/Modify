@@ -23,13 +23,12 @@ class CreatePlaylistsSong extends React.Component {
     // console.log(playlistId);
     // console.log(e.currentTarget);
     // console.log(this.props.songId);
-    this.props.createPlaylistsSong(playlistId, songId);
+    this.props.createPlaylistsSong(playlistId, songId).then(this.props.closeModal);
   }
 
   // handleSubmit(e) {
   //   e.preventDefault();
   //   this.props.createPlaylist({name: this.state.name}).then(this.props.closeModal);
-
   // }
 
   // update(field) {
