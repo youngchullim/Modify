@@ -7,7 +7,7 @@ import {
   updatePlaylist, 
   deletePlaylist 
 } from '../../actions/playlist_actions';
-import { fetchSongs } from '../../actions/song_actions';
+import { fetchSongs, fetchPlaylistsSongs } from '../../actions/song_actions';
 
 // import { logout } from '../../actions/session_actions';
 // import { Link } from 'react-router-dom';
@@ -25,7 +25,8 @@ const mapDispatchToProps = dispatch => {
     fetchPlaylist: (id) => dispatch(fetchPlaylist(id)),
     updatePlaylist: (playlist) => dispatch(updatePlaylist(playlist)),
     deletePlaylist: (id) => dispatch(deletePlaylist(id)),
-    fetchSongs: () => dispatch(fetchSongs())
+    fetchSongs: () => dispatch(fetchSongs()),
+    fetchPlaylistsSongs: (id) => dispatch(fetchPlaylistsSongs(id)),
   });
 };
 
