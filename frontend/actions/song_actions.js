@@ -71,7 +71,7 @@ export const deletePlaylistsSong = (id) => (dispatch) => (
     .then( playlist => dispatch(receivePlaylist(playlist)))
 );
 
-export const fetchPlaylistsSongs = () => (dispatch) => (
-  PlaylistsSongApiUtil.fetchPlaylistsSongs()
+export const fetchPlaylistsSongs = (id) => (dispatch) => (
+  PlaylistsSongApiUtil.fetchPlaylistsSongs(id)
     .then( songs => dispatch(receiveSongs(songs)))
 );
