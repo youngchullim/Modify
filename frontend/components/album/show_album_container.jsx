@@ -10,6 +10,8 @@ import {
   deletePlaylistsSong,
   fetchSongsUsers
 } from '../../actions/song_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { receiveCurrentSong } from '../../actions/music_actions';
 
 import { createAlbumsUser, deleteAlbumsUser, fetchAlbumsUsers } from '../../actions/album_actions';
 // import { logout } from '../../actions/session_actions';
@@ -35,6 +37,9 @@ const mapDispatchToProps = dispatch => {
     createAlbumsUser: (user_id, album_id) => dispatch(createAlbumsUser(user_id, album_id)),
     deleteAlbumsUser: (id) => dispatch(deleteAlbumsUser(id)),
     fetchAlbumsUsers: (id) => dispatch(fetchAlbumsUsers(id)),
+    openModal: (modal,songId) => dispatch(openModal(modal,songId)),
+    closeModal: () => dispatch(closeModal()),
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
   });
 };
 
