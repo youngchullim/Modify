@@ -2,16 +2,8 @@
   json.set! playlist.id do
     json.id playlist.id
     json.song playlist.song
-    json.playlist playlist.playlist
+    json.playlist playlist.playlists
   end
-end
-
-json.playlist do
-  json.id @playlist.id
-  json.name @playlist.name
-  json.private @playlist.private
-  json.songIds @playlist.songs.map { |song| song.id }
-  json.playlistSongIds @playlist.playlists_songs.map { |song| song.id }
 end
 
 @playlist.songs.each do |song|
@@ -24,9 +16,11 @@ end
     json.duration song.duration
     json.album song.album
     json.albumId song.album.id
+    json.albumTitle song.album.title
     json.albumPhoto song.album.photo
     json.artist song.album_artist
     json.artistId song.album_artist.id
+    json.artistName song.album_artist.name
     json.artistPhoto song.album_artist.photo
   end
 end
