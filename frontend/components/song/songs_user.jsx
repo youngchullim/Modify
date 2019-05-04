@@ -6,12 +6,14 @@ class SongsUser extends React.Component {
     super(props);
 
     this.state = {
-      songs: this.props.songs
+      songs: this.props.songs,
+      song: 0
     };
 
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.removeSong = this.removeSong.bind(this);
+    this.addSongState = this.addSongState.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +80,15 @@ class SongsUser extends React.Component {
     }
   }
 
+  addSongState(e) {
+    let songId = e.currentTarget.id;
+    this.setState({
+      song: parseInt(songId)
+    });
+    // console.log(e.currentTarget.id);
+    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+  }
+
   render() {
     return(
       <div className="songs-component" onClick={this.closeDropdown}>
@@ -93,11 +104,16 @@ class SongsUser extends React.Component {
                 <span className="split-dot">.</span>
                 <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
               </div>
-              <div className="song-dropdown">
+              <div className="song-dropdown" >
                 <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                 <div id={song.title + 1} className="dropdown-content">
                   <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
-                  <a className="remove-padding">{this.props.openModal}</a>
+                  {/* <a id={song.id} className="remove-padding" onClick={this.addSongState}>{this.props.openModal}</a> */}
+                  <a id={song.id} className="remove-padding" onClick={this.addSongState}>
+                    <div onClick={() => this.props.openModal('add', song.id)}>
+                      <div className="add-playlist">Add to Playlist</div>
+                    </div>
+                  </a>
                 </div>
                 <span className="song-duration">{song.duration}</span>
               </div>
