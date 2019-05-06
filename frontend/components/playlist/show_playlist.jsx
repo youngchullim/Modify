@@ -10,6 +10,8 @@ class ShowPlaylist extends React.Component {
     this.removePlaylist = this.removePlaylist.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
+    this.saveSong = this.saveSong.bind(this); 
+    this.currSong = this.currSong.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +58,17 @@ class ShowPlaylist extends React.Component {
         }
       }
     }
+  }
+
+  currSong(e) {
+    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+  }
+
+  saveSong(e) {
+    let songId = e.target.id;
+    // let albumId = this.props.album.id;
+    this.props.createSongsUser(this.props.user.id, songId);
+    // this.props.createAlbumsUser(this.props.user.id, albumId);
   }
   
   render() {
