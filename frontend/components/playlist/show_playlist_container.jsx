@@ -7,7 +7,11 @@ import {
   updatePlaylist, 
   deletePlaylist 
 } from '../../actions/playlist_actions';
-import { fetchSongs, fetchPlaylistsSongs } from '../../actions/song_actions';
+import { 
+  fetchSongs, 
+  fetchPlaylistsSongs,
+  createSongsUser,
+ } from '../../actions/song_actions';
 import { receiveCurrentSong } from '../../actions/music_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -32,6 +36,7 @@ const mapDispatchToProps = dispatch => {
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
     receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
+    createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
   });
 };
 
