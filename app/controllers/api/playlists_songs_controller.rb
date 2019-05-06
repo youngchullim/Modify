@@ -21,7 +21,7 @@ class Api::PlaylistsSongsController < ApplicationController
     if @playlists_song.destroy
       @playlist = Playlist.find_by(id: @playlists_song.playlist_id)
       @playlist_song_ids = @playlist.songs.map { |song| song.id}
-      @user = User.find_by(id: @playlist.playlists_users.user_id)
+      # @user = User.find_by(id: @playlist.playlists_users.user_id)
       render json: ["Removed from Playlist"], status: 200
     end
   end
