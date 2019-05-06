@@ -22,5 +22,7 @@ end
     json.artistId song.album_artist.id
     json.artistName song.album_artist.name
     json.artistPhoto song.album_artist.photo
+
+    json.songsPlaylists song.playlists_songs.map{|songsPlaylist| songsPlaylist }
   end
 end
