@@ -154,7 +154,8 @@ class ShowAlbum extends React.Component {
               <div id={this.props.album.title + 1} className="dropdown-content">
                 <a id={this.props.album.id} onClick={this.saveAlbum} className="save-to-library">Save to Your Library</a>
                 <a id={this.props.album.id} onClick={this.removeAlbum} className="save-to-library">Remove from Your Library</a>
-                <a className="add-to-playlist">Add to Playlist</a>
+{/* BONUS: NEED TO BE ABLE TO ADD ALL THE SONGS IN ALBUM TO PLAYLIST */}
+                {/* <a className="add-to-playlist">Add to Playlist</a> */}
               </div>
             </div>
           </div>
