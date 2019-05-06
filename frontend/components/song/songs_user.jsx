@@ -18,6 +18,9 @@ class SongsUser extends React.Component {
 
   componentDidMount() {
     this.props.fetchSongsUsers(this.props.user.id);
+
+    // TEST 
+    // this.props.fetchSongs();
   }
 
   // componentDidUpdate() {
