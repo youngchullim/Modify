@@ -39,7 +39,7 @@ class CreatePlaylistsSong extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="add-to-playlist-all">
         <form onSubmit={this.handleSubmit}>
           <button className="x-new-playlist" onClick={this.props.closeModal}>X</button>
           <h1 className="create-playlist-header">Add to Playlist</h1>
@@ -55,9 +55,11 @@ class CreatePlaylistsSong extends React.Component {
               </li>))}
             </ul>
           </div>
-
-          <button className="playlist-cancel" onClick={this.props.closeModal}>CANCEL</button>
-          <span>{this.props.openModal}</span>
+          <div className="add-to-playlist-buttons">
+            {/* <span>{this.props.openModal}</span> */}
+            <button className="playlist-create" onClick={()=> this.props.openModal('create')}>NEW PLAYLIST</button>
+            <button className="playlist-cancel" onClick={this.props.closeModal}>CANCEL</button>
+          </div>
         </form>
       </div>
     )
