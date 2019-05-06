@@ -12,6 +12,7 @@ class ShowPlaylist extends React.Component {
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveSong = this.saveSong.bind(this); 
     this.currSong = this.currSong.bind(this);
+    this.saveAlbum = this.saveAlbum.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +71,11 @@ class ShowPlaylist extends React.Component {
     this.props.createSongsUser(this.props.user.id, songId);
     // this.props.createAlbumsUser(this.props.user.id, albumId);
   }
+
+  saveAlbum(e) {
+    let albumId = e.target.id;
+    this.props.createAlbumsUser(this.props.user.id, albumId);
+  }
   
   render() {
     let playlistLibrary = "REMOVE FROM YOUR LIBRARY";
@@ -112,7 +118,8 @@ class ShowPlaylist extends React.Component {
                   <div className="song-dropdown">
                     <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                     <div id={song.title + 1} className="dropdown-content">
-                      <a id={song.id} onClick={this.saveSong} className="save-to-library">Save to Your Library</a>
+                      <a id={song.id} onClick={this.saveSong} className="save-to-library">Save Song to Your Library</a>
+                      <a id={song.albumId} onClick={this.saveAlbum} className="save-to-library">Save Album to Your Library</a>
                       {/* <a className="add-to-playlist">Add to Playlist</a> */}
                       <a id={song.id} className="remove-padding" onClick={this.currSong}>
                         <div onClick={() => this.props.openModal('add', song.id)}>
