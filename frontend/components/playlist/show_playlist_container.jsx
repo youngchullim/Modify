@@ -8,6 +8,8 @@ import {
   deletePlaylist 
 } from '../../actions/playlist_actions';
 import { fetchSongs, fetchPlaylistsSongs } from '../../actions/song_actions';
+import { receiveCurrentSong } from '../../actions/music_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 // import { logout } from '../../actions/session_actions';
 // import { Link } from 'react-router-dom';
@@ -27,6 +29,9 @@ const mapDispatchToProps = dispatch => {
     deletePlaylist: (id) => dispatch(deletePlaylist(id)),
     fetchSongs: () => dispatch(fetchSongs()),
     fetchPlaylistsSongs: (id) => dispatch(fetchPlaylistsSongs(id)),
+    openModal: (modal,songId) => dispatch(openModal(modal,songId)),
+    closeModal: () => dispatch(closeModal()),
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
   });
 };
 
