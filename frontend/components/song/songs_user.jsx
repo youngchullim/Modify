@@ -22,18 +22,6 @@ class SongsUser extends React.Component {
     // TEST 
     // this.props.fetchSongs();
   }
-
-  // componentDidUpdate() {
-  //   this.setState({
-  //     songs: this.props.songs
-  //   });
-  // }
-
-  // componentWillReceiveProps(props) {
-  //   this.setState({
-  //     songs: this.props.fetchSongsUsers(this.props.user.id)
-  //   });
-  // }
    
   songDropdown(e) {
     let songName = e.target.id + 1;
@@ -93,11 +81,12 @@ class SongsUser extends React.Component {
   }
 
   render() {
+    let songs = this.props.songs.filter(song => song.title);
     return(
       <div className="songs-component" onClick={this.closeDropdown}>
         <ul className="ul-songs">
             {/* USED IMPLICIT RETURN ON MAP */}
-          {this.props.songs.map( (song,idx) => (
+          {songs.map( (song,idx) => (
             <li className="li-songs" key={idx}>
             <div className="song-index">
               {/* <button className="song-play-button"></button> */}
