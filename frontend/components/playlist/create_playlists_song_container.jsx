@@ -19,13 +19,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return({
-    openModal: (
-      <div className="playlist-button" role="button" onClick={() => dispatch(openModal('create'))}>
-        <div className="new-playlist">
-          <div className="playlist-center">NEW PLAYLIST</div>
-        </div>
-      </div>
-    ),
+    // openModal: (
+    //   <div className="" role="button" onClick={() => dispatch(openModal('create'))}>
+    //     <div className="playlist-create">
+    //       <div className="playlist-center">NEW PLAYLIST</div>
+    //     </div>
+    //   </div>
+    // ),
+    openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
