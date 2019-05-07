@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { button, Link, NavLink } from 'react-router-dom';
 
+import OverviewContainer from './overview_container';
+import RelatedContainer from './related_container';
 
 class ShowArtist extends React.Component {
   constructor(props) {
@@ -102,8 +104,8 @@ class ShowArtist extends React.Component {
           </div>
         </div>
         <Switch>
-          {/* <ProtectedRoute path="/artists/:id" component={ShowArtistOverviewContainer}/>
-          <ProtectedRoute path="/artists/:id/related" component={ShowArtistRelatedContainer}/> */}
+          <ProtectedRoute exact path="/artists/:id" component={OverviewContainer}/>
+          <ProtectedRoute path="/artists/:id/related" component={RelatedContainer}/>
         </Switch>
       </div>
     )
