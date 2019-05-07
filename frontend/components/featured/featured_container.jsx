@@ -1,18 +1,22 @@
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import Featured from './featured';
-import { Link } from 'react-router-dom';
+// TEST
+
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetchSongs, fetchSong } from '../../actions/song_actions';
+import Featured from './featured';
 
 const mapStateToProps = state => {
   return({
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    songs: Object.values(state.entities.songs)
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    logout: () => dispatch(logout())
+    fetchSongs: () => dispatch(fetchSongs()),
+    fetchSong: (id) => dispatch(fetchSong(id))
   });
 };
 
