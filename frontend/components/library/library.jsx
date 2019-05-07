@@ -8,7 +8,9 @@ import SongsUserContainer from '../song/songs_user_container';
 
 // import AlbumContainer from '../album/album_container';
 import AlbumsUserContainer from '../album/albums_user_container';
-import ArtistContainer from '../artist/artist_container';
+
+// import ArtistContainer from '../artist/artist_container';
+import ArtistsUserContainer from '../artist/artists_user_container';
 
 import ShowPlaylistContainer from '../playlist/show_playlist_container';
 import ShowAlbumContainer from '../album/show_album_container';
@@ -99,7 +101,8 @@ class Library extends React.Component {
           {/* <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/> */}
           <ProtectedRoute exact path="/library/albums" component={AlbumsUserContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
-          <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/>
+          {/* <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/> */}
+          <ProtectedRoute exact path="/library/artists" component={ArtistsUserContainer}/>
           <ProtectedRoute path="/artists/:id" component={ShowArtistContainer}/>
           <ProtectedRoute path="/playlists/:id" component={ShowPlaylistContainer} />
           <ProtectedRoute path="/library" component={PlaylistContainer}/>
