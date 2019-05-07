@@ -8,6 +8,8 @@ import {
   fetchArtistsUsers
 } from '../../actions/artist_actions';
 
+import { fetchAlbums, fetchAlbum } from '../../actions/album_actions';
+
 import { 
   fetchSongs, 
   fetchSong, 
@@ -30,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
     artist: state.entities.artists[ownProps.match.params.id],
     artistId: ownProps.match.params.id,
     songs: Object.values(state.entities.songs),
-
+    albums: Object.values(state.entities.albums),
   });
 };
 
@@ -47,6 +49,7 @@ const mapDispatchToProps = dispatch => {
     createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
     deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
     createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
+    fetchAlbums: () => dispatch(fetchAlbums()),
 
 // TEST
     fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
