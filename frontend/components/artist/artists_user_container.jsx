@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ArtistsUser from './artist';
+import ArtistsUser from './artists_user';
 import { 
   fetchArtists,
   fetchArtist,
