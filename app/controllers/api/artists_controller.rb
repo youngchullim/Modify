@@ -3,6 +3,8 @@ class Api::ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find_by(id: params[:id])
+    @user = current_user
+    @artists_users = @user.artists_users.map { |artist| Artist.find_by(id: artist.artist_id) }
   end
 
   def index
@@ -11,6 +13,6 @@ class Api::ArtistsController < ApplicationController
 
   private
   def artist_parans
-    params.require(:artist).permit(:name, :bio, :genre)
+    params.require(:artist).permit(:name, :biography, :genre)
   end
 end
