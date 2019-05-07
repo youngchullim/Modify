@@ -75,7 +75,7 @@ class ShowArtist extends React.Component {
         <div className="photo-background">
           <div className="artist-name-title">{this.props.artist.name}</div>
           <div className="artist-show-buttons">
-            <button className="album-play">PLAY</button>
+            <button className="artist-play">PLAY</button>
             <div className="song-dropdown">
               <button id={this.props.artist.name} className="album-playlist dropdown-button" onClick={this.songDropdown}>...</button>
               <div id={this.props.artist.name + 1} className="dropdown-content">
@@ -91,13 +91,13 @@ class ShowArtist extends React.Component {
               <li className="library-playlists">
                     {/* USED !IMPORTANT CSS RULE */}
                 <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to={`/artists/${this.props.artist.id}`}>
-                  <span className="playlists l-tabs">Overview</span>
+                  <span className="playlists l-tabs a-s-tabs">OVERVIEW</span>
                 </NavLink>
               </li>
               <li className="library-songs">
                     {/* USED !IMPORTANT CSS RULE */}
                 <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to={`/artists/${this.props.artist.id}/related`}>
-                  <span className="songs l-tabs">Related Artists</span>
+                  <span className="songs l-tabs a-s-tabs">RELATED ARTISTS</span>
                 </NavLink>
               </li>
             </ul>
