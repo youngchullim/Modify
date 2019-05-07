@@ -1,0 +1,24 @@
+.artist-show-page {
+  margin-left: 215px;
+  height: 100vh;
+  overflow: scroll;
+  background: linear-gradient(to bottom right, #324455, black);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding-bottom: 200px;
+}
+
+// .photo-background {
+//   background-image: image-url("pink_sunset.jpeg");
+//   max-height: 400px;
+//   width: 100%;
+// }
+
+.artist-name-title {
+  color: white;
+  font-size: 60px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
