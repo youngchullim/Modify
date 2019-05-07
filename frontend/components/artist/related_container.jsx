@@ -1,32 +1,23 @@
-// TEST
-
 import React from 'react';
 import { connect } from 'react-redux';
 
-import AlbumsUser from '../album/albums_user';
-import { 
-  fetchAlbums, 
-  fetchAlbum,
-  createAlbumsUser,
-  deleteAlbumsUser,
-  fetchAlbumsUsers
-} from '../../actions/album_actions';
+import RelatedArtist from './related';
+import { fetchArtists, fetchArtist } from '../../actions/artist_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return({
     user: state.entities.users[state.session.id],
-    albums: Object.values(state.entities.albums)
+    artists: Object.values(state.entities.artists),
+    artist: state.entities.artists[ownProps.match.params.id],
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    fetchAlbums: () => dispatch(fetchAlbums()),
-    fetchAlbum: (id) => dispatch(fetchAlbum(id)),
-    createAlbumsUser: (user_id, album_id) => dispatch(createAlbumsUser(user_id, album_id)),
-    deleteAlbumsUser: (id) => dispatch(deleteAlbumsUser(id)),
-    fetchAlbumsUsers: (id) => dispatch(fetchAlbumsUsers(id))
+    fetchArtists: () => dispatch(fetchArtists()),
+    fetchArtist: (id) => dispatch(fetchArtist(id))
   });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlbumsUser);
+export default connect(mapStateToProps, mapDispatchToProps)(RelatedArtist);
+
