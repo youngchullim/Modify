@@ -7,14 +7,15 @@ class ArtistsUser extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchArtists();
+    this.props.fetchArtistsUsers(this.props.user.id);
+    
+    // TEST
+    // this.props.fetchArtists();
   }
   
   render() {
     return(
       <div className="album-component">
-        {/* <h1>Albums</h1> */}
-
         <ul className="ul-albums">
           {this.props.artists.map( (artist, idx) => (
             <li className="li-albums" key={idx}>
