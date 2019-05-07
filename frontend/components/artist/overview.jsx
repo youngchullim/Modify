@@ -1,26 +1,3 @@
-// import React from 'react';
-// import { button, Link, NavLink } from 'react-router-dom';
-
-// class Overview extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-  
-//   componentDidMount() {
-//     this.props.fetchArtistsUsers(this.props.user.id);
-
-//   }
-  
-//   render() {
-//     return(
-
-//     )
-//   }
-// }
-
-// export default Overview
-
-
 import React from 'react';
 import { button, Link, NavLink } from 'react-router-dom';
 
@@ -30,7 +7,8 @@ class Overview extends React.Component {
 
     this.state = {
       songs: this.props.artist.songs,
-      song: 0
+      song: 0,
+      albums: this.props.artist.albums
     };
 
     this.songDropdown = this.songDropdown.bind(this);
@@ -43,6 +21,7 @@ class Overview extends React.Component {
   componentDidMount() {
     this.props.fetchSongsUsers(this.props.user.id);
     this.props.fetchArtist(this.props.artistId);
+
     // TEST 
     // this.props.fetchSongs();
   }
@@ -112,6 +91,7 @@ class Overview extends React.Component {
 
   render() {
     let songs = this.props.artist.songs.filter(song => song.title);
+    // let albums = this.props.artist.albums;
     return(
       <div className="over-component" onClick={this.closeDropdown}>
         <h1 className="popular-tab">Popular</h1>
@@ -151,6 +131,18 @@ class Overview extends React.Component {
           </ul>
         </div>
         <h1 className="popular-tab">Albums</h1>
+        <div className="album-component no-flex">
+          <ul className="ul-albums">
+            {this.props.artist.albums.map( (album, idx) => (
+              <li className="li-albums" key={idx}>
+              <NavLink to={`/albums/${album.id}`}>
+                <img className="album-photo" src={album.photo} />
+                <div className="album-name">{album.title}</div>
+              </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
