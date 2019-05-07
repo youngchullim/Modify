@@ -96,12 +96,9 @@ class Library extends React.Component {
             {/* MOVED TO APP */}
         {/* <Modal /> */}
         <Switch>
-          {/* <ProtectedRoute path="/library/songs" component={SongContainer}/> */}
           <ProtectedRoute path="/library/songs" component={SongsUserContainer}/>
-          {/* <ProtectedRoute exact path="/library/albums" component={AlbumContainer}/> */}
           <ProtectedRoute exact path="/library/albums" component={AlbumsUserContainer}/>
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
-          {/* <ProtectedRoute exact path="/library/artists" component={ArtistContainer}/> */}
           <ProtectedRoute exact path="/library/artists" component={ArtistsUserContainer}/>
           <ProtectedRoute path="/artists/:id" component={ShowArtistContainer}/>
           <ProtectedRoute path="/playlists/:id" component={ShowPlaylistContainer} />
