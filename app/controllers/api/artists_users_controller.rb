@@ -17,7 +17,7 @@ class Api::ArtistsUsersController < ApplicationController
 
   def destroy
     @artists_user = ArtistsUser.find_by(id: params[:id])
-    @user = User.find_by(id: @artists_user.user_id)
+    # @user = User.find_by(id: @artists_user.user_id)
 
     @artists_user.destroy
     render json: ["Removed from Library"], status: 200
