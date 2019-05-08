@@ -3,9 +3,16 @@
   height: 100vh;
   margin-left: 230px;
   position: static; 
-  overflow: hidden;
+  overflow: scroll;
   background-color:#000000f5;
-  // display: flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 .search-input {
@@ -30,7 +37,7 @@
 .search-content {
   text-align: center;
   position: relative;
-  top: 10%;
+  padding-top: 100px;
 }
 
 .search-title {
