@@ -84,10 +84,10 @@ class SearchResult extends React.Component{
     songs = songs.slice(0,5);
 
     let artists = this.props.artists.filter(artist => artist.name.toLowerCase().includes(this.props.searchBar.toLowerCase()));
-    artists = artists.slice(0,5);
+    artists = artists.slice(0,10);
 
     let albums = this.props.albums.filter(album => album.title.toLowerCase().includes(this.props.searchBar.toLowerCase()));
-    albums = albums.slice(0,5);
+    albums = albums.slice(0,10);
 
 
     if (this.props.searchBar !== "") {
@@ -130,6 +130,7 @@ class SearchResult extends React.Component{
             ))}
           </ul>
 
+
 {/* ARTISTS */}
           <h1 className="top-result-tabs">Artists</h1>
           <ul className="ul-albums search-artists">
@@ -144,16 +145,20 @@ class SearchResult extends React.Component{
           </ul>
 
 
-          {/* {artists.map((artist, idx) => (
-            <li key={idx}>{artist.name}</li>
-            ))} */}
-
-
 {/* ALBUMS */}
           <h1 className="top-result-tabs">Albums</h1>
-          {albums.map((album, idx) => (
-            <li key={idx}>{album.title}</li>
+          <ul className="ul-albums search-artists">
+            {albums.map( (album, idx) => (
+              <li className="li-albums" key={idx}>
+              <NavLink to={`/albums/${album.id}`}>
+                <img className="album-photo" src={album.photo} />
+                <div className="album-name">{album.title}</div>
+              </NavLink>
+                <div><Link className="album-artist albumshow-artistname" to={`/artists/${album.artist.id}`}>{album.artist.name}</Link></div>
+              </li>
             ))}
+          </ul>
+
         </div>
       );
     }
