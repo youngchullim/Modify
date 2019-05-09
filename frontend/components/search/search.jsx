@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import SearchResultContainer from './search_result_container';
 import SearchArtistsContainer from './search_artists_container';
 import SearchSongsContainer from './search_songs_container';
+import SearchAlbumsContainer from './search_albums_container';
 
 class Search extends React.Component {
   constructor(props) {
@@ -111,7 +112,7 @@ class Search extends React.Component {
             <Route exact path='/search' render={(props) => <SearchResultContainer {...props} queries={this.state.searchBar} />}  />
             <Route exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
             <Route exact path='/search/songs' render={(props) => <SearchSongsContainer {...props} queries={this.state.searchBar} />}  />
-            {/* <Route exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
+            <Route exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  />
           </Switch>
         </section>
       </div>
