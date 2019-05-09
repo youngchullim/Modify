@@ -8,13 +8,13 @@ import { fetchAlbums } from '../../actions/album_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return({
     user: state.entities.users[state.session.id],
     artists: Object.values(state.entities.artists),
     albums: Object.values(state.entities.albums),
     playlists: Object.values(state.entities.playlists),
-    searchBar: ""
+    searchBar: ownProps.queries,
   });
 };
 
