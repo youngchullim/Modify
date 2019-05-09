@@ -11,12 +11,19 @@ class SearchResult extends React.Component{
     super(props);
   }
   render() {
-
+    let result;
+    if (this.props.searchBar !== "") {
+      result = (
+        <div className="search-results">
+          SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
+          SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
+          SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
+        </div>
+      );
+    }
     return (
       <div>
-        SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
-        SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
-        SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST SEARCHTEST 
+        {result}
       </div>
     )
   }
