@@ -6,10 +6,8 @@ import { ProtectedRoute } from '../../util/route_util';
 import { withRouter } from 'react-router-dom';
 
 import SearchResultContainer from './search_result_container';
-
-import ShowArtistContainer from '../artist/show_artist_container';
-import ShowAlbumContainer from '../album/show_album_container';
-import ShowPlaylistContainer from '../playlist/show_playlist_container';
+import SearchArtistsContainer from './search_artists_container';
+import SearchSongsContainer from './search_songs_container';
 
 class Search extends React.Component {
   constructor(props) {
@@ -67,7 +65,7 @@ class Search extends React.Component {
       result = (
         <div className="search-content">
           <h2 className="search-title">Search Modify</h2>
-          <div className="search-msg">Find your favorite songs, albums, artists, and playlists</div>
+          <div className="search-msg">Find your favorite songs, artists, and albums</div>
         </div>
       );
     }
@@ -86,9 +84,9 @@ class Search extends React.Component {
           {result}
           <Switch>
             <Route exact path='/search' render={(props) => <SearchResultContainer {...props} queries={this.state.searchBar} />}  />
-            {/* <Route exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
+            <Route exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
             <Route exact path='/search/songs' render={(props) => <SearchSongsContainer {...props} queries={this.state.searchBar} />}  />
-            <Route exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
+            {/* <Route exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
           </Switch>
         </section>
       </div>
