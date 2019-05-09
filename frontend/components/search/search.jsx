@@ -15,6 +15,7 @@ class Search extends React.Component {
 
     this.state = { searchBar: ""};
     this.handleChange = this.handleChange.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
   handleChange(e) {
@@ -24,6 +25,30 @@ class Search extends React.Component {
       this.props.fetchArtists(e.currentTarget.value);
       this.props.fetchAlbums(e.currentTarget.value);
     } 
+  }
+
+  closeDropdown(e) {
+    let songName = e.target.id + 1;
+    
+    if (!e.target.matches('.dropdown-button')) {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    } else {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.id === songName) {
+          continue;
+        } else if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
   }
   
 
@@ -71,7 +96,7 @@ class Search extends React.Component {
     }
 
     return(
-      <div className="navbar-search">
+      <div className="navbar-search" onClick={this.closeDropdown}>
         <label className="search-bar">
           <input type="text"
             className="search-input"
