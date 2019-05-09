@@ -6,3 +6,5 @@ json.playlists song.playlists
 # SONG URL
 json.songUrl song.song
 json.albumUrl song.album.photo
+
+json.songsUsers song.songs_users
