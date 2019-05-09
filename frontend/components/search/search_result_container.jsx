@@ -5,7 +5,16 @@ import SearchResult from './search_result';
 
 import { fetchArtists } from '../../actions/artist_actions';
 import { fetchAlbums } from '../../actions/album_actions';
-import { fetchPlaylists } from '../../actions/playlist_actions';
+import {   
+  fetchSongs, 
+  fetchSongsUsers, 
+  createPlaylistsSong, 
+  deletePlaylistsSong,
+  deleteSongsUser,
+  createSongsUser,  
+} from '../../actions/song_actions';
+import { receiveCurrentSong } from '../../actions/music_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,17 +22,26 @@ const mapStateToProps = (state, ownProps) => {
     user: state.entities.users[state.session.id],
     artists: Object.values(state.entities.artists),
     albums: Object.values(state.entities.albums),
-    playlists: Object.values(state.entities.playlists),
+    songs: Object.values(state.entities.songs),
     searchBar: ownProps.queries,
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    logout: () => dispatch(logout()),
-    fetchAlbums: () => dispatch(fetchAlbums()),
-    fetchArtists: () => dispatch(fetchArtists()),
-    fetchPlaylists: () => dispatch(fetchPlaylists())
+    fetchAlbums: (queries) => dispatch(fetchAlbums(queries)),
+    fetchArtists: (queries) => dispatch(fetchArtists(queries)),
+    fetchSongs: (queries) => dispatch(fetchSongs(queries)),   
+
+    fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
+    createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
+    deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id)),
+    deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
+    openModal: (modal,songId) => dispatch(openModal(modal,songId)),
+    closeModal: () => dispatch(closeModal()),
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
+    createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
+
   });
 };
 
