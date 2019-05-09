@@ -130,11 +130,26 @@ class SearchResult extends React.Component{
             ))}
           </ul>
 
-          
+{/* ARTISTS */}
           <h1 className="top-result-tabs">Artists</h1>
-          {artists.map((artist, idx) => (
-            <li key={idx}>{artist.name}</li>
+          <ul className="ul-albums search-artists">
+            {artists.map( (artist, idx) => (
+              <li className="li-albums" key={idx}>
+              <NavLink to={`/artists/${artist.id}`}>
+                <img className="artist-photo" src={artist.photo} />
+                <div className="album-name">{artist.name}</div>
+              </NavLink>
+              </li>
             ))}
+          </ul>
+
+
+          {/* {artists.map((artist, idx) => (
+            <li key={idx}>{artist.name}</li>
+            ))} */}
+
+
+{/* ALBUMS */}
           <h1 className="top-result-tabs">Albums</h1>
           {albums.map((album, idx) => (
             <li key={idx}>{album.title}</li>
