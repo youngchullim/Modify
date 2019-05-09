@@ -1,7 +1,9 @@
 import React from 'react';
 import { button, Link, NavLink } from 'react-router-dom';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
 import { ProtectedRoute } from '../../util/route_util';
+import { withRouter } from 'react-router-dom';
 
 import SearchResultContainer from './search_result_container';
 
@@ -18,14 +20,19 @@ class Search extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({searchBar: e.target.value});
+    this.setState({searchBar: e.currentTarget.value});
+    if (e.currentTarget.value !== "") {
+      this.props.fetchSongs(e.currentTarget.value);
+      this.props.fetchArtists(e.currentTarget.value);
+      this.props.fetchAlbums(e.currentTarget.value);
+    } 
   }
   
 
   render() {
     let result;
 
-    if (this.state.searchBar) {
+    if (this.state.searchBar !== "") {
       result = (
         <div className="search-tabs">
           <ul className="library-tabs">
@@ -77,15 +84,16 @@ class Search extends React.Component {
         </label>
         <section className='content-spacing'>
           {result}
-
-          {/* <ProtectedRoute exact path='/search/artists' render={(props) => <SearchResultContainer {...props} queries={this.state.searchBar} />}  />
-          <ProtectedRoute exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
-          <ProtectedRoute exact path='/search/songs' render={(props) => <SearchSongsContainer {...props} queries={this.state.searchBar} />}  />
-          <ProtectedRoute exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
+          <Switch>
+            <Route exact path='/search' render={(props) => <SearchResultContainer {...props} queries={this.state.searchBar} />}  />
+            {/* <Route exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
+            <Route exact path='/search/songs' render={(props) => <SearchSongsContainer {...props} queries={this.state.searchBar} />}  />
+            <Route exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
+          </Switch>
         </section>
       </div>
     )
   }
 }
 
-export default Search;
+export default withRouter(Search);
