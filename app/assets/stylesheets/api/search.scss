@@ -4,7 +4,8 @@
   margin-left: 230px;
   position: static; 
   overflow: scroll;
-  background-color:#000000f5;
+  // background-color:#000000f5;
+  background: linear-gradient(to bottom right, rgb(94, 25, 25), black);
   display: flex;
   flex-direction: column;
 }
