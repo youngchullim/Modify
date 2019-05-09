@@ -27,9 +27,33 @@ class Search extends React.Component {
 
     if (this.state.searchBar) {
       result = (
-        <div className="search-results-container">
-          <Route exact path="/search" render={ () => <Redirect to="/search/top"/> }/>
-          <Route path="/search/:tab" render={ () => <SearchResultContainer searchBar={this.state.searchBar}/> }/>
+        <div className="search-tabs">
+          <ul className="library-tabs">
+            <li className="library-playlists">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="playlists-link l-link" activeStyle={{}} activeClassName="selected-library-tab" exact to={`/search`}>
+                <span className="playlists l-tabs a-s-tabs">TOP RESULTS</span>
+              </NavLink>
+            </li>
+            <li className="library-songs">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to={`/search/artists`}>
+                <span className="songs l-tabs a-s-tabs">ARTISTS</span>
+              </NavLink>
+            </li>
+            <li className="library-songs">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to={`/search/songs`}>
+                <span className="songs l-tabs a-s-tabs">SONGS</span>
+              </NavLink>
+            </li>
+            <li className="library-songs">
+                  {/* USED !IMPORTANT CSS RULE */}
+              <NavLink className="songs-link l-link" activeStyle={{}} activeClassName="selected-library-tab" to={`/search/albums`}>
+                <span className="songs l-tabs a-s-tabs">ALBUMS</span>
+              </NavLink>
+            </li>
+          </ul>
         </div>
       );
     } else {
@@ -54,9 +78,10 @@ class Search extends React.Component {
         <section className='content-spacing'>
           {result}
 
-          <ProtectedRoute exact path='/search/artists/:artistId' component={ShowArtistContainer} />
-          <ProtectedRoute exact path='/search/playlists/:playlistId' component={ShowPlaylistContainer} />
-          <ProtectedRoute exact path='/search/albums/:albumId' component={ShowAlbumContainer} />
+          {/* <ProtectedRoute exact path='/search/artists' render={(props) => <SearchResultContainer {...props} queries={this.state.searchBar} />}  />
+          <ProtectedRoute exact path='/search/artists' render={(props) => <SearchArtistsContainer {...props} queries={this.state.searchBar} />}  />
+          <ProtectedRoute exact path='/search/songs' render={(props) => <SearchSongsContainer {...props} queries={this.state.searchBar} />}  />
+          <ProtectedRoute exact path='/search/albums' render={(props) => <SearchAlbumsContainer {...props} queries={this.state.searchBar} />}  /> */}
         </section>
       </div>
     )
