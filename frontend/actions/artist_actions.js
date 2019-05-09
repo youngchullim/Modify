@@ -20,8 +20,8 @@ export const receiveArtist = (artist) => {
   });
 };
 
-export const fetchArtists = () => (dispatch) => (
-  ArtistApiUtil.fetchArtists()
+export const fetchArtists = (queries) => (dispatch) => (
+  ArtistApiUtil.fetchArtists(queries)
     .then( artists => dispatch(receiveArtists(artists)))
 );
 

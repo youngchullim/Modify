@@ -20,8 +20,8 @@ export const receiveAlbum = (album) => {
   });
 };
 
-export const fetchAlbums = () => (dispatch) => (
-  AlbumApiUtil.fetchAlbums()
+export const fetchAlbums = (queries) => (dispatch) => (
+  AlbumApiUtil.fetchAlbums(queries)
     .then( albums => dispatch(receiveAlbums(albums)))
 );
 

@@ -23,8 +23,8 @@ export const receiveSong = (song) => {
   });
 };
 
-export const fetchSongs = () => (dispatch) => (
-  SongApiUtil.fetchSongs()
+export const fetchSongs = (queries) => (dispatch) => (
+  SongApiUtil.fetchSongs(queries)
     .then( songs => dispatch(receiveSongs(songs)))
 );
 
