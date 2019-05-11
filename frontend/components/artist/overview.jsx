@@ -91,7 +91,6 @@ class Overview extends React.Component {
 
   render() {
     let songs = this.props.artist.songs.filter(song => song.title);
-    // let albums = this.props.artist.albums;
     return(
       <div className="over-component" onClick={this.closeDropdown}>
         <h1 className="popular-tab">Popular</h1>
