@@ -8,5 +8,6 @@
     json.albumIds artist.albums.map { |album| album.id }
     json.songIds artist.album_songs.map { |song| song.id }
     json.songs artist.album_songs
+    json.albums artist.albums
   end
 end
