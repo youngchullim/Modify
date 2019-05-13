@@ -7,13 +7,16 @@ import {
   fetchCurrentSong,
   fetchNextSong,
   fetchPrevSong,
-  receivePlay
+  receivePlay,
+  fetchCurrentPlaylist,
+  receiveSongsQueue,
 } from '../../actions/music_actions';
 
 
 const mapStateToProps = state => {
   return({
-    
+    user: state.entities.users[state.session.id],
+    currentSong: state.ui.music.currentSong,
   });
 };
 
@@ -22,7 +25,10 @@ const mapDispatchToProps = dispatch => {
     fetchCurrentSong: (id) => (dispatch(fetchCurrentSong(id))),
     fetchNextSong: (id) => (dispatch(fetchNextSong(id))),
     fetchPrevSong: (id) => (dispatch(fetchPrevSong(id))),
-    receivePlay: () => (dispatch(receivePlay()))
+    receivePlay: () => (dispatch(receivePlay())),
+    fetchCurrentPlaylist: (id) => dispatch(fetchCurrentPlaylist(id)),
+    receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
+
   });
 };
 
