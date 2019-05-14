@@ -37,6 +37,13 @@
   cursor: default;
 }
 
+.song-title-green {
+  margin-left: 20px;
+  color: #1DD761;
+  font-weight: 300;
+  cursor: default;
+}
+
 .song-artist {
   margin-left: 20px;
 }
@@ -63,6 +70,8 @@
 
 .left-song {
   align-self: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .add-playlist {
@@ -80,4 +89,11 @@
 }
 .remove-padding {
   padding: 0 !important;
+}
+
+// MUSIC PIC
+.music-icon {
+  height: 20px;
+  width: 20px;
+  align-self: center;
 }
