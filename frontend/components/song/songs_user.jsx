@@ -7,13 +7,22 @@ class SongsUser extends React.Component {
 
     this.state = {
       songs: this.props.songs,
-      song: 0
+      song: 0,
+      mouseHover: false,
+      mouseIdx: null,
     };
 
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.removeSong = this.removeSong.bind(this);
     this.addSongState = this.addSongState.bind(this);
+
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
+
+    this.changeIcon = this.changeIcon.bind(this);
+    this.changeDuration = this.changeDuration.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
   }
 
   componentDidMount() {
@@ -76,40 +85,114 @@ class SongsUser extends React.Component {
     this.setState({
       song: parseInt(songId)
     });
-    // console.log(e.currentTarget.id);
     this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
   }
 
+  mouseEnter(idx) {
+    return() => {
+      this.setState({
+        mouseHover: true,
+        mouseIdx: idx
+      });
+    };
+  }
+
+  mouseLeave() {
+    return() => {
+      this.setState({
+        mouseHover: false,
+        mouseIdx: null
+      });
+    };
+  }
+
+  changeIcon(e) {
+    e.target.src = window.whiteMusic2;
+    this.changeDuration(e);
+    this.changeTitle(e);
+  }
+
+  changeDuration(e) {
+    let durations = document.getElementsByClassName("song-duration-green");
+    let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+    let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+    if (duration) {
+      duration.className = "song-duration-green";
+      for (let i = 0; i < durations.length; i++) {
+        if (parseInt(durations[i].id) !== e.currentTarget.value) {
+          durations[i].className="song-duration";
+        }
+      }
+    } else {
+      duration2.className = "song-duration";
+    }
+  }
+
+  changeTitle(e) {
+    let titles = document.getElementsByClassName("song-title-green");
+    let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+    let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+    if (title) {
+      title.className = "song-title-green";
+      for (let i = 0; i < titles.length; i++) {
+        if (titles[i].innerText !== e.currentTarget.id) {
+          titles[i].className="song-title";
+        }
+      }
+    } else {
+      title2.className = "song-title";
+    }
+  }
+
+
   render() {
     let songs = this.props.songs.filter(song => song.title);
+
+    let musicPlay = (<img className="music-icon" src={window.whitePlay2}/>);
+    let musicNote = (<img className="music-icon" src={window.whiteMusic2}/>);
+
     return(
       <div className="songs-component" onClick={this.closeDropdown}>
         <ul className="ul-songs">
             {/* USED IMPLICIT RETURN ON MAP */}
           {songs.map( (song,idx) => (
-            <li className="li-songs" key={idx}>
-            <div className="song-index">
-              {/* <button className="song-play-button"></button> */}
-              <div className="left-song">
-                <div className="song-title">{song.title}</div>
-                <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
-                <span className="split-dot">.</span>
-                <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
-              </div>
-              <div className="song-dropdown" >
-                <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
-                <div id={song.title + 1} className="dropdown-content">
-                  <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
-                  {/* <a id={song.id} className="remove-padding" onClick={this.addSongState}>{this.props.openModal}</a> */}
-                  <a id={song.id} className="remove-padding" onClick={this.addSongState}>
-                    <div onClick={() => this.props.openModal('add', song.id)}>
-                      <div className="add-playlist">Add to Playlist</div>
-                    </div>
-                  </a>
+            <li 
+              className="li-songs" 
+              id={song.title} 
+              key={idx} 
+              value={idx}
+              onMouseEnter={this.mouseEnter(idx)} 
+              onMouseLeave={this.mouseLeave()} 
+              onDoubleClick={this.changeIcon} >
+
+              <div className="song-index">
+                {/* <button className="song-play-button"></button> */}
+                <div className="left-song">
+                  {/* <div id={idx}>{songIcon}</div> */}
+                  { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                    {/* <img className="white-music2" src={songIcon} /> */}
+                    {/* <img className="white-play2" src={window.whitePlay2} /> */}
+                  <div className="left-song-info">
+                    <div className="song-title">{song.title}</div>
+                    <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
+                    <span className="split-dot">.</span>
+                    <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+                  </div>
                 </div>
-                <span className="song-duration">{song.duration}</span>
+                <div className="song-dropdown" >
+                  <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
+                  <div id={song.title + 1} className="dropdown-content">
+                    <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
+                    {/* <a id={song.id} className="remove-padding" onClick={this.addSongState}>{this.props.openModal}</a> */}
+                    <a id={song.id} className="remove-padding" onClick={this.addSongState}>
+                      <div onClick={() => this.props.openModal('add', song.id)}>
+                        <div className="add-playlist">Add to Playlist</div>
+                      </div>
+                    </a>
+                  </div>
+                  <span id={idx} className="song-duration">{song.duration}</span>
+                </div>
               </div>
-            </div>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
                 <source src={song.songUrl} />
               </audio> */}
