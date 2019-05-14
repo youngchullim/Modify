@@ -9,16 +9,23 @@ import {
   deletePlaylistsSong,
   deleteSongsUser 
 } from '../../actions/song_actions';
-import { receiveCurrentSong } from '../../actions/music_actions';
+import { 
+  receiveCurrentSong,
+  receiveSongsQueue,
+  receivePlay,
+  fetchCurrentSong,
+} from '../../actions/music_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SongsUser from './songs_user';
+
 
 // import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return({
     user: state.entities.users[state.session.id],
-    songs: Object.values(state.entities.songs)
+    songs: Object.values(state.entities.songs),
+    
   });
 };
 
@@ -37,7 +44,11 @@ const mapDispatchToProps = dispatch => {
     //   </div>
     // ),
     closeModal: () => dispatch(closeModal()),
-    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
+
+    fetchCurrentSong: (id) => (dispatch(fetchCurrentSong(id))),
+    receivePlay: (play, song, songs) => (dispatch(receivePlay(play, song, songs))),
+    receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
+    receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
   });
 };
 
