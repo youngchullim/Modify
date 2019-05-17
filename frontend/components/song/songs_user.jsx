@@ -20,6 +20,8 @@ class SongsUser extends React.Component {
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
 
+    this.playSong = this.playSong.bind(this);
+    //TEST
     this.changeIcon = this.changeIcon.bind(this);
     this.changeDuration = this.changeDuration.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
@@ -27,7 +29,6 @@ class SongsUser extends React.Component {
 
   componentDidMount() {
     this.props.fetchSongsUsers(this.props.user.id);
-
     // TEST 
     // this.props.fetchSongs();
   }
@@ -106,12 +107,27 @@ class SongsUser extends React.Component {
     };
   }
 
+  playSong(e) {
+    let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
+    // console.log(song);
+    // this.props.receiveCurrentSong(song, null, null);
+    // this.props.receiveSongsQueue(this.props.songs);
+    this.props.receivePlay(true, song, this.props.songs);
+    // console.log(e.currentTarget.id);
+    // play song method
+  }
+
+  // NEED TO CHANGE
   changeIcon(e) {
+    // console.log(e.currentTarget);
+    // console.log(e.target);
     e.target.src = window.whiteMusic2;
     this.changeDuration(e);
     this.changeTitle(e);
+    this.playSong(e);
   }
 
+  // NEED TO CHANGE
   changeDuration(e) {
     let durations = document.getElementsByClassName("song-duration-green");
     let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
@@ -128,6 +144,7 @@ class SongsUser extends React.Component {
     }
   }
 
+  // NEED TO CHANGE
   changeTitle(e) {
     let titles = document.getElementsByClassName("song-title-green");
     let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
@@ -167,7 +184,7 @@ class SongsUser extends React.Component {
 
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
-                <div className="left-song">
+                <div className="left-song left-user-song">
                   {/* <div id={idx}>{songIcon}</div> */}
                   { this.state.mouseIdx === idx ? musicPlay : musicNote }
                     {/* <img className="white-music2" src={songIcon} /> */}
