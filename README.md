@@ -1,5 +1,7 @@
 # Modify
 
+* npm start
+* rails s
 [Live Demo](https://spotify-modify.herokuapp.com/#/)
 
 Modify is a Spotify clone and its a platform where users are able to listen to their favorite music.
