@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_session_token(session[:session_token])
   end
 
+  def current_song(user)
+    user.current_song_id ? Song.find_by(id: user.current_song_id) : nil
+  end
+
   def logged_in?
     !!current_user
   end
