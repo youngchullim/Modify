@@ -3,6 +3,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
     if @user
       login(@user)
+      @current_song = current_song(@user)
       render 'api/users/show'
     else
       render json: ["Incorrect email or password"], status: 401

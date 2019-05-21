@@ -4,6 +4,7 @@ class Api::UsersController < ApplicationController
     
     if @user.save
       login(@user)
+      @current_song = current_song(@user)
       render :show
     else
       render json: ["Invalid input. Please try again."], status: 401
