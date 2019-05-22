@@ -17,7 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
       entities: {
         users: { [window.user.id]: window.user }
       },
-      session: { id: window.user.id }
+      session: { id: window.user.id },
+      // ui: {
+      //   music: {
+      //     currentSong: Object.assign({}, window.currentSong),
+      //     songsQueue: null,
+      //     nextSong: null,
+      //     prevSong: null,
+      //     play: false
+      //   }
+      // }
     };
     store = configureStore(preloadedState);
     delete window.user;
