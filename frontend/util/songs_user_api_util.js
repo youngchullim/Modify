@@ -19,3 +19,10 @@ export const fetchSongsUsers = (id) => {
     url: `/api/users/${id}/songs_users`
   });
 };
+
+export const fetchCurrentSong = (userId, id) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/users/${userId}/songs/${id}`
+  });
+};
