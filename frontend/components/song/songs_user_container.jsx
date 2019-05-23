@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => {
     // ),
     closeModal: () => dispatch(closeModal()),
 
-    fetchCurrentSong: (id) => (dispatch(fetchCurrentSong(id))),
+    fetchCurrentSong: (userId, id) => (dispatch(fetchCurrentSong(userId, id))),
     receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
     receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
     receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),

@@ -164,8 +164,9 @@ class SongsUser extends React.Component {
       next = songs[songIdx + 1];
     }
     this.props.receiveCurrentSong(song, next, prev);
-    // this.props.receiveSongsQueue(this.props.songs);
-    // console.log(e.currentTarget.id);
+
+    // this.props.fetchCurrentSong(this.props.user.id, song.id);
+
     this.play(song);
   }
 
