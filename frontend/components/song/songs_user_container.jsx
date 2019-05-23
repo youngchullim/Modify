@@ -13,6 +13,7 @@ import {
   receiveCurrentSong,
   receiveSongsQueue,
   receivePlay,
+  receivePause,
   fetchCurrentSong,
 } from '../../actions/music_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
@@ -25,7 +26,8 @@ const mapStateToProps = state => {
   return({
     user: state.entities.users[state.session.id],
     songs: Object.values(state.entities.songs),
-    
+    play: state.ui.music.play,
+    currentSong: state.ui.music.currentSong,
   });
 };
 
@@ -46,7 +48,8 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
 
     fetchCurrentSong: (id) => (dispatch(fetchCurrentSong(id))),
-    receivePlay: (play, song, songs) => (dispatch(receivePlay(play, song, songs))),
+    receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
+    receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
     receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
     receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
   });
