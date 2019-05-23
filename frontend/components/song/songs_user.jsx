@@ -21,10 +21,14 @@ class SongsUser extends React.Component {
     this.mouseLeave = this.mouseLeave.bind(this);
 
     this.playSong = this.playSong.bind(this);
+    this.currentSongIdx = this.currentSongIdx.bind(this);
+    this.play = this.play.bind(this);
     //TEST
     this.changeIcon = this.changeIcon.bind(this);
     this.changeDuration = this.changeDuration.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
+    this.handleStop = this.handleStop.bind(this);
   }
 
   componentDidMount() {
@@ -107,14 +111,67 @@ class SongsUser extends React.Component {
     };
   }
 
+  currentSongIdx(songs, song) {
+    for (let i = 0; i < songs.length; i++) {
+      if (songs[i] === song) {
+        return i;
+      }
+    }
+  }
+
+  handlePlay(song) {
+    song.play();
+  }
+
+  handleStop(song) {
+    song.currentTime = 0;
+    song.pause();
+  }
+
+  play(song) {
+    let music = this.props.currentSong ? document.getElementById(this.props.currentSong.id) : null;
+    let music2 = document.getElementById(song.id);
+
+    if (music === music2 && this.props.play) {
+      music2.pause();
+      // this.handleStop(music2);
+      this.props.receivePause(song, this.props.songs);
+    } else {
+      // music2.play();
+      this.props.receivePlay(song, this.props.songs);
+      this.handlePlay(music2);
+      if (music && music !== music2) {
+        // music.pause();
+        this.handleStop(music);
+        // this.props.receivePause(song, this.props.songs);
+      }
+    }
+  }
+
+  // MAKE AUDIO PLAY
   playSong(e) {
     let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
-    // console.log(song);
-    // this.props.receiveCurrentSong(song, null, null);
+    let songs = this.props.songs.map(song => song);
+
+    let songIdx = this.currentSongIdx(songs,song);
+    
+    let prev;
+    let next;
+    if (songIdx === 0) {
+      prev = songs[songs.length - 1];
+      next = songs[songIdx + 1];
+    } else if (songIdx === songs.length - 1) {
+      prev = songs[songIdx - 1];
+      next = songs[0];
+    } else {
+      prev = songs[songIdx - 1];
+      next = songs[songIdx + 1];
+    }
+    this.props.receiveCurrentSong(song, next, prev);
     // this.props.receiveSongsQueue(this.props.songs);
-    this.props.receivePlay(true, song, this.props.songs);
     // console.log(e.currentTarget.id);
-    // play song method
+    this.play(song);
+    // PLAY MUSIC song audio method
   }
 
   // NEED TO CHANGE
@@ -181,14 +238,13 @@ class SongsUser extends React.Component {
               onMouseEnter={this.mouseEnter(idx)} 
               onMouseLeave={this.mouseLeave()} 
               onDoubleClick={this.changeIcon} >
-
+              <audio id={song.id} preload="true">
+                <source src={song.songUrl} />
+              </audio>
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song left-user-song">
-                  {/* <div id={idx}>{songIcon}</div> */}
                   { this.state.mouseIdx === idx ? musicPlay : musicNote }
-                    {/* <img className="white-music2" src={songIcon} /> */}
-                    {/* <img className="white-play2" src={window.whitePlay2} /> */}
                   <div className="left-song-info">
                     <div className="song-title">{song.title}</div>
                     <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
