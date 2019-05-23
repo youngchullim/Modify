@@ -23,12 +23,12 @@ class SongsUser extends React.Component {
     this.playSong = this.playSong.bind(this);
     this.currentSongIdx = this.currentSongIdx.bind(this);
     this.play = this.play.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
+    this.handleStop = this.handleStop.bind(this);
     //TEST
     this.changeIcon = this.changeIcon.bind(this);
     this.changeDuration = this.changeDuration.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
-    this.handlePlay = this.handlePlay.bind(this);
-    this.handleStop = this.handleStop.bind(this);
   }
 
   componentDidMount() {
@@ -134,16 +134,12 @@ class SongsUser extends React.Component {
 
     if (music === music2 && this.props.play) {
       music2.pause();
-      // this.handleStop(music2);
       this.props.receivePause(song, this.props.songs);
     } else {
-      // music2.play();
       this.props.receivePlay(song, this.props.songs);
       this.handlePlay(music2);
       if (music && music !== music2) {
-        // music.pause();
         this.handleStop(music);
-        // this.props.receivePause(song, this.props.songs);
       }
     }
   }
@@ -171,7 +167,6 @@ class SongsUser extends React.Component {
     // this.props.receiveSongsQueue(this.props.songs);
     // console.log(e.currentTarget.id);
     this.play(song);
-    // PLAY MUSIC song audio method
   }
 
   // NEED TO CHANGE
