@@ -6,6 +6,7 @@ export const RECEIVE_NEXT_SONG = "RECEIVE_NEXT_SONG";
 export const RECEIVE_PREV_SONG = "RECEIVE_PREV_SONG";
 export const RECEIVE_CURRENT_PLAYLIST = "RECEIVE_CURRENT_PLAYLIST";
 export const RECEIVE_PLAY = "RECEIVE_PLAY";
+export const RECEIVE_PAUSE = "RECEIVE_PAUSE";
 export const RECEIVE_SONGS_QUEUE = "RECEIVE_SONGS_QUEUE";
 
 export const receiveCurrentSong = (song, next, prev) => {
@@ -42,10 +43,19 @@ export const receiveCurrentPlaylist = (playlist) => {
   });
 };
 
-export const receivePlay = (play, song, songs) => {
+export const receivePlay = (song, songs) => {
   return({
     type: RECEIVE_PLAY,
-    play,
+    // play,
+    song,
+    songs
+  });
+};
+
+export const receivePause = (song, songs) => {
+  return({
+    type: RECEIVE_PAUSE,
+    // pause,
     song,
     songs
   });
