@@ -1,3 +1,4 @@
+import * as SongsUserApiUtil from '../util/songs_user_api_util';
 import * as SongApiUtil from '../util/song_api_util';
 import * as PlaylistApiUtil from '../util/playlist_api_util';
 
@@ -70,18 +71,18 @@ export const receiveSongsQueue = (songs) => {
 
 
 
-export const fetchCurrentSong = (id) => (dispatch) => (
-  SongApiUtil.fetchSong(id)
+export const fetchCurrentSong = (userId, id) => (dispatch) => (
+  SongsUserApiUtil.fetchCurrentSong(userId, id)
     .then( song => dispatch(receiveCurrentSong(song)))
 );
 
-export const fetchNextSong = (id) => (dispatch) => (
-  SongApiUtil.fetchSong(id)
+export const fetchNextSong = (userId, id) => (dispatch) => (
+  SongsUserApiUtil.fetchCurrentSong(userId, id)
     .then( song => dispatch(receiveNextSong(song)))
 );
 
-export const fetchPrevSong = (id) => (dispatch) => (
-  SongApiUtil.fetchSong(id)
+export const fetchPrevSong = (userId, id) => (dispatch) => (
+  SongsUserApiUtil.fetchCurrentSong(userId, id)
     .then( song => dispatch(receivePrevSong(song)))
 );
 
