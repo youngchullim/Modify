@@ -3,6 +3,7 @@ import {
   RECEIVE_NEXT_SONG,
   RECEIVE_PREV_SONG,
   RECEIVE_PLAY,
+  RECEIVE_PAUSE,
   RECEIVE_SONGS_QUEUE,
 } from '../actions/music_actions';
 
@@ -13,7 +14,8 @@ const nullState = {
   songsQueue: null,
   nextSong: null,
   prevSong: null,
-  play: false
+  play: false,
+  pause: true
 };
 
 const musicReducer = (oldState=nullState, action) => {
@@ -38,7 +40,14 @@ const musicReducer = (oldState=nullState, action) => {
       return state;
     case RECEIVE_PLAY:
       state.currentSong = action.song;
-      state.play = !state.play;
+      state.play = true;
+      state.pause = false;
+      state.songsQueue = action.songs;
+      return state;
+    case RECEIVE_PAUSE:
+      state.currentSong = action.song;
+      state.play = false;
+      state.pause = true;
       state.songsQueue = action.songs;
       return state;
     case RECEIVE_SONGS_QUEUE:
