@@ -9,6 +9,7 @@ import {
   fetchCurrentPlaylist,
   fetchCurrentSong,
   receivePlay,
+  receivePause,
   receiveSongsQueue,
   receiveCurrentSong,
   receiveNextSong,
@@ -24,16 +25,18 @@ const mapStateToProps = state => {
     prevSong: state.ui.music.prevSong,
     songsQueue: state.ui.music.songsQueue,
     play: state.ui.music.play,
+    pause: state.ui.music.pause,
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return({
-    // fetchNextSong: (id) => (dispatch(fetchNextSong(id))),
-    // fetchPrevSong: (id) => (dispatch(fetchPrevSong(id))),
     // fetchCurrentPlaylist: (id) => dispatch(fetchCurrentPlaylist(id)),
-    fetchCurrentSong: (id) => (dispatch(fetchCurrentSong(id))),
-    receivePlay: (play, song, songs) => (dispatch(receivePlay(play, song, songs))),
+    fetchCurrentSong: (userId, id) => (dispatch(fetchCurrentSong(userId, id))),
+    fetchNextSong: (userId, id) => (dispatch(fetchNextSong(userId, id))),
+    fetchPrevSong: (userId, id) => (dispatch(fetchPrevSong(userId, id))),
+    receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
+    receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
     receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
     receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
     receiveNextSong: (song, next, prev) => dispatch(receiveNextSong(song, next, prev)),
