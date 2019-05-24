@@ -133,13 +133,13 @@ class SongsUser extends React.Component {
     let music2 = document.getElementById(song.id);
 
     if (music === music2 && this.props.play) {
-      music2.pause();
+      // music2.pause();
       this.props.receivePause(song, this.props.songs);
     } else {
       this.props.receivePlay(song, this.props.songs);
-      this.handlePlay(music2);
+      // this.handlePlay(music2);
       if (music && music !== music2) {
-        this.handleStop(music);
+        // this.handleStop(music);
       }
     }
   }
@@ -234,9 +234,9 @@ class SongsUser extends React.Component {
               onMouseEnter={this.mouseEnter(idx)} 
               onMouseLeave={this.mouseLeave()} 
               onDoubleClick={this.changeIcon} >
-              <audio id={song.id} preload="true">
+              {/* <audio id={song.id} preload="true">
                 <source src={song.songUrl} />
-              </audio>
+              </audio> */}
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song left-user-song">
