@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
+import { button, Link, NavLink } from 'react-router-dom';
 
 class Music extends React.Component {
   constructor(props) {
@@ -23,11 +24,11 @@ class Music extends React.Component {
     this.handlePlay = this.handlePlay.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
-    
+    this.saveSong = this.saveSong.bind(this);
   }
   componentDidMount() {
     this.props.receiveCurrentSong(this.props.currentSong, this.props.nextSong, this.props.prevSong);
-    
+    // this.props.fetchSongsUsers(this.props.user.id);
   }
 
   componentDidUpdate(prevProps) {
@@ -112,6 +113,10 @@ class Music extends React.Component {
     this.props.receiveCurrentSong(nextSong, newNextSong, this.props.currentSong);
   }
 
+  saveSong() {
+    this.props.createSongsUser(this.props.user.id, this.props.currentSong.id);
+  }
+
   render() {
     let play;
     if (this.state.play) {
@@ -119,11 +124,46 @@ class Music extends React.Component {
     } else {
       play = window.musicPlayerPlay;
     }
+
+    let albumPhoto;
+    let albumLink;
+    let artistLink;
+
+    if (this.state.currentSong) {
+      albumPhoto = (<img className="currentSong-photo" src={this.props.currentSong.albumPhoto} />);
+      albumLink = (<span><Link className="song-album albumshow-artistname currentSong-song-title" to={`/albums/${this.props.currentSong.album.id}`}>{this.props.currentSong.title}</Link></span>);
+      artistLink = (<span><Link className="song-artist albumshow-artistname" to={`/artists/${this.props.currentSong.artist.id}`}>{this.props.currentSong.artist.name}</Link></span>);
+    } else {
+      albumPhoto = "";
+      albumLink = "";
+      artistLink = "";
+    }
+
+    let save;
+    // filter through user's saved songs and if its already saved then show a green checkmark 
+    // else show a plus sign
+    if (this.state.currentSong) {
+      // if (this.props.songs.includes(this.props.currentSong)) {
+      //   save = (<img className="musicPlayer-plus"src={window.musicPlayerCheck} />)
+      // } else {
+        save = (<img className="musicPlayer-plus"src={window.musicPlayerPlus} />)
+      // }
+    } else {
+      save = "";
+    }
+
     return(
       <div className="music-player-container">
         <div className="musicPlayer-flex">
           <div className="currentSong-info">
-            TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+            {albumPhoto}
+            <div className="musicPlayer-song-info">
+              {albumLink}
+              {artistLink}
+            </div>
+            <div className="musicPlayer-save" onClick={this.saveSong}>
+              {save}
+            </div>
           </div>
 
           <div className="musicPlayer-controls">
