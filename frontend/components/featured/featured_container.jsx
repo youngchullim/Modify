@@ -9,7 +9,8 @@ import {
   fetchSongsUsers, 
   createPlaylistsSong, 
   deletePlaylistsSong,
-  deleteSongsUser 
+  deleteSongsUser,
+  createSongsUser,
 } from '../../actions/song_actions';
 import { 
   receiveCurrentSong,
@@ -40,6 +41,7 @@ const mapDispatchToProps = dispatch => {
     fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
     createPlaylistsSong: (playlist_id, song_id) => dispatch(createPlaylistsSong(playlist_id, song_id)),
     deletePlaylistsSong: (id) => dispatch(deletePlaylistsSong(id)),
+    createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
     deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     // openModal: (

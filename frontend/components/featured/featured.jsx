@@ -17,6 +17,7 @@ class Featured extends React.Component {
     this.closeDropdown = this.closeDropdown.bind(this);
     this.removeSong = this.removeSong.bind(this);
     this.addSongState = this.addSongState.bind(this);
+    this.saveSong = this.saveSong.bind(this);
 
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
@@ -26,6 +27,7 @@ class Featured extends React.Component {
     this.play = this.play.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleStop = this.handleStop.bind(this);
+    
     //TEST
     this.changeIcon = this.changeIcon.bind(this);
     this.changeDuration = this.changeDuration.bind(this);
@@ -215,6 +217,10 @@ class Featured extends React.Component {
     }
   }
 
+  saveSong(e) {
+    let songId = e.target.id;
+    this.props.createSongsUser(this.props.user.id, songId);
+  }
 
   render() {
     let songs = this.props.songs.filter(song => song.title);
@@ -252,6 +258,7 @@ class Featured extends React.Component {
                 <div className="song-dropdown" >
                   <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
                   <div id={song.title + 1} className="dropdown-content">
+                    <a id={song.id} onClick={this.saveSong}>Save to your Library</a>
                     <a id={song.id} onClick={this.removeSong}>Remove from Your Library</a>
                     {/* <a id={song.id} className="remove-padding" onClick={this.addSongState}>{this.props.openModal}</a> */}
                     <a id={song.id} className="remove-padding" onClick={this.addSongState}>
