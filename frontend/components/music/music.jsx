@@ -152,6 +152,18 @@ class Music extends React.Component {
       save = "";
     }
 
+// TEST
+    // let duration;
+    // if (this.props.currentSong) {
+    //   duration = this.props.currentSong.duration;
+    // } else {
+    //   duration = "";
+    // }
+    // let dur = duration.split(":");
+    // let min = parseInt(dur[0]) * 60
+    // let sec = parseInt(dur[1]);
+    // let total = min + sec;
+
     return(
       <div className="music-player-container">
         <div className="musicPlayer-flex">
@@ -180,23 +192,30 @@ class Music extends React.Component {
                 <img className="musicPlayer-prev" src={window.musicPlayerNext}/>
               </div>
             </div>
+{/* TEST */}
+            {/* <p>
+              <input ref={(slider) => { this.slider = slider }}
+              type="range"
+              name="points"
+              min="0" max={this.state.duration} /> 
+            </p> */}
+
+            <div className="musicPlayer-songBar">
+              <div className="currentSong-time">{this.state.currentTime}</div>
+{/* TEST */}
+              {/* <progress 
+                pseudo='-webkit-progress-bar'
+                className='progress-bar-display' 
+                max={1} 
+                value={total} 
+                /> */}
+                <div className="currentSong-time">{this.state.duration}</div>
+              </div>
           </div>
           <div className="musicPlayer-volume">
             TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
           </div>
         </div>
-        {/* <p>
-          <input ref={(slider) => { this.slider = slider }}
-					type="range"
-					name="points"
-					min="0" max={this.state.duration} /> 
-        </p> */}
-        {/* <progress 
-          pseudo='-webkit-progress-bar'
-          className='progress-bar-display' 
-          max={1} 
-          value={10} 
-        /> */}
         <ReactPlayer
           className="react-music-player"
           url={this.state.songUrl}
