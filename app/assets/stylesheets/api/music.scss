@@ -10,3 +10,66 @@
   bottom:0;
   z-index: 100;
 }
+
+.musicPlayer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+// CURRENT SONG INFO
+.currentSong-info {
+  width: 33%;
+  color: white;
+}
+
+// MUSIC PLAYER CONTROLS
+.musicPlayer-controls {
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+.musicPlayer-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+}
+
+.musicPlayer-play {
+  height: 35px;
+  width: 35px;
+  align-self: center;
+  color: rgba(255, 255, 255, 0.712);
+  opacity: 0.5;
+}
+.musicPlayer-play:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+.prev-button {
+  align-self: center;
+}
+
+.musicPlayer-prev {
+  height: 15px;
+  width: 15px;
+  align-self: center;
+  color: rgba(255, 255, 255, 0.712);
+  opacity: 0.5;
+}
+
+.musicPlayer-prev:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+// MUSIC PLAYER VOLUME
+.musicPlayer-volume {
+  widtH: 33%;
+  color: white;
+}
