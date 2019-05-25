@@ -11,14 +11,18 @@ class Music extends React.Component {
       currentSong: this.props.currentSong,
       nextSong: this.props.nextSong,
       prevSong: this.props.prevSong,
-      play: this.props.play,
-      pause: this.props.pause,
+      play: false,
+      pause: true,
       duration: this.props.currentSong ? this.props.currentSong.duration : "",
       currentTime: this.props.currentSong ? "0:00" : "",
       songsQueue: this.props.songsQueue,
       volume: 0.6,
       muted: false,
     };
+    
+    this.handlePlay = this.handlePlay.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
     
   }
   componentDidMount() {
@@ -43,9 +47,104 @@ class Music extends React.Component {
     }
   }
 
+  handlePlay() {
+    if (this.state.play) {
+      this.setState({
+        play: false
+      });
+    } else {
+      this.setState({
+        play: true
+      });
+    }
+  }
+
+  handlePrev() {
+    let currSongIdx;
+    for (let i = 0; i < this.props.songsQueue.length; i++) {
+      if (this.props.songsQueue[i].id === this.props.currentSong.id) {
+        currSongIdx = i;
+      }
+    }
+
+    let prevSongIdx;
+    let newPrevSongIdx;
+    if (currSongIdx === 0) {
+      prevSongIdx = this.props.songsQueue.length - 1;
+      newPrevSongIdx = this.props.songsQueue.length - 2;
+    } else if (currSongIdx === 1) {
+      prevSongIdx = currSongIdx - 1;
+      newPrevSongIdx = this.props.songsQueue.length - 1;
+    } else {
+      prevSongIdx = currSongIdx - 1;
+      newPrevSongIdx = currSongIdx - 2;
+    }
+
+    let prevSong = this.props.songsQueue[prevSongIdx];
+    let newPrevSong = this.props.songsQueue[newPrevSongIdx];
+    this.props.receiveCurrentSong(prevSong, this.state.currentSong, newPrevSong);
+  }
+
+  handleNext() {
+    let currSongIdx;
+    for (let i = 0; i < this.props.songsQueue.length; i++) {
+      if (this.props.songsQueue[i].id === this.props.currentSong.id) {
+        currSongIdx = i;
+      }
+    }
+
+    let nextSongIdx;
+    let newNextSongIdx;
+
+    if (currSongIdx === this.props.songsQueue.length - 1) {
+      nextSongIdx = 0;
+      newNextSongIdx = 1;
+    } else if (currSongIdx === this.props.songsQueue.length - 2) {
+      nextSongIdx = currSongIdx + 1;
+      newNextSongIdx = 0;
+    } else {
+      nextSongIdx = currSongIdx + 1;
+      newNextSongIdx = currSongIdx + 2;
+    }
+
+    let nextSong = this.props.songsQueue[nextSongIdx];
+    let newNextSong = this.props.songsQueue[newNextSongIdx];
+    this.props.receiveCurrentSong(nextSong, newNextSong, this.props.currentSong);
+  }
+
   render() {
+    let play;
+    if (this.state.play) {
+      play = window.musicPlayerPause;
+    } else {
+      play = window.musicPlayerPlay;
+    }
     return(
       <div className="music-player-container">
+        <div className="musicPlayer-flex">
+          <div className="currentSong-info">
+            TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+          </div>
+
+          <div className="musicPlayer-controls">
+            <div className="musicPlayer-buttons">
+              <div className="prev-button" onClick={this.handlePrev}>
+                <img className="musicPlayer-prev" src={window.musicPlayerPrev}/>
+              </div>
+
+              <div className="play-button" onClick={this.handlePlay}>
+                <img className="musicPlayer-play" src={play}/>
+              </div>
+
+              <div className="prev-button" onClick={this.handleNext}>
+                <img className="musicPlayer-prev" src={window.musicPlayerNext}/>
+              </div>
+            </div>
+          </div>
+          <div className="musicPlayer-volume">
+            TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST 
+          </div>
+        </div>
         {/* <p>
           <input ref={(slider) => { this.slider = slider }}
 					type="range"
@@ -64,6 +163,8 @@ class Music extends React.Component {
           playing={this.state.play}
           // controls={true}
           // light={true}
+          onEnded={this.handleNext}
+          // loop={false}
           volume={this.state.volume}
           muted={this.state.muted}
           width='60%'
