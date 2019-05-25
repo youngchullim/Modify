@@ -12,7 +12,7 @@
     json.playlists song.playlists
 
     json.songUrl song.song
-    json.albumUrl song.album.photo
+    json.albumPhoto song.album.photo
     json.songsUsers song.songs_users
   end
 end
