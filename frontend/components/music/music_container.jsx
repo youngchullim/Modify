@@ -16,6 +16,11 @@ import {
   receivePrevSong,
 } from '../../actions/music_actions';
 
+import { 
+  createSongsUser,
+  deleteSongsUser,
+  fetchSongsUsers, 
+} from '../../actions/song_actions';
 
 const mapStateToProps = state => {
   return({
@@ -26,6 +31,7 @@ const mapStateToProps = state => {
     songsQueue: state.ui.music.songsQueue,
     play: state.ui.music.play,
     pause: state.ui.music.pause,
+    songs: Object.values(state.entities.songs),
   });
 };
 
@@ -41,6 +47,10 @@ const mapDispatchToProps = dispatch => {
     receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
     receiveNextSong: (song, next, prev) => dispatch(receiveNextSong(song, next, prev)),
     receivePrevSong: (song, next, prev) => dispatch(receivePrevSong(song, next, prev)),
+    deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
+    createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
+    fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
+
   });
 };
 
