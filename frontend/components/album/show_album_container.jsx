@@ -11,7 +11,7 @@ import {
   fetchSongsUsers
 } from '../../actions/song_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { receiveCurrentSong } from '../../actions/music_actions';
+import { receiveCurrentSongId } from '../../actions/music_actions';
 
 import { createAlbumsUser, deleteAlbumsUser, fetchAlbumsUsers } from '../../actions/album_actions';
 // import { logout } from '../../actions/session_actions';
@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => {
     fetchAlbumsUsers: (id) => dispatch(fetchAlbumsUsers(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
-    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
   });
 };
 

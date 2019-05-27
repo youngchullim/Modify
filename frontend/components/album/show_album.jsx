@@ -95,7 +95,7 @@ class ShowAlbum extends React.Component {
   }
 
   currSong(e) {
-    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+    this.props.receiveCurrentSongId(parseInt(e.currentTarget.id));
   }
 
 // DECIDED TO JUST GO WITH DROPDOWN MENU WITH BOTH SAVE AND REMOVE 
