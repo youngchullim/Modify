@@ -3,6 +3,7 @@ import * as SongApiUtil from '../util/song_api_util';
 import * as PlaylistApiUtil from '../util/playlist_api_util';
 
 export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG";
+export const RECEIVE_CURRENT_SONG_ID = "RECEIVE_CURRENT_SONG_ID";
 export const RECEIVE_NEXT_SONG = "RECEIVE_NEXT_SONG";
 export const RECEIVE_PREV_SONG = "RECEIVE_PREV_SONG";
 export const RECEIVE_CURRENT_PLAYLIST = "RECEIVE_CURRENT_PLAYLIST";
@@ -16,6 +17,12 @@ export const receiveCurrentSong = (song, next, prev) => {
     song,
     next,
     prev
+  });
+};
+export const receiveCurrentSongId = (songId) => {
+  return({
+    type: RECEIVE_CURRENT_SONG_ID,
+    songId
   });
 };
 

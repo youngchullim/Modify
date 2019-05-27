@@ -5,12 +5,14 @@ import {
   RECEIVE_PLAY,
   RECEIVE_PAUSE,
   RECEIVE_SONGS_QUEUE,
+  RECEIVE_CURRENT_SONG_ID
 } from '../actions/music_actions';
 
 import merge from 'lodash/merge';
 
 const nullState = {
   currentSong: null,
+  currentSongId: null,
   songsQueue: null,
   nextSong: null,
   prevSong: null,
@@ -23,6 +25,9 @@ const musicReducer = (oldState=nullState, action) => {
   let state = merge({}, oldState);
 
   switch(action.type) {
+    case RECEIVE_CURRENT_SONG_ID:
+      state.currentSongId = action.songId;
+      return state;
     case RECEIVE_CURRENT_SONG:
       state.currentSong = action.song;
       state.nextSong = action.next;
