@@ -67,7 +67,7 @@ class ShowPlaylist extends React.Component {
   }
 
   currSong(e) {
-    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+    this.props.receiveCurrentSongId(parseInt(e.currentTarget.id));
   }
 
   saveSong(e) {
