@@ -22,7 +22,7 @@ import {
 } from '../../actions/song_actions';
 
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { receiveCurrentSong } from '../../actions/music_actions';
+import { receiveCurrentSongId } from '../../actions/music_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
     fetchArtistsUsers: (id) => dispatch(fetchArtistsUsers(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
-    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
     fetchSong: (id) => dispatch(fetchSong(id)),
     fetchSongs: () => dispatch(fetchSongs()),
     createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),

@@ -86,7 +86,7 @@ class Overview extends React.Component {
       song: parseInt(songId)
     });
     // console.log(e.currentTarget.id);
-    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+    this.props.receiveCurrentSongId(parseInt(e.currentTarget.id));
   }
 
   render() {
