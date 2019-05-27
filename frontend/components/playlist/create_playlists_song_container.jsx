@@ -13,7 +13,7 @@ const mapStateToProps = state => {
     formType: "Add",
     modal: state.ui.modal,
     playlists: Object.values(state.entities.playlists),
-    songId: state.ui.music.currentSong,
+    songId: state.ui.music.currentSongId,
   });
 };
 
