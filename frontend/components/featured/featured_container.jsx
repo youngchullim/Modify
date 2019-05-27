@@ -14,6 +14,7 @@ import {
 } from '../../actions/song_actions';
 import { 
   receiveCurrentSong,
+  receiveCurrentSongId,
   receiveSongsQueue,
   receivePlay,
   receivePause,
@@ -56,6 +57,7 @@ const mapDispatchToProps = dispatch => {
     receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
     receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
     receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
   });
 };
 
