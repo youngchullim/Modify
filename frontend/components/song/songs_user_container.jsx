@@ -15,6 +15,7 @@ import {
   receivePlay,
   receivePause,
   fetchCurrentSong,
+  receiveCurrentSongId,
 } from '../../actions/music_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SongsUser from './songs_user';
@@ -52,6 +53,7 @@ const mapDispatchToProps = dispatch => {
     receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
     receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
     receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
   });
 };
 

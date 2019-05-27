@@ -90,7 +90,7 @@ class SongsUser extends React.Component {
     this.setState({
       song: parseInt(songId)
     });
-    this.props.receiveCurrentSong(parseInt(e.currentTarget.id));
+    this.props.receiveCurrentSongId(parseInt(e.currentTarget.id));
   }
 
   mouseEnter(idx) {
