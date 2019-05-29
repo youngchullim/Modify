@@ -8,4 +8,4 @@ json.artistId album.artist_id
 
 
 # Album URL
-json.photo album.photo
+json.albumPhoto album.photo

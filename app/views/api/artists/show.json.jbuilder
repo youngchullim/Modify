@@ -8,7 +8,7 @@ json.partial! 'api/artists/artist', artist: @artist
     json.genre artist.genre
     json.albums artist.albums
     json.songs artist.album_songs
-    json.photo artist.photo
+    json.artistPhoto artist.photo
   end
 end
 

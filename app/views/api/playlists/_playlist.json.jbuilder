@@ -19,7 +19,7 @@ playlist.songs.each do |song|
 end
 
 
-# json.photo playlist.songs[0].album.photo
+# json.albumPhoto playlist.songs[0].album.photo
 
 # why :ids? and not :id?
 # json.extract! playlist.playlists_users, :ids

@@ -3,7 +3,7 @@
     json.id artist.id
     json.name artist.name
     json.biography artist.biography
-    json.photo artist.photo
+    json.artistPhoto artist.photo
     json.genre artist.genre
     json.albumIds artist.albums.map { |album| album.id }
     json.songIds artist.album_songs.map { |song| song.id }

@@ -5,7 +5,7 @@ json.partial! 'api/albums/album', album: @album
     json.id album.id
     json.title album.title
     json.year album.year
-    json.photo album.photo
+    json.albumPhoto album.photo
     json.artist album.artist
     json.artistId album.artist.id
     json.songIds album.songs.map { |song| song.id }

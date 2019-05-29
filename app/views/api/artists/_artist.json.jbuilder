@@ -7,4 +7,4 @@ json.biography artist.biography
 json.genre artist.genre
 
 # Album URL
-json.photo artist.photo
+json.artistPhoto artist.photo
