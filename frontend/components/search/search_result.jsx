@@ -17,6 +17,20 @@ class SearchResult extends React.Component{
     this.removeSong = this.removeSong.bind(this);
     this.addSongState = this.addSongState.bind(this);
     this.saveSong = this.saveSong.bind(this);
+
+// MUSIC PLAY
+    this.changeIcon = this.changeIcon.bind(this);
+    this.playSong = this.playSong.bind(this);
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
+    this.currentSongIdx = this.currentSongIdx.bind(this);
+    this.play = this.play.bind(this);
+    // this.changeDuration = this.changeDuration.bind(this);
+    // this.changeTitle = this.changeTitle.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchSongs();
   }
 
   closeDropdown(e) {
@@ -78,6 +92,122 @@ class SearchResult extends React.Component{
     this.props.createSongsUser(this.props.user.id, songId);
   }
 
+// MUSIC PLAY
+  changeIcon(e) {
+    e.target.src = window.whiteMusic2;
+    // this.changeDuration(e);
+    // this.changeTitle(e);
+    this.playSong(e);
+  }
+
+  // // NEED TO CHANGE
+  // changeDuration(e) {
+  //   let durations = document.getElementsByClassName("song-duration-green");
+  //   let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+  //   let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+  //   if (duration) {
+  //     duration.className = "song-duration-green";
+  //     for (let i = 0; i < durations.length; i++) {
+  //       if (parseInt(durations[i].id) !== e.currentTarget.value) {
+  //         durations[i].className="song-duration";
+  //       }
+  //     }
+  //   } else {
+  //     duration2.className = "song-duration";
+  //   }
+  // }
+
+  // changeTitle(e) {
+  //   let titles = document.getElementsByClassName("song-title-green");
+  //   let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+  //   let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+  //   if (title) {
+  //     title.className = "song-title-green";
+  //     for (let i = 0; i < titles.length; i++) {
+  //       if (titles[i].innerText !== e.currentTarget.id) {
+  //         titles[i].className="song-title";
+  //       }
+  //     }
+  //   } else {
+  //     title2.className = "song-title";
+  //   }
+  // }
+
+  playSong(e) {
+    let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
+    let songs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchBar.toLowerCase()));
+    songs = songs.slice(0,5);
+    
+    this.props.receiveSongsQueue(songs);
+    let songIdx = this.currentSongIdx(songs,song);
+
+    let prev;
+    let next;
+    if (songIdx === 0 && songs.length === 1) {
+      next = songs[0];
+      prev = songs[0];
+    } else if (songIdx === 0) {
+      prev = songs[songs.length - 1];
+      next = songs[songIdx + 1];
+    } else if (songIdx === songs.length - 1) {
+      prev = songs[songIdx - 1];
+      next = songs[0];
+    } else {
+      prev = songs[songIdx - 1];
+      next = songs[songIdx + 1];
+    }
+    this.props.receiveCurrentSong(song, next, prev);
+
+    // this.props.fetchCurrentSong(this.props.user.id, song.id);
+
+    this.play(song);
+  }
+
+  play(song) {
+    let music = this.props.currentSong ? document.getElementById(this.props.currentSong.id) : null;
+    let music2 = document.getElementById(song.id);
+    let songs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchBar.toLowerCase()));
+    songs = songs.slice(0,5);
+
+
+    if (music === music2 && this.props.play) {
+      // music2.pause();
+      this.props.receivePause(song, songs);
+    } else {
+      this.props.receivePlay(song, songs);
+      // this.handlePlay(music2);
+      if (music && music !== music2) {
+        // this.handleStop(music);
+      }
+    }
+  }
+
+  currentSongIdx(songs, song) {
+    for (let i = 0; i < songs.length; i++) {
+      if (songs[i].title === song.title) {
+        return i;
+      }
+    }
+  }
+
+  mouseEnter(idx) {
+    return() => {
+      this.setState({
+        mouseHover: true,
+        mouseIdx: idx
+      });
+    };
+  }
+
+  mouseLeave() {
+    return() => {
+      this.setState({
+        mouseHover: false,
+        mouseIdx: null
+      });
+    };
+  }
+
   render() {
     let result;
     let songs = this.props.songs.filter(song => song.title.toLowerCase().includes(this.props.searchBar.toLowerCase()));
@@ -99,7 +229,14 @@ class SearchResult extends React.Component{
           <ul className="ul-songs">
               {/* USED IMPLICIT RETURN ON MAP */}
             {songs.map( (song,idx) => (
-              <li className="li-songs" key={idx}>
+              <li 
+                className="li-songs" 
+                id={song.title} 
+                key={idx} 
+                value={idx}
+                onMouseEnter={this.mouseEnter(idx)} 
+                onMouseLeave={this.mouseLeave()} 
+                onDoubleClick={this.changeIcon} >
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song">
