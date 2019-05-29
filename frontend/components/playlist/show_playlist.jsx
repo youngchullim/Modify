@@ -7,7 +7,10 @@ class ShowPlaylist extends React.Component {
     super(props);
 
     this.state = {
-      songs: this.props.songs
+      songs: this.props.songs,
+      song: 0,
+      mouseHover: false,
+      mouseIdx: null,
     };
 
     this.toggleLibrary = this.toggleLibrary.bind(this);
@@ -18,6 +21,17 @@ class ShowPlaylist extends React.Component {
     this.currSong = this.currSong.bind(this);
     this.saveAlbum = this.saveAlbum.bind(this);
     this.removeSong = this.removeSong.bind(this);
+
+// MUSIC PLAY
+    this.changeIcon = this.changeIcon.bind(this);
+    this.playSong = this.playSong.bind(this);
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
+    this.currentSongIdx = this.currentSongIdx.bind(this);
+    this.play = this.play.bind(this);
+    this.playAll = this.playAll.bind(this);
+    // this.changeDuration = this.changeDuration.bind(this);
+    // this.changeTitle = this.changeTitle.bind(this);
   }
 
   componentDidMount() {
@@ -117,6 +131,121 @@ class ShowPlaylist extends React.Component {
     songs: this.props.fetchPlaylistsSongs(this.props.match.params.id)
     });
   }
+
+// MUSIC PLAY
+  changeIcon(e) {
+    e.target.src = window.whiteMusic2;
+    // this.changeDuration(e);
+    // this.changeTitle(e);
+    this.playSong(e);
+  }
+
+// // NEED TO CHANGE
+  // changeDuration(e) {
+  //   let durations = document.getElementsByClassName("song-duration-green");
+  //   let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+  //   let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+  //   if (duration) {
+  //     duration.className = "song-duration-green";
+  //     for (let i = 0; i < durations.length; i++) {
+  //       if (parseInt(durations[i].id) !== e.currentTarget.value) {
+  //         durations[i].className="song-duration";
+  //       }
+  //     }
+  //   } else {
+  //     duration2.className = "song-duration";
+  //   }
+  // }
+
+  // changeTitle(e) {
+  //   let titles = document.getElementsByClassName("song-title-green");
+  //   let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+  //   let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+  //   if (title) {
+  //     title.className = "song-title-green";
+  //     for (let i = 0; i < titles.length; i++) {
+  //       if (titles[i].innerText !== e.currentTarget.id) {
+  //         titles[i].className="song-title";
+  //       }
+  //     }
+  //   } else {
+  //     title2.className = "song-title";
+  //   }
+  // }
+  
+  playSong(e) {
+    let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
+    let songs = this.props.songs.map(song => song);
+
+    let songIdx = this.currentSongIdx(songs,song);
+    
+    let prev;
+    let next;
+    if (songIdx === 0) {
+      prev = songs[songs.length - 1];
+      next = songs[songIdx + 1];
+    } else if (songIdx === songs.length - 1) {
+      prev = songs[songIdx - 1];
+      next = songs[0];
+    } else {
+      prev = songs[songIdx - 1];
+      next = songs[songIdx + 1];
+    }
+    this.props.receiveCurrentSong(song, next, prev);
+
+    // this.props.fetchCurrentSong(this.props.user.id, song.id);
+
+    this.play(song);
+  }
+
+  play(song) {
+    let music = this.props.currentSong ? document.getElementById(this.props.currentSong.id) : null;
+    let music2 = document.getElementById(song.id);
+
+    if (music === music2 && this.props.play) {
+      // music2.pause();
+      this.props.receivePause(song, this.props.songs);
+    } else {
+      this.props.receivePlay(song, this.props.songs);
+      // this.handlePlay(music2);
+      if (music && music !== music2) {
+        // this.handleStop(music);
+      }
+    }
+  }
+
+  currentSongIdx(songs, song) {
+    for (let i = 0; i < songs.length; i++) {
+      if (songs[i] === song) {
+        return i;
+      }
+    }
+  }
+
+  mouseEnter(idx) {
+    return() => {
+      this.setState({
+        mouseHover: true,
+        mouseIdx: idx
+      });
+    };
+  }
+
+  mouseLeave() {
+    return() => {
+      this.setState({
+        mouseHover: false,
+        mouseIdx: null
+      });
+    };
+  }
+
+  playAll(e) {
+    let song = this.props.song;
+    let songs = this.props.songs;
+
+    this.props.receivePlay(song, songs);
+  }
   
   render() {
     let playlistLibrary = "REMOVE FROM YOUR LIBRARY";
@@ -125,6 +254,7 @@ class ShowPlaylist extends React.Component {
       return null;
     }
     let songs = this.props.songs.filter(song => song.title);
+
     return(
       <div className="playlistShow-component" onClick={this.closeDropdown}>
         <div className="playlistShow-info">
@@ -132,7 +262,7 @@ class ShowPlaylist extends React.Component {
             <div className="playlistShow-photo"></div>
             <div className="playlistShow-title">{this.props.playlist.name}</div>
           </div>
-          <button className="album-play">PLAY</button>
+          <button className="album-play" onClick={this.playAll}>PLAY</button>
           <div className="playlistShow-songLength">{this.props.songs.length} SONGS</div>
 
           <div className="playlist-options">
@@ -147,7 +277,14 @@ class ShowPlaylist extends React.Component {
         <div className="playlistShow-songs">
           <ul className="ul-album-songs">
             {songs.map( (song, idx) => (
-              <li className="li-album-song" key={idx}>
+              <li 
+                className="li-album-song" 
+                id={song.title} 
+                key={idx} 
+                value={idx}
+                onMouseEnter={this.mouseEnter(idx)} 
+                onMouseLeave={this.mouseLeave()} 
+                onDoubleClick={this.changeIcon} >
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song">
                   <span className="song-title">{song.title}</span>
