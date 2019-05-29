@@ -137,7 +137,7 @@ class SearchResult extends React.Component{
             {artists.map( (artist, idx) => (
               <li className="li-albums" key={idx}>
               <NavLink to={`/artists/${artist.id}`}>
-                <img className="artist-photo" src={artist.photo} />
+                <img className="artist-photo" src={artist.artistPhoto} />
                 <div className="album-name">{artist.name}</div>
               </NavLink>
               </li>
@@ -151,7 +151,7 @@ class SearchResult extends React.Component{
             {albums.map( (album, idx) => (
               <li className="li-albums" key={idx}>
               <NavLink to={`/albums/${album.id}`}>
-                <img className="album-photo" src={album.photo} />
+                <img className="album-photo" src={album.albumPhoto} />
                 <div className="album-name">{album.title}</div>
               </NavLink>
                 <div><Link className="album-artist albumshow-artistname" to={`/artists/${album.artist.id}`}>{album.artist.name}</Link></div>

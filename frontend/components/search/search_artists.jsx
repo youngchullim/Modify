@@ -17,7 +17,7 @@ class SearchArtists extends React.Component {
             {artists.map( (artist, idx) => (
               <li className="li-albums" key={idx}>
               <NavLink to={`/artists/${artist.id}`}>
-                <img className="artist-photo" src={artist.photo} />
+                <img className="artist-photo" src={artist.artistPhoto} />
                 <div className="album-name">{artist.name}</div>
               </NavLink>
               </li>
