@@ -117,9 +117,48 @@
   font-size: 12px;
 }
 
+// MUSIC PLAYER PROGRESSBAR
+.progressBar-slider {
+  width: 480px;
+  margin: 0 10px;
+}
+
+
 // MUSIC PLAYER VOLUME
 .musicPlayer-volume {
-  padding-right: 16px;
   width: 30%;
   color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.volume-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 140px;
+  padding-right: 10px;
+}
+
+.musicPlayer-sound {
+  height: 15px;
+  width: 15px;
+  opacity: 0.6;
+}
+
+.musicPlayer-sound:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.volumeBar-slider {
+  width: 105px;
+}
+
+.volumeBar-slider:hover {
+  color: green;
+}
+
+.sound-button {
+  display: flex;
 }
