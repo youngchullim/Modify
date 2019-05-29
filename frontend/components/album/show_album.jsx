@@ -6,12 +6,14 @@ class ShowAlbum extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      songs: this.props.songs,
+      song: 0,
+      mouseHover: false,
+      mouseIdx: null,
+    };
 
-// COULDN'T GET INITIAL STATE TO SHOW DEPENING ON IF ALBUM ALREADY SAVED TO LIBRARY
-    // this.state = {
-    //   albumLibrary: "REMOVE FROM YOUR LIBRARY",
-    // };
-    
+
     this.toggleLibrary = this.toggleLibrary.bind(this);
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
@@ -19,11 +21,22 @@ class ShowAlbum extends React.Component {
     this.removeAlbum = this.removeAlbum.bind(this);
     this.saveAlbum = this.saveAlbum.bind(this);
     this.currSong = this.currSong.bind(this);
+
+    // MUSIC PLAY
+    this.changeIcon = this.changeIcon.bind(this);
+    this.playSong = this.playSong.bind(this);
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
+    this.currentSongIdx = this.currentSongIdx.bind(this);
+    this.play = this.play.bind(this);
+    this.playAll = this.playAll.bind(this);
+    // this.changeDuration = this.changeDuration.bind(this);
+    // this.changeTitle = this.changeTitle.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAlbum(this.props.albumId);
-
+    this.props.fetchSongs();
 
 // TRYING TO SHOW EITHER "REMOVE" OR "SAVE" IF CURRENT ALBUM IS ALREADY SAVED TO LIBRARY
     // if(this.props.album.albumsUsers.length > 0) {
@@ -124,11 +137,138 @@ class ShowAlbum extends React.Component {
   //   }
   // }
 
+
+// MUSIC PLAY
+  changeIcon(e) {
+    e.target.src = window.whiteMusic2;
+    // this.changeDuration(e);
+    // this.changeTitle(e);
+    this.playSong(e);
+  }
+
+  // // NEED TO CHANGE
+  // changeDuration(e) {
+  //   let durations = document.getElementsByClassName("song-duration-green");
+  //   let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+  //   let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+  //   if (duration) {
+  //     duration.className = "song-duration-green";
+  //     for (let i = 0; i < durations.length; i++) {
+  //       if (parseInt(durations[i].id) !== e.currentTarget.value) {
+  //         durations[i].className="song-duration";
+  //       }
+  //     }
+  //   } else {
+  //     duration2.className = "song-duration";
+  //   }
+  // }
+
+  // changeTitle(e) {
+  //   let titles = document.getElementsByClassName("song-title-green");
+  //   let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+  //   let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+  //   if (title) {
+  //     title.className = "song-title-green";
+  //     for (let i = 0; i < titles.length; i++) {
+  //       if (titles[i].innerText !== e.currentTarget.id) {
+  //         titles[i].className="song-title";
+  //       }
+  //     }
+  //   } else {
+  //     title2.className = "song-title";
+  //   }
+  // }
+
+  playSong(e) {
+    let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
+    let songs = this.props.songs.filter(s => s.album.id === song.album.id);
+    // let song = this.props.album.songs.filter( song => song.title === e.currentTarget.id)[0];
+    // let songs = this.props.album.songs;
+    
+    this.props.receiveSongsQueue(songs);
+    let songIdx = this.currentSongIdx(songs,song);
+    // console.log(this.props.songsQueue);
+    // console.log(songIdx);
+    let prev;
+    let next;
+    if (songIdx === 0 && songs.length === 1) {
+      next = songs[0];
+      prev = songs[0];
+    } else if (songIdx === 0) {
+      prev = songs[songs.length - 1];
+      next = songs[songIdx + 1];
+    } else if (songIdx === songs.length - 1) {
+      prev = songs[songIdx - 1];
+      next = songs[0];
+    } else {
+      prev = songs[songIdx - 1];
+      next = songs[songIdx + 1];
+    }
+    this.props.receiveCurrentSong(song, next, prev);
+
+    // this.props.fetchCurrentSong(this.props.user.id, song.id);
+
+    this.play(song);
+  }
+
+  play(song) {
+    let music = this.props.currentSong ? document.getElementById(this.props.currentSong.id) : null;
+    let music2 = document.getElementById(song.id);
+    let songs = this.props.songs.filter(s => s.album.id === song.album.id);
+
+
+    if (music === music2 && this.props.play) {
+      // music2.pause();
+      this.props.receivePause(song, songs);
+    } else {
+      this.props.receivePlay(song, songs);
+      // this.handlePlay(music2);
+      if (music && music !== music2) {
+        // this.handleStop(music);
+      }
+    }
+  }
+
+  currentSongIdx(songs, song) {
+    for (let i = 0; i < songs.length; i++) {
+      if (songs[i].title === song.title) {
+        return i;
+      }
+    }
+  }
+
+  mouseEnter(idx) {
+    return() => {
+      this.setState({
+        mouseHover: true,
+        mouseIdx: idx
+      });
+    };
+  }
+
+  mouseLeave() {
+    return() => {
+      this.setState({
+        mouseHover: false,
+        mouseIdx: null
+      });
+    };
+  }
+
+  playAll(e) {
+    let song = this.props.song;
+    let songs = this.props.songs;
+
+    this.props.receivePlay(song, songs);
+  }
+
+
   render() {
 
     if (!this.props.album) {
       return null;
     }
+
     return(
       <div className="albumshow-page" onClick={this.closeDropdown}>
         <div className="album-info">
@@ -139,7 +279,7 @@ class ShowAlbum extends React.Component {
           <NavLink className="albumshow-artistname-link" to={`/artists/${this.props.album.artist.id}`}>
             <span className="albumshow-artistname">{this.props.album.artist.name}</span>
           </NavLink> 
-          <button className="album-play">PLAY</button>
+          <button className="album-play" onClick={this.playAll}>PLAY</button>
           <div className="albumshow-info">
             <span className="album-year">{this.props.album.year}</span>
             <span className="album-split-dot">.</span>
@@ -164,7 +304,14 @@ class ShowAlbum extends React.Component {
         <div className="album-songlist">
           <ul className="ul-album-songs">
             {this.props.album.songs.map( (song, idx) => (
-              <li className="li-album-song" key={idx}>
+              <li 
+                className="li-album-song" 
+                id={song.title} 
+                key={idx} 
+                value={idx}
+                onMouseEnter={this.mouseEnter(idx)} 
+                onMouseLeave={this.mouseLeave()} 
+                onDoubleClick={this.changeIcon} >
                 {/* <img className="white-music2" src={window.whiteMusic2} /> */}
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
                 <div className="albumshow-songtitle">{song.title}</div>

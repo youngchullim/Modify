@@ -8,10 +8,20 @@ import {
   deleteSongsUser,
   createPlaylistsSong,
   deletePlaylistsSong,
-  fetchSongsUsers
+  fetchSongsUsers,
+  fetchSongs,
 } from '../../actions/song_actions';
+
+import { 
+  receiveCurrentSong,
+  receiveSongsQueue,
+  receivePlay,
+  receivePause,
+  fetchCurrentSong,
+  receiveCurrentSongId,
+} from '../../actions/music_actions';
+
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { receiveCurrentSongId } from '../../actions/music_actions';
 
 import { createAlbumsUser, deleteAlbumsUser, fetchAlbumsUsers } from '../../actions/album_actions';
 // import { logout } from '../../actions/session_actions';
@@ -23,6 +33,9 @@ const mapStateToProps = (state, ownProps) => {
     album: state.entities.albums[ownProps.match.params.id],
     albumId: ownProps.match.params.id,
     albums: Object.values(state.entities.albums),
+    songs: Object.values(state.entities.songs),
+    song: Object.values(state.entities.songs)[0],
+    songsQueue: state.ui.music.songsQueue,
   });
 };
 
@@ -39,6 +52,13 @@ const mapDispatchToProps = dispatch => {
     fetchAlbumsUsers: (id) => dispatch(fetchAlbumsUsers(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
+    fetchSongs: () => dispatch(fetchSongs()),
+
+    fetchCurrentSong: (userId, id) => (dispatch(fetchCurrentSong(userId, id))),
+    receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
+    receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
+    receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
+    receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
     receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
   });
 };
