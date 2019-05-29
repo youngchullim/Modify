@@ -21,8 +21,16 @@ import {
   fetchSongsUsers,
 } from '../../actions/song_actions';
 
+import { 
+  receiveCurrentSong,
+  receiveSongsQueue,
+  receivePlay,
+  receivePause,
+  fetchCurrentSong,
+  receiveCurrentSongId,
+} from '../../actions/music_actions';
+
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { receiveCurrentSongId } from '../../actions/music_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,6 +40,7 @@ const mapStateToProps = (state, ownProps) => {
     artist: state.entities.artists[ownProps.match.params.id],
     artistId: ownProps.match.params.id,
     songs: Object.values(state.entities.songs),
+    song: Object.values(state.entities.songs)[0],
     albums: Object.values(state.entities.albums),
   });
 };
@@ -43,7 +52,6 @@ const mapDispatchToProps = dispatch => {
     fetchArtistsUsers: (id) => dispatch(fetchArtistsUsers(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
-    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
     fetchSong: (id) => dispatch(fetchSong(id)),
     fetchSongs: () => dispatch(fetchSongs()),
     createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
@@ -53,6 +61,14 @@ const mapDispatchToProps = dispatch => {
 
 // TEST
     fetchSongsUsers: (id) => dispatch(fetchSongsUsers(id)),
+
+// MUSIC PLAY
+    fetchCurrentSong: (userId, id) => (dispatch(fetchCurrentSong(userId, id))),
+    receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
+    receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
+    receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
+    receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
 
   });
 };
