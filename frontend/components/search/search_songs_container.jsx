@@ -11,7 +11,16 @@ import {
   deleteSongsUser,
   createSongsUser,  
 } from '../../actions/song_actions';
-import { receiveCurrentSongId } from '../../actions/music_actions';
+
+import { 
+  receiveCurrentSong,
+  receiveSongsQueue,
+  receivePlay,
+  receivePause,
+  fetchCurrentSong,
+  receiveCurrentSongId,
+} from '../../actions/music_actions';
+
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 
@@ -21,6 +30,7 @@ const mapStateToProps = (state, ownProps) => {
     artists: Object.values(state.entities.artists),
     albums: Object.values(state.entities.albums),
     songs: Object.values(state.entities.songs),
+    song: Object.values(state.entities.songs)[0],
     searchBar: ownProps.queries,
   });
 };
@@ -36,9 +46,14 @@ const mapDispatchToProps = dispatch => {
     deleteSongsUser: (id) => dispatch(deleteSongsUser(id)),
     openModal: (modal,songId) => dispatch(openModal(modal,songId)),
     closeModal: () => dispatch(closeModal()),
-    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
     createSongsUser: (user_id, song_id) => dispatch(createSongsUser(user_id, song_id)),
 
+    fetchCurrentSong: (userId, id) => (dispatch(fetchCurrentSong(userId, id))),
+    receivePlay: (song, songs) => (dispatch(receivePlay(song, songs))),
+    receivePause: (song, songs) => (dispatch(receivePause(song, songs))),
+    receiveSongsQueue: (songs) => dispatch(receiveSongsQueue(songs)),
+    receiveCurrentSong: (song, next, prev) => dispatch(receiveCurrentSong(song, next, prev)),
+    receiveCurrentSongId: (songId) => dispatch(receiveCurrentSongId(songId)),
   });
 };
 
