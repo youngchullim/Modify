@@ -10,10 +10,18 @@ class ShowArtist extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      mouseHover: false,
+      mouseIdx: null,
+    };
+
     this.songDropdown = this.songDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.saveArtist = this.saveArtist.bind(this);
     this.removeArtist = this.removeArtist.bind(this);
+
+    // MUSIC PLAY
+    this.playAll = this.playAll.bind(this);
   }
 
   componentDidMount() {
@@ -66,6 +74,14 @@ class ShowArtist extends React.Component {
   }
   
 
+// MUSIC PLAY
+  playAll(e) {
+    let song = this.props.songs.filter(s => s.artist.name === e.currentTarget.id)[0];
+    let songs = this.props.songs.filter(s => s.artist.name === e.currentTarget.id);
+
+    this.props.receivePlay(song, songs);
+  }
+
   render() {
     if (!this.props.artist) {
       return null;
@@ -75,7 +91,7 @@ class ShowArtist extends React.Component {
         <div className="photo-background">
           <div className="artist-name-title">{this.props.artist.name}</div>
           <div className="artist-show-buttons">
-            <button className="artist-play">PLAY</button>
+            <button className="artist-play" id={this.props.artist.name} onClick={this.playAll}>PLAY</button>
             <div className="song-dropdown">
               <button id={this.props.artist.name} className="album-playlist dropdown-button" onClick={this.songDropdown}>...</button>
               <div id={this.props.artist.name + 1} className="dropdown-content">
