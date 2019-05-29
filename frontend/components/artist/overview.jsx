@@ -29,11 +29,11 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchSongsUsers(this.props.user.id);
     this.props.fetchArtist(this.props.artistId);
-
-    // TEST 
     this.props.fetchSongs();
+    
+// had to switch to be able to play songs that weren't in currentUsers 'followed' songs
+    // this.props.fetchSongsUsers(this.props.user.id);
   }
    
   songDropdown(e) {
