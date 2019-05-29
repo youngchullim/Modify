@@ -24,7 +24,8 @@ class AlbumsUser extends React.Component {
             <li className="li-albums" key={idx}>
             <NavLink to={`/albums/${album.id}`}>
 {/* <ProtectedRoute path="/albums/:id" render={(props) => <ShowAlbumContainer {...props} album={album}/> }/> */}
-              <img className="album-photo" src={album.photo} />
+              <img className="album-photo" src={album.albumPhoto} />
+              {/* <img className="album-photo" src={album.photo} /> */}
               <div className="album-name">{album.title}</div>
             </NavLink>
               <div><Link className="album-artist albumshow-artistname" to={`/artists/${album.artist.id}`}>{album.artist.name}</Link></div>

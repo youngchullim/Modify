@@ -182,13 +182,10 @@ class ShowAlbum extends React.Component {
   playSong(e) {
     let song = this.props.songs.filter( song => song.title === e.currentTarget.id)[0];
     let songs = this.props.songs.filter(s => s.album.id === song.album.id);
-    // let song = this.props.album.songs.filter( song => song.title === e.currentTarget.id)[0];
-    // let songs = this.props.album.songs;
     
     this.props.receiveSongsQueue(songs);
     let songIdx = this.currentSongIdx(songs,song);
-    // console.log(this.props.songsQueue);
-    // console.log(songIdx);
+
     let prev;
     let next;
     if (songIdx === 0 && songs.length === 1) {
@@ -256,8 +253,8 @@ class ShowAlbum extends React.Component {
   }
 
   playAll(e) {
-    let song = this.props.song;
-    let songs = this.props.songs;
+    let song = this.props.songs.filter( s => s.album.title === e.currentTarget.id)[0];
+    let songs = this.props.songs.filter( s => s.album.title === e.currentTarget.id);
 
     this.props.receivePlay(song, songs);
   }
@@ -273,13 +270,13 @@ class ShowAlbum extends React.Component {
       <div className="albumshow-page" onClick={this.closeDropdown}>
         <div className="album-info">
           <div className="albumshow-photo-title">
-            <img className="albumshow-photo" src={this.props.album.photo} />
+            <img className="albumshow-photo" src={this.props.album.albumPhoto} />
             <div className="albumshow-title">{this.props.album.title}</div>
           </div>
           <NavLink className="albumshow-artistname-link" to={`/artists/${this.props.album.artist.id}`}>
             <span className="albumshow-artistname">{this.props.album.artist.name}</span>
           </NavLink> 
-          <button className="album-play" onClick={this.playAll}>PLAY</button>
+          <button className="album-play" id={this.props.album.title} onClick={this.playAll}>PLAY</button>
           <div className="albumshow-info">
             <span className="album-year">{this.props.album.year}</span>
             <span className="album-split-dot">.</span>
