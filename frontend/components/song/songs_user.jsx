@@ -240,7 +240,9 @@ class SongsUser extends React.Component {
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song left-user-song">
-                  { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                  <div className="music-img" id={song.title} onClick={this.changeIcon}>
+                    { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                  </div>
                   <div className="left-song-info">
                     <div className="song-title">{song.title}</div>
                     <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
