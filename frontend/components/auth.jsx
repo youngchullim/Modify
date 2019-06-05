@@ -33,13 +33,13 @@ const AuthComponent = () => {
       <ProtectedRoute path="/" component={MusicContainer} />
       <div className="auth-switch">
         <Switch>
-          <ProtectedRoute path="/home" component={HomeContainer} />
           <ProtectedRoute path="/search" component={SearchContainer} />
           <ProtectedRoute path="/library" component={LibraryContainer} />
           <ProtectedRoute path="/profile" component={ProfileContainer} />
           <ProtectedRoute path="/albums/:id" component={ShowAlbumContainer} />
           <ProtectedRoute path="/artists/:id" component={ShowArtistContainer} />
           <ProtectedRoute path="/playlists/:id" component={ShowPlaylistContainer} />
+          <ProtectedRoute path="/" component={HomeContainer} />
         </Switch>
       </div>
     </div>
