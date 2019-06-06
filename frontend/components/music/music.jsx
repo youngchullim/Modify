@@ -33,10 +33,10 @@ class Music extends React.Component {
     this.handleSlider = this.handleSlider.bind(this);
     this.onSeekMouseDown = this.onSeekMouseDown.bind(this);
     this.onSeekMouseUp = this.onSeekMouseUp.bind(this);
+    this.onProgress = this.onProgress.bind(this);
     this.ref = this.ref.bind(this);
     //TEST
     // this.onDuration = this.onDuration.bind(this);
-    // this.onProgress = this.onProgress.bind(this);
   }
   componentDidMount() {
     this.props.receiveCurrentSong(this.props.currentSong, this.props.nextSong, this.props.prevSong);
@@ -179,11 +179,11 @@ class Music extends React.Component {
   //   this.setState({duration});
   // }
 
-  // onProgress(state) {
-  //   if (!this.state.seeking) {
-  //     this.setState({state});
-  //   }
-  // }
+  onProgress(state) {
+    if (!this.state.seeking) {
+      this.setState({currentTime: Math.ceil(state.playedSeconds)});
+    }
+  }
   
   render() {
     let play;
@@ -346,7 +346,7 @@ class Music extends React.Component {
           // loop={false}
           volume={this.state.volume}
           muted={this.state.muted}
-          // onProgress={this.onProgress}
+          onProgress={this.onProgress}
           // onDuration={this.onDuration}
           // progressInterval={this.state.curretTime}
         />
