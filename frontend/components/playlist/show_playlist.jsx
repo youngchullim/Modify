@@ -295,7 +295,7 @@ class ShowPlaylist extends React.Component {
                       :
                       (<span className="song-title">{song.title}</span>)
                   }
-                  {/* <span className="song-title">{song.title}</span> */}
+{/* <span className="song-title">{song.title}</span> */}
                   <br />
                   <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artistId}`}>{song.artistName}</Link></span>
                   <span className="split-dot">.</span>
@@ -324,7 +324,7 @@ class ShowPlaylist extends React.Component {
                       :
                       <span className="song-duration">{song.duration}</span>
                   }
-                  {/* <span className="song-duration">{song.duration}</span> */}
+{/* <span className="song-duration">{song.duration}</span> */}
                 </div>
               </li>
             ))}
