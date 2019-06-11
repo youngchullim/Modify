@@ -36,6 +36,7 @@ const mapStateToProps = (state, ownProps) => {
     playlist: state.entities.playlists[ownProps.match.params.id],
     songs: Object.values(state.entities.songs),
     song: Object.values(state.entities.songs)[0],
+    currentSong: state.ui.music.currentSong,
   });
 };
 
