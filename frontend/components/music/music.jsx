@@ -53,7 +53,7 @@ class Music extends React.Component {
         play: this.props.play,
         pause: this.props.pause,
         duration: this.props.currentSong ? this.props.currentSong.duration : "",
-        // currentTime: this.props.currentSong ? "0:00" : "",
+        currentTime: 0,
         songsQueue: this.props.songsQueue,
       });
       this.props.receiveCurrentSong(this.props.currentSong, this.props.nextSong, this.props.prevSong);
