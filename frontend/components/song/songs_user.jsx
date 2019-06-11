@@ -27,8 +27,8 @@ class SongsUser extends React.Component {
     this.handleStop = this.handleStop.bind(this);
     //TEST
     this.changeIcon = this.changeIcon.bind(this);
-    this.changeDuration = this.changeDuration.bind(this);
-    this.changeTitle = this.changeTitle.bind(this);
+    // this.changeDuration = this.changeDuration.bind(this);
+    // this.changeTitle = this.changeTitle.bind(this);
   }
 
   componentDidMount() {
