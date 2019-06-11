@@ -226,7 +226,15 @@ class SearchSongs extends React.Component {
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song">
-                  <div className="song-title">{song.title}</div>
+{/* TITLE COLOR CHANGE */}
+                {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<div className="song-title-green">{song.title}</div>) : 
+                      (<div className="song-title">{song.title}</div>)
+                      :
+                      (<div className="song-title">{song.title}</div>)
+                  }
+{/* <div className="song-title">{song.title}</div> */}
                   <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
                   <span className="split-dot">.</span>
                   <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
@@ -243,7 +251,15 @@ class SearchSongs extends React.Component {
                       </div>
                     </a>
                   </div>
-                  <span className="song-duration">{song.duration}</span>
+{/* DURATION COLOR CHANGE */}
+                  {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<span className="song-duration-green">{song.duration}</span>) : 
+                      (<span className="song-duration">{song.duration}</span>)
+                      :
+                      <span className="song-duration">{song.duration}</span>
+                  }
+{/* <span className="song-duration">{song.duration}</span> */}
                 </div>
               </div>
                 {/* <audio className="audio-songs" controls="controls" preload="auto">
