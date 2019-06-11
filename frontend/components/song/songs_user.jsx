@@ -181,38 +181,38 @@ class SongsUser extends React.Component {
   }
 
   // NEED TO CHANGE
-  changeDuration(e) {
-    let durations = document.getElementsByClassName("song-duration-green");
-    let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
-    let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
-    if (duration) {
-      duration.className = "song-duration-green";
-      for (let i = 0; i < durations.length; i++) {
-        if (parseInt(durations[i].id) !== e.currentTarget.value) {
-          durations[i].className="song-duration";
-        }
-      }
-    } else {
-      duration2.className = "song-duration";
-    }
-  }
+  // changeDuration(e) {
+  //   let durations = document.getElementsByClassName("song-duration-green");
+  //   let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+  //   let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+  //   if (duration) {
+  //     duration.className = "song-duration-green";
+  //     for (let i = 0; i < durations.length; i++) {
+  //       if (parseInt(durations[i].id) !== e.currentTarget.value) {
+  //         durations[i].className="song-duration";
+  //       }
+  //     }
+  //   } else {
+  //     duration2.className = "song-duration";
+  //   }
+  // }
 
-  // NEED TO CHANGE
-  changeTitle(e) {
-    let titles = document.getElementsByClassName("song-title-green");
-    let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
-    let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
-    if (title) {
-      title.className = "song-title-green";
-      for (let i = 0; i < titles.length; i++) {
-        if (titles[i].innerText !== e.currentTarget.id) {
-          titles[i].className="song-title";
-        }
-      }
-    } else {
-      title2.className = "song-title";
-    }
-  }
+  // // NEED TO CHANGE
+  // changeTitle(e) {
+  //   let titles = document.getElementsByClassName("song-title-green");
+  //   let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+  //   let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+  //   if (title) {
+  //     title.className = "song-title-green";
+  //     for (let i = 0; i < titles.length; i++) {
+  //       if (titles[i].innerText !== e.currentTarget.id) {
+  //         titles[i].className="song-title";
+  //       }
+  //     }
+  //   } else {
+  //     title2.className = "song-title";
+  //   }
+  // }
 
 
   render() {
