@@ -36,6 +36,7 @@ const mapStateToProps = (state, ownProps) => {
     songs: Object.values(state.entities.songs),
     song: Object.values(state.entities.songs)[0],
     songsQueue: state.ui.music.songsQueue,
+    currentSong: state.ui.music.currentSong,
   });
 };
 
