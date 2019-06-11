@@ -87,6 +87,10 @@ class SignupForm extends React.Component {
       return(
         <span className="signup-error">Please enter a valid year.</span>
       )
+    } else if (parseInt(this.state.year) > 2006) {
+      return(
+        <span className="signup-error">Sorry, but you don't meet Modify's age requirements.</span>
+      )
     }
   }
 
@@ -159,7 +163,7 @@ class SignupForm extends React.Component {
                   className="password input input-space"
                   value={this.state.password}
                   onChange={this.update('password')}
-                  placeholder="Password: minimum 6 characters"
+                  placeholder="Password"
                   />
                   <div className="signup-error-messages">{this.renderPasswordErrors()}</div>
               </label>
