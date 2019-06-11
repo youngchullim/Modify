@@ -32,6 +32,7 @@ const mapStateToProps = (state, ownProps) => {
     songs: Object.values(state.entities.songs),
     song: Object.values(state.entities.songs)[0],
     searchBar: ownProps.queries,
+    currentSong: state.ui.music.currentSong,
   });
 };
 
