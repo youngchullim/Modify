@@ -30,8 +30,8 @@ class Featured extends React.Component {
     
     //TEST
     this.changeIcon = this.changeIcon.bind(this);
-    this.changeDuration = this.changeDuration.bind(this);
-    this.changeTitle = this.changeTitle.bind(this);
+    // this.changeDuration = this.changeDuration.bind(this);
+    // this.changeTitle = this.changeTitle.bind(this);
   }
 
   componentDidMount() {
@@ -178,44 +178,44 @@ class Featured extends React.Component {
     // console.log(e.currentTarget);
     // console.log(e.target);
     e.target.src = window.whiteMusic2;
-    this.changeDuration(e);
-    this.changeTitle(e);
+    // this.changeDuration(e);
+    // this.changeTitle(e);
     this.playSong(e);
   }
 
   // NEED TO CHANGE
-  changeDuration(e) {
-    let durations = document.getElementsByClassName("song-duration-green");
-    let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
-    let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
-    if (duration) {
-      duration.className = "song-duration-green";
-      for (let i = 0; i < durations.length; i++) {
-        if (parseInt(durations[i].id) !== e.currentTarget.value) {
-          durations[i].className="song-duration";
-        }
-      }
-    } else {
-      duration2.className = "song-duration";
-    }
-  }
+  // changeDuration(e) {
+  //   let durations = document.getElementsByClassName("song-duration-green");
+  //   let duration = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration")[0];
+  //   let duration2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-duration-green")[0];
+  //   if (duration) {
+  //     duration.className = "song-duration-green";
+  //     for (let i = 0; i < durations.length; i++) {
+  //       if (parseInt(durations[i].id) !== e.currentTarget.value) {
+  //         durations[i].className="song-duration";
+  //       }
+  //     }
+  //   } else {
+  //     duration2.className = "song-duration";
+  //   }
+  // }
 
-  // NEED TO CHANGE
-  changeTitle(e) {
-    let titles = document.getElementsByClassName("song-title-green");
-    let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
-    let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
-    if (title) {
-      title.className = "song-title-green";
-      for (let i = 0; i < titles.length; i++) {
-        if (titles[i].innerText !== e.currentTarget.id) {
-          titles[i].className="song-title";
-        }
-      }
-    } else {
-      title2.className = "song-title";
-    }
-  }
+  // // NEED TO CHANGE
+  // changeTitle(e) {
+  //   let titles = document.getElementsByClassName("song-title-green");
+  //   let title = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title")[0];
+  //   let title2 = document.getElementById(e.currentTarget.id).getElementsByClassName("song-title-green")[0];
+  //   if (title) {
+  //     title.className = "song-title-green";
+  //     for (let i = 0; i < titles.length; i++) {
+  //       if (titles[i].innerText !== e.currentTarget.id) {
+  //         titles[i].className="song-title";
+  //       }
+  //     }
+  //   } else {
+  //     title2.className = "song-title";
+  //   }
+  // }
 
   saveSong(e) {
     let songId = e.target.id;
@@ -249,7 +249,15 @@ class Featured extends React.Component {
                 <div className="left-song left-user-song">
                   { this.state.mouseIdx === idx ? musicPlay : musicNote }
                   <div className="left-song-info">
-                    <div className="song-title">{song.title}</div>
+{/* TITLE COLOR CHANGE */}
+                {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<div className="song-title-green">{song.title}</div>) : 
+                      (<div className="song-title">{song.title}</div>)
+                      :
+                      (<div className="song-title">{song.title}</div>)
+                  }
+{/* <div className="song-title">{song.title}</div> */}
                     <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
                     <span className="split-dot">.</span>
                     <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
@@ -267,7 +275,15 @@ class Featured extends React.Component {
                       </div>
                     </a>
                   </div>
-                  <span id={idx} className="song-duration">{song.duration}</span>
+{/* DURATION COLOR CHANGE */}
+                  {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<span className="song-duration-green">{song.duration}</span>) : 
+                      (<span className="song-duration">{song.duration}</span>)
+                      :
+                      <span className="song-duration">{song.duration}</span>
+                  }
+{/* <span className="song-duration">{song.duration}</span> */}
                 </div>
               </div>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
