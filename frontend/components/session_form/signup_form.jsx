@@ -7,10 +7,20 @@ class SignupForm extends React.Component {
 
     this.state = {
       email: "",
-      password: ""
+      confirmEmail: "",
+      password: "",
+      year: "",
+      day: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+
+// TEST
+    this.renderEmailErrors = this.renderEmailErrors.bind(this);
+    this.renderConfirmEmailErrors = this.renderConfirmEmailErrors.bind(this);
+    this.renderPasswordErrors = this.renderPasswordErrors.bind(this);
+    this.renderYearErrors = this.renderYearErrors.bind(this);
+    this.renderDayErrors = this.renderDayErrors.bind(this);
   }
 
   update(field) {
@@ -38,17 +48,60 @@ class SignupForm extends React.Component {
 
     this.props.login(random_demo);
   }
+
+  renderEmailErrors() {
+    if (this.state.email.length > 0) {
+      let email = this.state.email.split("");
+      if (email.includes("@") && email.includes(".")) {
+        if (this.props.errors.length > 0) {
+          return(
+            <span className="signup-error">We're sorry, that email is taken.</span>
+          )
+        }
+      } else {
+        return (
+          <span className="signup-error">The email address you supplied is invalid.</span>
+        )
+      }
+    }
+  }
+
+  renderConfirmEmailErrors() {
+    if (this.state.confirmEmail.length > 0 && this.state.email !== this.state.confirmEmail) {
+      return(
+        <span className="signup-error">Email address doesn't match.</span>
+      )
+    }
+  }
+
+  renderPasswordErrors() {
+    if (this.state.password.length < 6 && this.state.password.length !== 0) {
+      return (
+        <span className="signup-error">Your password is too short.</span>
+      )
+    }
+  }
+
+  renderYearErrors() {
+    if (parseInt(this.state.year) < 1900) {
+      return(
+        <span className="signup-error">Please enter a valid year.</span>
+      )
+    }
+  }
+
+  renderDayErrors() {
+    if (parseInt(this.state.day) > 31) {
+      return(
+        <span className="signup-error">Please enter a valid day of the month.</span>
+      )
+    }
+  }
   
   renderErrors() {
     if (this.props.errors.length > 0) {
       return(
-        <ul>
-          {this.props.errors.map((error, i) => (
-            <li key={i} className="signup-error">
-              {error}
-            </li>
-          ))}
-        </ul>
+        <span className="signup-error">{this.props.errors[0]}</span>
       )
     }
   }
@@ -72,7 +125,7 @@ class SignupForm extends React.Component {
             <div className="signup-message">Sign up with your email address</div>
             <span className="required-fields">*</span>
             <span className="required-msg">Required fields</span>
-            <div className="signup-error-messages">{this.renderErrors()}</div>
+            <div className="signup-error-msg">{this.renderErrors()}</div>
 
             <div className="signup-info">
               <br/>
@@ -82,16 +135,23 @@ class SignupForm extends React.Component {
                   className="email input"
                   value={this.state.email}
                   onChange={this.update('email')}
+                  onClick={this.props.clear}
                   placeholder="Email"
                   />
+                <div className="signup-error-messages">{this.renderEmailErrors()}</div>
               </label>
+
               <br/>
               <label>
                 <input type="text"
                   className="confirm-email input input-space"
+                  value={this.state.confirmEmail}
+                  onChange={this.update('confirmEmail')}
                   placeholder="Confirm email"
                   />
+                <div className="signup-error-messages">{this.renderConfirmEmailErrors()}</div>
               </label>
+
               <br/>
               <label>
                 <span className="required">*</span>
@@ -101,6 +161,7 @@ class SignupForm extends React.Component {
                   onChange={this.update('password')}
                   placeholder="Password: minimum 6 characters"
                   />
+                  <div className="signup-error-messages">{this.renderPasswordErrors()}</div>
               </label>
               <br/>
               <label>
@@ -130,11 +191,23 @@ class SignupForm extends React.Component {
               </select> 
               
               <label>
-                <input className="dob-day dob" type="text" placeholder="Day"/>
+                <input 
+                  className="dob-day dob" 
+                  value={this.state.day} 
+                  onChange={this.update("day")} 
+                  type="text" 
+                  placeholder="Day"/>
               </label>
               
               <label>
-                <input className="dob-year dob" type="text" placeholder="Year"/>
+                <input 
+                  className="dob-year dob" 
+                  value={this.state.year} 
+                  onChange={this.update("year")} 
+                  type="text" 
+                  placeholder="Year"/>
+                <div className="signup-error-messages">{this.renderDayErrors()}</div>
+                <div className="signup-error-messages">{this.renderYearErrors()}</div>
               </label>
               <br/>
               <label className="m-label">
