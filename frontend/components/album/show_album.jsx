@@ -311,7 +311,15 @@ class ShowAlbum extends React.Component {
                 onDoubleClick={this.changeIcon} >
                 {/* <img className="white-music2" src={window.whiteMusic2} /> */}
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
-                <div className="albumshow-songtitle">{song.title}</div>
+{/* TITLE COLOR CHANGE */}
+                {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<span className="song-title-green">{song.title}</span>) : 
+                      (<span className="song-title">{song.title}</span>)
+                      :
+                      (<span className="song-title">{song.title}</span>)
+                  }
+                  {/* <span className="song-title">{song.title}</span> */}
 
                 <div className="song-rightside">
                   <div className="song-dropdown">
@@ -326,7 +334,15 @@ class ShowAlbum extends React.Component {
                       </a>
                     </div>
                   </div>
-                  <span className="song-duration">{song.duration}</span>
+{/* DURATION COLOR CHANGE */}
+                  {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<span className="song-duration-green">{song.duration}</span>) : 
+                      (<span className="song-duration">{song.duration}</span>)
+                      :
+                      <span className="song-duration">{song.duration}</span>
+                  }
+                  {/* <span className="song-duration">{song.duration}</span> */}
                 </div>
                 
               </li>
