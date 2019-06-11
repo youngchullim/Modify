@@ -175,8 +175,8 @@ class SongsUser extends React.Component {
     // console.log(e.currentTarget);
     // console.log(e.target);
     e.target.src = window.whiteMusic2;
-    this.changeDuration(e);
-    this.changeTitle(e);
+    // this.changeDuration(e);
+    // this.changeTitle(e);
     this.playSong(e);
   }
 
@@ -246,7 +246,15 @@ class SongsUser extends React.Component {
                     </li>
                   </ul>
                   <div className="left-song-info">
-                    <div className="song-title">{song.title}</div>
+{/* TITLE COLOR CHANGE */}
+                {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<div className="song-title-green">{song.title}</div>) : 
+                      (<div className="song-title">{song.title}</div>)
+                      :
+                      (<div className="song-title">{song.title}</div>)
+                  }
+{/* <div className="song-title">{song.title}</div> */}
                     <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
                     <span className="split-dot">.</span>
                     <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
@@ -263,7 +271,15 @@ class SongsUser extends React.Component {
                       </div>
                     </a>
                   </div>
-                  <span id={idx} className="song-duration">{song.duration}</span>
+{/* DURATION COLOR CHANGE */}
+                  {(this.props.currentSong) ?
+                    (this.props.currentSong.title === song.title) ? 
+                      (<span className="song-duration-green">{song.duration}</span>) : 
+                      (<span className="song-duration">{song.duration}</span>)
+                      :
+                      <span className="song-duration">{song.duration}</span>
+                  }
+                  {/* <span className="song-duration">{song.duration}</span> */}
                 </div>
               </div>
               {/* <audio className="audio-songs" controls="controls" preload="auto">
