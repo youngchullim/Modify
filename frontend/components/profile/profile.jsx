@@ -24,11 +24,11 @@ class Profile extends React.Component {
     return(
       <div className="navbar-profile">
         <ul className="profile-list">
-        <li>
-          <h1 className="profile-title">
-            Profile:
-          </h1>
-        </li>
+          <li>
+            <h1 className="profile-title">
+              Profile:
+            </h1>
+          </li>
           <li className="profile-email">
             <span className="email-msg">Email:</span><span className="user-email">{this.props.user.email}</span>
           </li>

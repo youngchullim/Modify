@@ -1,13 +1,10 @@
-.navbar-profile{
-  left: 230px;
-  height: 450px;
-  width: 800px;
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 400px;
-  padding-right: 350px;
-  padding-left: 500px;
+.navbar-profile {
+  margin-left: 230px;
+  height: 100vh;
   background-color: #000000f5;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-list {
