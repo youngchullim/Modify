@@ -85,7 +85,9 @@ Rails.application.configure do
 
 # TEST to remove logs in production
   # config.logger = nil
-  # config.action_mailer.logger = nil
+  config.action_mailer.logger = nil
+  config.active_record.logger = nil
+  config.action_view.logger = nil
   config.logger = Logger.new('/dev/null')
   
   # if ENV["RAILS_LOG_TO_STDOUT"].present?
