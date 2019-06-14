@@ -82,19 +82,12 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
-# TEST to remove logs in production
-  # config.logger = nil
-  config.action_mailer.logger = nil
-  config.active_record.logger = nil
-  config.action_view.logger = nil
-  config.logger = Logger.new('/dev/null')
   
-  # if ENV["RAILS_LOG_TO_STDOUT"].present?
-  #   logger           = ActiveSupport::Logger.new(STDOUT)
-  #   logger.formatter = config.log_formatter
-  #   config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  # end
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
