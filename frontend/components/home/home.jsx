@@ -44,12 +44,11 @@ class Home extends React.Component {
                 <span className="genre h-tabs">Genre</span>
               </NavLink>
             </li>
-            <li className="home-discover">
-                  {/* USED !IMPORTANT CSS RULE */}
-              <NavLink className="discover-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/discover"> {/* logo button goes to HOME */}
+            {/* <li className="home-discover">
+              <NavLink className="discover-link h-link" activeStyle={{}} activeClassName="selected-home-tab" to="/home/discover"> 
                 <span className="discover h-tabs">Discover</span>
               </NavLink>
-            </li>
+            </li> */}
           </ul>
 
           {/* <div >Made for {user}</div> */}
@@ -58,7 +57,7 @@ class Home extends React.Component {
         <Switch>
           <ProtectedRoute exact path="/home" component={FeaturedContainer} />
           <ProtectedRoute path="/home/genre" component={GenreContainer} />
-          <ProtectedRoute path="/home/discover" component={DiscoverContainer} />
+          {/* <ProtectedRoute path="/home/discover" component={DiscoverContainer} /> */}
         </Switch>
       </div>
     )
