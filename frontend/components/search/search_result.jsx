@@ -219,6 +219,8 @@ class SearchResult extends React.Component{
     let albums = this.props.albums.filter(album => album.title.toLowerCase().includes(this.props.searchBar.toLowerCase()));
     albums = albums.slice(0,10);
 
+    let musicPlay = (<img className="music-icon" src={window.whitePlay2}/>);
+    let musicNote = (<img className="music-icon" src={window.whiteMusic2}/>);
 
     if (this.props.searchBar !== "") {
       result = (
@@ -238,20 +240,26 @@ class SearchResult extends React.Component{
                 onMouseLeave={this.mouseLeave()} 
                 onDoubleClick={this.changeIcon} >
               <div className="song-index">
-                {/* <button className="song-play-button"></button> */}
-                <div className="left-song">
+                <div className="left-song left-user-song">
+                  <ul className="music-img">
+                    <li className="music-img" id={song.title} value={idx} onClick={this.changeIcon}>
+                      { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                    </li>
+                  </ul>
+                  <div className="left-song-info">
 {/* TITLE COLOR CHANGE */}
-                {(this.props.currentSong) ?
-                    (this.props.currentSong.title === song.title) ? 
-                      (<div className="song-title-green">{song.title}</div>) : 
-                      (<div className="song-title">{song.title}</div>)
+                    {(this.props.currentSong) ?
+                      (this.props.currentSong.title === song.title) ? 
+                        (<div className="song-title-green">{song.title}</div>) : 
+                        (<div className="song-title">{song.title}</div>)
                       :
                       (<div className="song-title">{song.title}</div>)
-                  }
+                    }
 {/* <div className="song-title">{song.title}</div> */}
-                  <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
-                  <span className="split-dot">.</span>
-                  <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+                    <span><Link className="song-artist albumshow-artistname" to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></span>
+                    <span className="split-dot">.</span>
+                    <span><Link className="song-album albumshow-artistname" to={`/albums/${song.album.id}`}>{song.album.title}</Link></span>
+                  </div>
                 </div>
                 <div className="song-dropdown" >
                   <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
