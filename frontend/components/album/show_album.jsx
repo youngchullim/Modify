@@ -266,6 +266,9 @@ class ShowAlbum extends React.Component {
       return null;
     }
 
+    let musicPlay = (<img className="music-icon" src={window.whitePlay2}/>);
+    let musicNote = (<img className="music-icon" src={window.whiteMusic2}/>);
+
     return(
       <div className="albumshow-page" onClick={this.closeDropdown}>
         <div className="album-info">
@@ -311,6 +314,13 @@ class ShowAlbum extends React.Component {
                 onDoubleClick={this.changeIcon} >
                 {/* <img className="white-music2" src={window.whiteMusic2} /> */}
                 {/* <img className="white-play2" src={window.whitePlay2} /> */}
+                <div className="left-song left-user-song">
+                  <ul className="music-img">
+                    <li className="music-img" id={song.title} value={idx} onClick={this.changeIcon}>
+                      { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                    </li>
+                  </ul>
+                  <div className="left-song-info">
 {/* TITLE COLOR CHANGE */}
                 {(this.props.currentSong) ?
                     (this.props.currentSong.title === song.title) ? 
@@ -320,7 +330,8 @@ class ShowAlbum extends React.Component {
                       (<span className="song-title">{song.title}</span>)
                   }
                   {/* <span className="song-title">{song.title}</span> */}
-
+                  </div>
+                </div>
                 <div className="song-rightside">
                   <div className="song-dropdown">
                     <button id={song.title} className="dropdown-button" onClick={this.songDropdown}>...</button>
