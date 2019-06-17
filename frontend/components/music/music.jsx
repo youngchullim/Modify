@@ -2,6 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
 import { button, Link, NavLink } from 'react-router-dom';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 class Music extends React.Component {
   constructor(props) {
@@ -186,6 +187,12 @@ class Music extends React.Component {
   }
   
   render() {
+    document.documentElement.addEventListener('keydown', function (e) {
+      if ( ( e.keycode || e.which ) == 32) {
+          e.preventDefault();
+      }
+    }, false);
+
     let play;
     if (this.state.play) {
       play = window.musicPlayerPause;
@@ -349,6 +356,18 @@ class Music extends React.Component {
           onProgress={this.onProgress}
           // onDuration={this.onDuration}
           // progressInterval={this.state.curretTime}
+        />
+        <KeyboardEventHandler
+          handleKeys={['space']}
+          onKeyEvent={(key, e) => this.handlePlay()} 
+        />
+        <KeyboardEventHandler
+          handleKeys={['left']}
+          onKeyEvent={(key, e) => this.handlePrev()} 
+        />
+        <KeyboardEventHandler
+          handleKeys={['right']}
+          onKeyEvent={(key, e) => this.handleNext()} 
         />
       </div>
     )
