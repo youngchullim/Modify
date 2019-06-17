@@ -247,7 +247,11 @@ class Featured extends React.Component {
               <div className="song-index">
                 {/* <button className="song-play-button"></button> */}
                 <div className="left-song left-user-song">
-                  { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                  <ul className="music-img">
+                    <li className="music-img" id={song.title} value={idx} onClick={this.changeIcon}>
+                      { this.state.mouseIdx === idx ? musicPlay : musicNote }
+                    </li>
+                  </ul>
                   <div className="left-song-info">
 {/* TITLE COLOR CHANGE */}
                 {(this.props.currentSong) ?
