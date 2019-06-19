@@ -9,7 +9,8 @@ class SearchResult extends React.Component{
     this.state = {
       songs: this.props.songs,
       song: 0,
-      searchBar: ""
+      searchBar: "",
+      event: "",
     };
 
     this.closeDropdown = this.closeDropdown.bind(this);
@@ -17,6 +18,11 @@ class SearchResult extends React.Component{
     this.removeSong = this.removeSong.bind(this);
     this.addSongState = this.addSongState.bind(this);
     this.saveSong = this.saveSong.bind(this);
+
+// SAVE/REMOVE FROM LIBRARY
+    this.renderRemovedSong = this.renderRemovedSong.bind(this);
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderClear = this.renderClear.bind(this);
 
 // MUSIC PLAY
     this.changeIcon = this.changeIcon.bind(this);
@@ -77,6 +83,10 @@ class SearchResult extends React.Component{
     this.setState({
       songs: this.props.fetchSongsUsers(this.props.user.id)
     });
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderRemovedSong, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   addSongState(e) {
@@ -90,6 +100,32 @@ class SearchResult extends React.Component{
   saveSong(e) {
     let songId = e.target.id;
     this.props.createSongsUser(this.props.user.id, songId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
+  }
+
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
+  }
+
+  renderRemovedSong() {
+    this.setState({
+      event: "Remove Song from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed Song from Library";
   }
 
 // MUSIC PLAY
@@ -225,6 +261,16 @@ class SearchResult extends React.Component{
     if (this.props.searchBar !== "") {
       result = (
         <div className="search-results" onClick={this.closeDropdown}>
+
+{/* SAVE/REMOVE FROM LIBRARY */}
+          <div className="event-test">
+            {(this.state.event.length > 0) ?
+              (<div className="event-flex">
+                {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+                {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+              </div>) : (<div></div>)
+            }
+          </div>
 
 {/* SONGS */}
           <h1 className="top-result-tabs">Songs</h1>
