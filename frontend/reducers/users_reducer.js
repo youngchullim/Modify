@@ -14,7 +14,7 @@ const usersReducer = (oldState={}, action) => {
     case RECEIVE_SONGS_USER:
     case RECEIVE_ALBUMS_USER:
     case RECEIVE_ARTISTS_USER:
-      state = merge({}, oldState, {[action.user.id]: action.user});
+      state = merge({}, oldState, {"action": action.user});
       return state;
     default:
       return oldState;
