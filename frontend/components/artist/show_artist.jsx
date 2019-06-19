@@ -13,6 +13,7 @@ class ShowArtist extends React.Component {
     this.state = {
       mouseHover: false,
       mouseIdx: null,
+      event: "",
     };
 
     this.songDropdown = this.songDropdown.bind(this);
@@ -20,7 +21,12 @@ class ShowArtist extends React.Component {
     this.saveArtist = this.saveArtist.bind(this);
     this.removeArtist = this.removeArtist.bind(this);
 
-    // MUSIC PLAY
+// SAVE/REMOVE FROM LIBRARY
+    this.renderClear = this.renderClear.bind(this);
+    this.renderSavedArtist = this.renderSavedArtist.bind(this);
+    this.renderRemovedArtist = this.renderRemovedArtist.bind(this);
+
+// MUSIC PLAY
     this.playAll = this.playAll.bind(this);
   }
 
@@ -60,6 +66,10 @@ class ShowArtist extends React.Component {
   saveArtist(e) {
     let artistId = this.props.artist.id;
     this.props.createArtistsUser(this.props.user.id, artistId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedArtist, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   removeArtist(e) {
@@ -70,7 +80,32 @@ class ShowArtist extends React.Component {
         let user = artistsUsers[i];
         this.props.deleteArtistsUser(user.id);
       }
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderRemovedArtist, 0);
+    setTimeout(this.renderClear, 2500);
     }
+  }
+
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedArtist() {
+    this.setState({
+      event: "Saved Artist to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Artist to Library";
+  }
+
+  renderRemovedArtist() {
+    this.setState({
+      event: "Remove Artist from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed Artist from Library";
   }
   
 
@@ -88,6 +123,17 @@ class ShowArtist extends React.Component {
     }
     return(
       <div className="artist-show-page" onClick={this.closeDropdown}>
+
+{/* SAVE/REMOVE FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
+        
         <div className="photo-background">
           <div className="artist-name-title">{this.props.artist.name}</div>
           <div className="artist-show-buttons">
