@@ -11,6 +11,7 @@ class Featured extends React.Component {
       song: 0,
       mouseHover: false,
       mouseIdx: null,
+      event: "",
     };
 
     this.songDropdown = this.songDropdown.bind(this);
@@ -27,9 +28,14 @@ class Featured extends React.Component {
     this.play = this.play.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.handleStop = this.handleStop.bind(this);
+    this.changeIcon = this.changeIcon.bind(this);
+
+// SAVE/REMOVE FROM LIBRARY
+    this.renderRemovedSong = this.renderRemovedSong.bind(this);
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderClear = this.renderClear.bind(this);
     
     //TEST
-    this.changeIcon = this.changeIcon.bind(this);
     // this.changeDuration = this.changeDuration.bind(this);
     // this.changeTitle = this.changeTitle.bind(this);
   }
@@ -59,9 +65,9 @@ class Featured extends React.Component {
       this.props.deleteSongsUser(user.id);
     }
 
-    this.setState({
-      songs: this.props.fetchSongsUsers(this.props.user.id)
-    });
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderRemovedSong, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   closeDropdown(e) {
@@ -220,6 +226,32 @@ class Featured extends React.Component {
   saveSong(e) {
     let songId = e.target.id;
     this.props.createSongsUser(this.props.user.id, songId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
+  }
+
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
+  }
+
+  renderRemovedSong() {
+    this.setState({
+      event: "Remove Song from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed Song from Library";
   }
 
   render() {
@@ -230,6 +262,17 @@ class Featured extends React.Component {
 
     return(
       <div className="songs-component" onClick={this.closeDropdown}>
+
+{/* SAVE/REMOVE FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
+        
         <ul className="ul-songs">
             {/* USED IMPLICIT RETURN ON MAP */}
           {songs.map( (song,idx) => (
