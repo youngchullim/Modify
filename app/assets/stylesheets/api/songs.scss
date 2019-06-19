@@ -113,3 +113,34 @@
   width: 20px;
   align-self: center;
 }
+
+// Event Popup
+.event-flex {
+  display: flex;
+  position: fixed;
+  // width: 800px;
+  width: 97.6%;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  margin: 0 auto;
+  background-color: #1DB855;
+  padding: 15px;
+  padding-left: 20px;
+  justify-content: space-between;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.event-librarySongs {
+  color: white;
+  align-self: center;
+}
+
+.close-event {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #1DB855;
+  font-size: 20px;
+}
