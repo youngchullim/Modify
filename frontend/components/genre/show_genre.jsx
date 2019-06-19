@@ -11,6 +11,7 @@ class ShowGenre extends React.Component {
       song: 0,
       mouseHover: false,
       mouseIdx: null,
+      event: "",
     };
 
     this.toggleLibrary = this.toggleLibrary.bind(this);
@@ -21,6 +22,12 @@ class ShowGenre extends React.Component {
     this.currSong = this.currSong.bind(this);
     this.saveAlbum = this.saveAlbum.bind(this);
     this.removeSong = this.removeSong.bind(this);
+
+// SAVE/REMOVE FROM LIBRARY
+    this.renderRemoved = this.renderRemoved.bind(this);
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderSavedAlbum = this.renderSavedAlbum.bind(this);
+    this.renderClear = this.renderClear.bind(this);
 
 // MUSIC PLAY
     this.changeIcon = this.changeIcon.bind(this);
@@ -90,31 +97,21 @@ class ShowGenre extends React.Component {
     // let albumId = this.props.album.id;
     this.props.createSongsUser(this.props.user.id, songId);
     // this.props.createAlbumsUser(this.props.user.id, albumId);
+
+// REMOVE/ADD FROM LIBRARY    
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   saveAlbum(e) {
     let albumId = e.target.id;
     this.props.createAlbumsUser(this.props.user.id, albumId);
+
+// REMOVE/ADD FROM LIBRARY    
+    setTimeout(this.renderSavedAlbum, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
-  // removeSong(e) {
-  //   let userId = this.props.user.id;
-  //   let currSongId = e.currentTarget.id;
-
-  //   let currSong = this.props.songs.filter(song => song.id === parseInt(currSongId))[0];
-  //   let songsUsers = currSong.songsUsers;
-
-  //   let currSongUser = songsUsers.filter(songsUser => songsUser.user_id === userId);
-    
-  //   for (let i = 0; i < currSongUser.length; i++) {
-  //     let user = currSongUser[i];
-  //     this.props.deleteSongsUser(user.id);
-  //   }
-
-  //   this.setState({
-  //     songs: this.props.fetchSongsUsers(this.props.user.id)
-  //   });
-  // }
   removeSong(e) {
     let playlistId = this.props.playlist.id;
     let songId = e.currentTarget.id;
@@ -131,7 +128,41 @@ class ShowGenre extends React.Component {
     this.setState({
     songs: this.props.fetchPlaylistsSongs(this.props.match.params.id)
     });
+
+// REMOVE/ADD FROM LIBRARY    
+    setTimeout(this.renderRemoved, 0);
+    setTimeout(this.renderClear, 2500);
   }
+
+// REMOVE/ADD FROM LIBRARY    
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
+  }
+
+  renderSavedAlbum() {
+    this.setState({
+      event: "Saved Album to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Album to Library";
+  }
+
+  renderRemoved() {
+    this.setState({
+      event: "Remove from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed from Library";
+  }
+
 
 // MUSIC PLAY
   changeIcon(e) {
@@ -258,6 +289,15 @@ class ShowGenre extends React.Component {
     
     return(
       <div className="playlistShow-component" onClick={this.closeDropdown}>
+{/* REMOVE/ADD FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
         <div className="playlistShow-info">
           <div className="playlistShow-photo-title">
             <div className="playlistShow-photo"></div>
