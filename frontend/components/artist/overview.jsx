@@ -8,7 +8,8 @@ class Overview extends React.Component {
     this.state = {
       songs: this.props.artist.songs,
       song: 0,
-      albums: this.props.artist.albums
+      albums: this.props.artist.albums,
+      event: "",
     };
 
     this.songDropdown = this.songDropdown.bind(this);
@@ -16,6 +17,11 @@ class Overview extends React.Component {
     this.removeSong = this.removeSong.bind(this);
     this.addSongState = this.addSongState.bind(this);
     this.saveSong = this.saveSong.bind(this);
+
+// SAVE/REMOVE FROM LIBRARY
+    this.renderRemovedSong = this.renderRemovedSong.bind(this);
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderClear = this.renderClear.bind(this);
 
   // MUSIC PLAY
     this.changeIcon = this.changeIcon.bind(this);
@@ -57,6 +63,10 @@ class Overview extends React.Component {
     this.setState({
       songs: this.props.fetchSongsUsers(this.props.user.id)
     });
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderRemovedSong, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   closeDropdown(e) {
@@ -88,6 +98,32 @@ class Overview extends React.Component {
     // let albumId = this.props.album.id;
     this.props.createSongsUser(this.props.user.id, songId);
     // this.props.createAlbumsUser(this.props.user.id, albumId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
+  }
+
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
+  }
+
+  renderRemovedSong() {
+    this.setState({
+      event: "Remove Song from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed Song from Library";
   }
 
   addSongState(e) {
@@ -220,6 +256,17 @@ class Overview extends React.Component {
     
     return(
       <div className="over-component" onClick={this.closeDropdown}>
+
+{/* SAVE/REMOVE FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
+
         <h1 className="popular-tab">Popular</h1>
         <div className="songs-component no-padding">
           <ul className="ul-songs">
