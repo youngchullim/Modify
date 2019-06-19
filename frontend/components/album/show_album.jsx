@@ -11,6 +11,7 @@ class ShowAlbum extends React.Component {
       song: 0,
       mouseHover: false,
       mouseIdx: null,
+      event: "",
     };
 
 
@@ -22,7 +23,13 @@ class ShowAlbum extends React.Component {
     this.saveAlbum = this.saveAlbum.bind(this);
     this.currSong = this.currSong.bind(this);
 
-    // MUSIC PLAY
+// SAVE/REMOVE FROM LIBRARY
+    this.renderRemovedAlbum = this.renderRemovedAlbum.bind(this);
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderSavedAlbum = this.renderSavedAlbum.bind(this);
+    this.renderClear = this.renderClear.bind(this);
+
+// MUSIC PLAY
     this.changeIcon = this.changeIcon.bind(this);
     this.playSong = this.playSong.bind(this);
     this.mouseEnter = this.mouseEnter.bind(this);
@@ -89,11 +96,19 @@ class ShowAlbum extends React.Component {
     let albumId = this.props.album.id;
     this.props.createSongsUser(this.props.user.id, songId);
     this.props.createAlbumsUser(this.props.user.id, albumId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   saveAlbum(e) {
     let albumId = this.props.album.id;
     this.props.createAlbumsUser(this.props.user.id, albumId);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedAlbum, 0);
+    setTimeout(this.renderClear, 2500);
   }
 
   removeAlbum(e) {
@@ -105,6 +120,39 @@ class ShowAlbum extends React.Component {
         this.props.deleteAlbumsUser(user.id);
       }
     }
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderRemovedAlbum, 0);
+    setTimeout(this.renderClear, 2500);
+  }
+
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
+  }
+
+  renderSavedAlbum() {
+    this.setState({
+      event: "Saved Album to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Album to Library";
+  }
+
+  renderRemovedAlbum() {
+    this.setState({
+      event: "Remove Album from Library"
+    });
+    document.getElementById("state-event").innerHTML = "Removed Album from Library";
   }
 
   currSong(e) {
@@ -271,6 +319,17 @@ class ShowAlbum extends React.Component {
 
     return(
       <div className="albumshow-page" onClick={this.closeDropdown}>
+
+{/* SAVE/REMOVE FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
+        
         <div className="album-info">
           <div className="albumshow-photo-title">
             <img className="albumshow-photo" src={this.props.album.albumPhoto} />
