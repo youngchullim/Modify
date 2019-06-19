@@ -23,6 +23,7 @@ class Music extends React.Component {
       preVolume: 0.6,
       muted: false,
       seeking: false,
+      event: "",
     };
     
     this.handlePlay = this.handlePlay.bind(this);
@@ -36,6 +37,11 @@ class Music extends React.Component {
     this.onSeekMouseUp = this.onSeekMouseUp.bind(this);
     this.onProgress = this.onProgress.bind(this);
     this.ref = this.ref.bind(this);
+
+// SAVE/REMOVE FROM LIBRARY
+    this.renderSavedSong = this.renderSavedSong.bind(this);
+    this.renderClear = this.renderClear.bind(this);
+    
     //TEST
     // this.onDuration = this.onDuration.bind(this);
   }
@@ -128,6 +134,25 @@ class Music extends React.Component {
 
   saveSong() {
     this.props.createSongsUser(this.props.user.id, this.props.currentSong.id);
+
+// SAVE/REMOVE FROM LIBRARY
+    setTimeout(this.renderSavedSong, 0);
+    setTimeout(this.renderClear, 2500);
+  }
+  
+// SAVE/REMOVE FROM LIBRARY
+  renderClear() {
+    document.getElementById("state-event").innerHTML = "";
+      this.setState( {
+        event: ""
+      });
+  }
+
+  renderSavedSong() {
+    this.setState({
+      event: "Saved Song to Library"
+    });
+    document.getElementById("state-event").innerHTML = "Saved Song to Library";
   }
 
   handleVolume(e) {
@@ -271,6 +296,17 @@ class Music extends React.Component {
 
     return(
       <div className="music-player-container">
+        
+{/* SAVE/REMOVE FROM LIBRARY */}
+        <div className="event-test">
+          {(this.state.event.length > 0) ?
+            (<div className="event-flex">
+              {(this.state.event.length > 0) ? (<div className="event-librarySongs" id="state-event"></div>) : (<div></div>)}
+              {(this.state.event.length > 0 ) ? (<button className="close-event" onClick={this.renderClear}>X</button>) : (<div></div>)}
+            </div>) : (<div></div>)
+          }
+        </div>
+        
 {/* MUSICPLAYER LEFT */}
         <div className="musicPlayer-flex">
           <div className="currentSong-info">
