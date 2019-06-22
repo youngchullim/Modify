@@ -83,21 +83,35 @@ class SignupForm extends React.Component {
   }
 
   renderYearErrors() {
-    if (parseInt(this.state.year) < 1900) {
+    let numbers = /^\d+$/.test(this.state.year);
+    if (numbers || this.state.year === "") {
+      if (parseInt(this.state.year) < 1900) {
+        return(
+          <span className="signup-error">Please enter a valid year.</span>
+        )
+      } else if (parseInt(this.state.year) > 2006) {
+        return(
+          <span className="signup-error">Sorry, but you don't meet Modify's age requirements.</span>
+        )
+      }
+    } else {
       return(
-        <span className="signup-error">Please enter a valid year.</span>
-      )
-    } else if (parseInt(this.state.year) > 2006) {
-      return(
-        <span className="signup-error">Sorry, but you don't meet Modify's age requirements.</span>
+        <span className="signup-error">Please enter a valid year with numbers.</span>
       )
     }
   }
 
   renderDayErrors() {
-    if (parseInt(this.state.day) > 31) {
+    let numbers = /^\d+$/.test(this.state.day);
+    if (numbers || this.state.day === "") {
+      if (parseInt(this.state.day) > 31 || parseInt(this.state.day) < 1) {
+        return(
+          <span className="signup-error">Please enter a valid day of the month.</span>
+        )
+      }
+    } else {
       return(
-        <span className="signup-error">Please enter a valid day of the month.</span>
+        <span className="signup-error">Please enter a valid day with numbers.</span>
       )
     }
   }
