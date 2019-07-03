@@ -397,13 +397,35 @@ class Music extends React.Component {
           handleKeys={['space']}
           onKeyEvent={(key, e) => this.handlePlay()} 
         />
+
+{/* WORKS WITH 'FN + F8' FOR MACS */}
+        <KeyboardEventHandler
+          handleKeys={['f8']}
+          onKeyEvent={(key, e) => this.handlePlay()} 
+        />
         <KeyboardEventHandler
           handleKeys={['left']}
           onKeyEvent={(key, e) => this.handlePrev()} 
         />
+{/* WORKS WITH 'FN + F7' FOR MACS */}
+        <KeyboardEventHandler
+          handleKeys={['f7']}
+          onKeyEvent={(key, e) => this.handlePrev()} 
+        />
+
         <KeyboardEventHandler
           handleKeys={['right']}
           onKeyEvent={(key, e) => this.handleNext()} 
+        />
+{/* WORKS WITH 'FN + F9' FOR MACS */}
+        <KeyboardEventHandler
+          handleKeys={['f9']}
+          onKeyEvent={(key, e) => this.handleNext()} 
+        />
+        
+        <KeyboardEventHandler
+          handleKeys={['m']}
+          onKeyEvent={(key, e) => this.handleMute()} 
         />
       </div>
     )
