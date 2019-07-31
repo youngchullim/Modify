@@ -36,6 +36,8 @@ class SignupForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
+
+    // If I use multiple accounts, sign out and login with different accounts, it stays in the home page.
     const demos = [
       {email: "young1@gmail.com", password: "password"},
       {email: "young2@gmail.com", password: "password"},
@@ -46,7 +48,9 @@ class SignupForm extends React.Component {
 
     let random_demo = demos[Math.floor(Math.random() * 5)];
 
-    this.props.login(random_demo);
+    // If I login with just one account it redirects to music player
+    let random_demo2 = {email: "young1@gmail.com", password: "password"};
+    this.props.login(random_demo2);
   }
 
   renderEmailErrors() {
