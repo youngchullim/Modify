@@ -15,7 +15,7 @@
     "babel-loader": "^8.0.5",
     "daterangepicker": "^3.0.5",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.9.0",
     "react-audio-player": "^0.11.0",
     "react-contextmenu": "^2.11.0",
